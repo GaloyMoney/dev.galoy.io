@@ -1,6 +1,6 @@
 # Table of contents
 
-* [Welcome to the GaloyMoney Developer Site](README.md)
+* [GaloyMoney Dev Docs](README.md)
 
 ## GUIDES AND DEMOS
 

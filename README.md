@@ -4,11 +4,16 @@ description: >-
   launch a community bank on top of Bitcoin and Lightning.
 ---
 
-# Welcome to the GaloyMoney Developer Site
+# GaloyMoney Dev Docs
 
-## Overview of GaloyMoney
+## Overview of GaloyMony
 
-The Galoy core banking platform includes all the parts necessary to launch a community bank on Bitcoin:
+The GaloyMony core banking platform includes the parts necessary to launch a community bank on Bitcoin:
+
+#### Backend
+
+* **Backend API** – interacts with the bitcoin and accounting layers to enable sending, receiving and holding balances
+* **Dealer** – service for implementing fiat hedging strategies via supported exchanges; enables the provision of synthetic USD to provide dollar-like stability without stablecoins
 
 #### End-user and merchant experiences
 
@@ -20,10 +25,7 @@ The Galoy core banking platform includes all the parts necessary to launch a com
 * **Dashboard** – enables monitoring usage and performance of the instance
 * **Admin panel** – web application which lets a support team manage users and transactions on their galoy instance.
 
-#### Backend
 
-* **Backend API** – interacts with the bitcoin and accounting layers to enable sending, receiving and holding balances
-* **Dealer** – service for implementing fiat hedging strategies via supported exchanges; enables the provision of synthetic USD to provide dollar-like stability without stablecoins
 
 ## Want to jump right in?
 

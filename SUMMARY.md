@@ -4,7 +4,10 @@
 
 ## GUIDES AND DEMOS
 
-* [Getting Started](guides-and-demos/getting-started.md)
+* [Getting Started](guides-and-demos/getting-started/README.md)
+  * [Backend Servers](guides-and-demos/getting-started/backend-servers.md)
+  * [Mobile Wallet](guides-and-demos/getting-started/mobile-wallet.md)
+  * [Web Wallet](guides-and-demos/getting-started/web-wallet.md)
 * [Hackathon Environment](guides-and-demos/hackathon-environment.md)
 * [Projects](guides-and-demos/projects/README.md)
   * [LN Address payroll tool](guides-and-demos/projects/ln-address-payroll-tool.md)
@@ -13,3 +16,4 @@
 ## Reference
 
 * [Core API Reference](reference/api-reference.md)
+* [Admin API Reference](reference/admin-api-reference.md)

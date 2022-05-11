@@ -31,8 +31,8 @@ The GaloyMony core banking platform includes the parts necessary to launch a com
 
 Feeling like an eager beaver? Jump in to the quick start docs and get making your first request:
 
-{% content-ref url="guides-and-demos/getting-started.md" %}
-[getting-started.md](guides-and-demos/getting-started.md)
+{% content-ref url="guides-and-demos/getting-started/" %}
+[getting-started](guides-and-demos/getting-started/)
 {% endcontent-ref %}
 
 ## Want to deep dive?

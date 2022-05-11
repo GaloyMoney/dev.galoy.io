@@ -17,5 +17,6 @@
 
 ## Reference
 
-* [Core API Reference](reference/api-reference.md)
-* [Admin API Reference](reference/admin-api-reference.md)
+* [API Reference](reference/api-reference/README.md)
+  * [Core API Reference](reference/api-reference/core-api-reference.md)
+  * [Admin API Reference](reference/api-reference/admin-api-reference.md)

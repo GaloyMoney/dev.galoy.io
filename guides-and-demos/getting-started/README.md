@@ -18,9 +18,15 @@ description: For people new to GaloyMoney, this page will point you in the right
 [mobile-wallet.md](mobile-wallet.md)
 {% endcontent-ref %}
 
+{% content-ref url="web-wallet.md" %}
+[web-wallet.md](web-wallet.md)
+{% endcontent-ref %}
 
+{% content-ref url="galoy-pay.md" %}
+[galoy-pay.md](galoy-pay.md)
+{% endcontent-ref %}
 
-
-
-
+{% content-ref url="admin-panel.md" %}
+[admin-panel.md](admin-panel.md)
+{% endcontent-ref %}
 

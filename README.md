@@ -39,6 +39,14 @@ Feeling like an eager beaver? Jump in to the quick start docs and get making you
 
 Dive a little deeper and start exploring our API reference to get an idea of everything that's possible with the API:
 
-{% content-ref url="reference/api-reference/" %}
-[api-reference](reference/api-reference/)
+{% content-ref url="guides-and-demos/hackathon-environment.md" %}
+[hackathon-environment.md](guides-and-demos/hackathon-environment.md)
+{% endcontent-ref %}
+
+{% content-ref url="reference/api-reference/core-api-reference.md" %}
+[core-api-reference.md](reference/api-reference/core-api-reference.md)
+{% endcontent-ref %}
+
+{% content-ref url="reference/admin-api-reference.md" %}
+[admin-api-reference.md](reference/admin-api-reference.md)
 {% endcontent-ref %}

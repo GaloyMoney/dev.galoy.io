@@ -18,9 +18,7 @@ description: For people new to GaloyMoney, this page will point you in the right
 1. Step 1
 2. Step 2
 
-### How to implement a KYC option?
 
-KYC is not built into the core banking platform.
 
 ### Troubleshooting issues
 
@@ -35,13 +33,6 @@ The best way to interact with our API is to use one of our official libraries:
 ```
 # Install via NPM
 npm install --save my-api
-```
-{% endtab %}
-
-{% tab title="Python" %}
-```
-# Install via pip
-pip install --upgrade myapi
 ```
 {% endtab %}
 {% endtabs %}

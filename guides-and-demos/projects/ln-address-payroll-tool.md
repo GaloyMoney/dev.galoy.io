@@ -1,4 +1,4 @@
-# Projects
+# LN Address payroll tool
 
 ### LN Address payroll tool w/USD & sats over Lightning – TeamTREV
 
@@ -12,4 +12,4 @@ View the project Repo on GitHub: [https://github.com/elraphty/TeamTREVLNpay](htt
 
 Learn about USD over Lightning: [Nicolas Burtey Shock the Web presentation](https://youtu.be/mXYYCRSEsJU)
 
-![Users can send to multiple Lightning Addresses at once and may choose what ratio of BTC to USD gets sent to each user's Lightning wallet.](../.gitbook/assets/Team-TREV-ln-address-multi-pay-usd-over-lightning.png)
+![Users can send to multiple Lightning Addresses at once and may choose what ratio of BTC to USD gets sent to each user's Lightning wallet.](../../.gitbook/assets/Team-TREV-ln-address-multi-pay-usd-over-lightning.png)

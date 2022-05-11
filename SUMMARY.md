@@ -5,12 +5,11 @@
 ## GUIDES AND DEMOS
 
 * [Getting Started](guides-and-demos/getting-started.md)
-* [Projects](guides-and-demos/projects.md)
+* [Hackathon Environment](guides-and-demos/hackathon-environment.md)
+* [Projects](guides-and-demos/projects/README.md)
+  * [LN Address payroll tool](guides-and-demos/projects/ln-address-payroll-tool.md)
 * [Lessons](guides-and-demos/lessons.md)
 
 ## Reference
 
-* [API Reference](reference/api-reference/README.md)
-  * [Pets](reference/api-reference/pets.md)
-  * [Users](reference/api-reference/users.md)
-* [Deployment](reference/deployment.md)
+* [Core API Reference](reference/api-reference.md)

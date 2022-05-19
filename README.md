@@ -6,7 +6,7 @@ description: >-
 
 # GaloyMoney Dev Docs
 
-## Overview of GaloyMony
+## Overview of GaloyMoney
 
 The GaloyMony core banking platform includes the parts necessary to launch a community bank on Bitcoin:
 
@@ -25,23 +25,19 @@ The GaloyMony core banking platform includes the parts necessary to launch a com
 * **Dashboard** – enables monitoring usage and performance of the instance
 * **Admin panel** – web application which lets a support team manage users and transactions on their galoy instance.
 
-
-
-## Want to jump right in?
-
-Feeling like an eager beaver? Jump in to the quick start docs and get making your first request:
+## Getting Started
 
 {% content-ref url="guides-and-demos/getting-started/" %}
 [getting-started](guides-and-demos/getting-started/)
 {% endcontent-ref %}
 
-## Want to deep dive?
-
-Dive a little deeper and start exploring our API reference to get an idea of everything that's possible with the API:
-
 {% content-ref url="guides-and-demos/hackathon-environment.md" %}
 [hackathon-environment.md](guides-and-demos/hackathon-environment.md)
 {% endcontent-ref %}
+
+## API Reference
+
+Dive a little deeper and start exploring our API reference to get an idea of everything that's possible with the API:
 
 {% content-ref url="reference/api-reference/core-api-reference.md" %}
 [core-api-reference.md](reference/api-reference/core-api-reference.md)

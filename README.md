@@ -8,7 +8,7 @@ description: >-
 
 ## Overview of GaloyMoney
 
-The GaloyMony core banking platform includes the parts necessary to launch a community bank on Bitcoin:
+The GaloyMoney core banking platform includes the parts necessary to launch a community bank on Bitcoin:
 
 #### Backend
 

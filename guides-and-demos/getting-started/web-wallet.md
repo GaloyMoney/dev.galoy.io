@@ -28,7 +28,7 @@ yarn dev:bundler
 yarn dev:server
 ```
 
-Open [http://localhost:1234](http://localhost:1234) to view it in the browser.
+Open [http://localhost:1234](http://localhost:1234/) to view it in the browser.
 
 ### How to run this repo for production?
 

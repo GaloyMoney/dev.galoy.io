@@ -31,8 +31,8 @@ The GaloyMoney core banking platform includes the parts necessary to launch a co
 [getting-started](guides-and-demos/getting-started/)
 {% endcontent-ref %}
 
-{% content-ref url="guides-and-demos/hackathon-environment.md" %}
-[hackathon-environment.md](guides-and-demos/hackathon-environment.md)
+{% content-ref url="guides-and-demos/testnet-staging-environment.md" %}
+[testnet-staging-environment.md](guides-and-demos/testnet-staging-environment.md)
 {% endcontent-ref %}
 
 ## API Reference

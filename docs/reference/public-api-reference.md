@@ -1,4 +1,4 @@
-# Core API Reference
+# Public API Reference
 
 **API Endpoints**
 

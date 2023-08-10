@@ -33,5 +33,5 @@ The Galoy core banking platform includes the parts necessary to launch a communi
 
 ## API Reference
 Dive a little deeper and start exploring our API reference to get an idea of everything that's possible with the API:
-* [Core API reference](/docs/reference/core-api-reference.md)
-* [Admin API reference](/docs/reference/admin-api-reference)
+* [Public API reference](/docs/reference/public-api-reference.md)
+

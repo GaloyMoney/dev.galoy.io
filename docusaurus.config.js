@@ -11,15 +11,15 @@ const config = {
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
-  url: 'https://your-docusaurus-test-site.com',
+  url: 'https://dev.galoy.io',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: '/docs-docusaurus/',
+  baseUrl: '/dev.galoy.io/',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'openoms', // Usually your GitHub org/user name.
-  projectName: 'docs-docusaurus', // Usually your repo name.
+  organizationName: 'GaloyMoney', // Usually your GitHub org/user name.
+  projectName: 'dev.galoy.io', // Usually your repo name.
   deploymentBranch: 'gh-pages',
   trailingSlash: false,
 

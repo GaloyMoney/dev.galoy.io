@@ -85,6 +85,18 @@ const config = {
             label: 'Videos',
           },
           {
+            type: 'docSidebar',
+            sidebarId: 'referenceSidebar',
+            position: 'left',
+            label: 'API Reference',
+          },
+          {
+            type: 'docSidebar',
+            sidebarId: 'projectsSidebar',
+            position: 'left',
+            label: 'Projects',
+          },
+          {
             href: 'https://www.blink.sv/en/blog',
             label: 'Blog',
             position: 'right',

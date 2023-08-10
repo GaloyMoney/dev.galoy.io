@@ -177,5 +177,3 @@ If you need to run Prettier through the command line, you can use:
 ```
 $ yarn prettier -w .
 ```
-
-###

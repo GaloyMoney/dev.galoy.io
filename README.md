@@ -1,48 +1,30 @@
----
-description: >-
-  GaloyMoney is an open source banking platform enabling any organization to
-  launch a community bank on top of Bitcoin and Lightning.
----
+# Galoy Dev Docs
 
-# GaloyMoney Dev Docs
+* This is the source code for the Galoy Dev Docs website, available at https://dev.galoy.io
+* Built using [Docusaurus 2](https://docusaurus.io/), a modern static website generator.
+* The deployed version is in the `gh-pages` branch.
 
-## Overview of GaloyMoney
+## Local development
+### Installation
+* requires:
+    * git
+    * nodejs
+    * yarn
+* download the repo and install the dependencies:
+```
+git clone https://github.com/GaloyMoney/dev.galoy.io
+cd dev.galoy.io
+yarn
+```
+### Start the local development server
+```
+yarn start
+```
 
-The GaloyMoney core banking platform includes the parts necessary to launch a community bank on Bitcoin:
+This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
 
-#### Backend
+## Deploy changes
 
-* **Backend API** – interacts with the bitcoin and accounting layers to enable sending, receiving and holding balances
-* **Dealer** – service for implementing fiat hedging strategies via supported exchanges; enables the provision of synthetic USD to provide dollar-like stability without stablecoins
-
-#### End-user and merchant experiences
-
-* **Mobile wallet and web wallet** – simple end user experience enables send/receive onchain and Lighting. Mobile wallet includes educational onboarding quiz & merchant map
-* **Tipping pages** – web application end users can share online or display in person to receive payments to their account
-
-#### Administrator experiences
-
-* **Dashboard** – enables monitoring usage and performance of the instance
-* **Admin panel** – web application which lets a support team manage users and transactions on their galoy instance.
-
-## Getting Started
-
-{% content-ref url="guides-and-demos/getting-started/" %}
-[getting-started](guides-and-demos/getting-started/)
-{% endcontent-ref %}
-
-{% content-ref url="guides-and-demos/staging-environment.md" %}
-[staging-environment.md](guides-and-demos/staging-environment.md)
-{% endcontent-ref %}
-
-## API Reference
-
-Dive a little deeper and start exploring our API reference to get an idea of everything that's possible with the API:
-
-{% content-ref url="reference/api-reference/core-api-reference.md" %}
-[core-api-reference.md](reference/api-reference/core-api-reference.md)
-{% endcontent-ref %}
-
-{% content-ref url="reference/admin-api-reference.md" %}
-[admin-api-reference.md](reference/admin-api-reference.md)
-{% endcontent-ref %}
+When done editing the docs open a pull request.
+* The GitHub Action configured to run when the PR is opened will check for errors.
+* Once the PR is merged the changes will be automatically deployed to the `gh-pages` branch and will be available at https://dev.galoy.io

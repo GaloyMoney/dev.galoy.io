@@ -85,8 +85,7 @@ const config = {
             label: 'Videos',
           },
           {
-            type: 'docSidebar',
-            sidebarId: 'referenceSidebar',
+            href: 'https://galoymoney.github.io/galoy/',
             position: 'left',
             label: 'API Reference',
           },

@@ -18,7 +18,7 @@ The Galoy core banking platform includes the parts necessary to launch a communi
 
 #### End-user and merchant experiences
 
-* **[Mobile wallet](https://github.com/GaloyMoney/galoy-mobile)** – simple end user experience enables send/receive onchain and Lighting. Mobile wallet includes educational onboarding quiz & merchant map.
+* **[Mobile wallet](https://github.com/GaloyMoney/galoy-mobile)** – simple end user experience enables send/receive onchain and Lightning. Mobile wallet includes educational onboarding quiz & merchant map.
 * **[Galoy Pay](https://github.com/GaloyMoney/galoy-pay)** – web application end users can share online or display in person to receive payments to their account.
 * **[Web wallet](https://github.com/GaloyMoney/web-wallet)** – web application for sending and receiving bitcoin over onchain, lightning and intraledger. It can be customized and used by any community or organization.
 

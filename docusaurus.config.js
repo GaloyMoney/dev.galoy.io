@@ -102,7 +102,7 @@ const config = {
             position: 'right',
           },
           {
-            href: 'https://github.com/GaloyMoney',
+            href: 'https://github.com/GaloyMoney/dev.galoy.io',
             label: 'GitHub',
             position: 'right',
           },
@@ -142,7 +142,7 @@ const config = {
               },
               {
                 label: 'GitHub',
-                href: 'https://github.com/GaloyMoney',
+                href: 'https://github.com/GaloyMoney/dev.galoy.io',
               },
             ],
           },

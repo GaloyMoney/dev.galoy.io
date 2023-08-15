@@ -8,7 +8,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 const config = {
   title: 'Galoy Dev Site',
   tagline: 'Developer Docs',
-  favicon: 'img/favicon.ico',
+  favicon: 'images/favicon.ico',
 
   // Set the production url of your site here
   url: 'https://dev.galoy.io',
@@ -43,15 +43,15 @@ const config = {
           sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+          //editUrl:
+          //  'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
         },
         blog: {
           showReadingTime: true,
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+          //editUrl:
+          //  'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
@@ -69,7 +69,7 @@ const config = {
         title: 'Developer Documentation',
         logo: {
           alt: 'My Site Logo',
-          src: 'img/galoy-logo-blue.svg',
+          src: 'images/galoy-logo-blue.svg',
         },
         items: [
           {
@@ -85,9 +85,10 @@ const config = {
             label: 'Videos',
           },
           {
-            href: 'https://galoymoney.github.io/galoy/',
+            type: 'doc',
             position: 'left',
             label: 'API Reference',
+            docId: 'reference/README',
           },
           {
             type: 'docSidebar',

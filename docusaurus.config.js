@@ -74,21 +74,21 @@ const config = {
         items: [
           {
             type: 'docSidebar',
-            sidebarId: 'quickstartSidebar',
+            sidebarId: 'productsSidebar',
             position: 'left',
-            label: 'Quickstart',
-          },
-          {
-            type: 'docSidebar',
-            sidebarId: 'videosSidebar',
-            position: 'left',
-            label: 'Videos',
+            label: 'Products',
           },
           {
             type: 'doc',
             position: 'left',
             label: 'API Reference',
             docId: 'reference/README',
+          },
+          {
+          type: 'docSidebar',
+          sidebarId: 'deploymentSidebar',
+          position: 'left',
+          label: 'Deployment',
           },
           {
             type: 'docSidebar',
@@ -115,8 +115,20 @@ const config = {
             title: 'Docs',
             items: [
               {
-                label: 'Quickstart',
-                to: '/docs/getting-started',
+                label: 'Products',
+                to: '/docs/products',
+              },
+              {
+                label: 'API Reference',
+                to: '/docs/reference',
+              },
+              {
+                label: 'Deployment',
+                to: '/docs/deployment',
+              },
+              {
+                label: 'Projects',
+                to: '/docs/projects',
               },
             ],
           },
@@ -131,6 +143,10 @@ const config = {
                 label: 'Twitter',
                 href: 'https://twitter.com/GaloyMoney',
               },
+              {
+                label: 'Nostr',
+                href: 'https://primal.net/p/npub1gal0y3vuj3c5sme6444ncsr8xcfm9axehfcsuqfamz5v926m6f2s4yz3t2',
+              },
             ],
           },
           {
@@ -142,7 +158,7 @@ const config = {
               },
               {
                 label: 'GitHub',
-                href: 'https://github.com/GaloyMoney/dev.galoy.io',
+                href: 'https://github.com/GaloyMoney',
               },
             ],
           },

@@ -1,3 +1,3 @@
 # Projects
 
-[ln-address-payroll-tool.md](ln-address-payroll-tool.md)
+## [LN Address payroll tool](projects/ln-address-payroll-tool)

@@ -146,3 +146,15 @@ curl --location --request POST $URI --header "$AUTH_TOKEN" --header 'Content-Typ
 If you use Postman, we have a collection you can import to test the API.
 
 Download it here: [Lightning Integration.postman\_collection.json](https://github.com/GaloyMoney/galoy/blob/main/docs/postman-collection/galoy_graphql_main_api.postman_collection.json)
+
+
+## Videos
+### Using the Galoy GraphQL API - 2022-Oct-26
+Arvin demoes the Galoy GraphQL API
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/RRdpKnFe8qQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+### Getting started with the Galoy API - 2022-Mar-29
+Arvin walks through how to use the Galoy API to send USD over Lightning.
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/bp5Dc6Wvnbw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>

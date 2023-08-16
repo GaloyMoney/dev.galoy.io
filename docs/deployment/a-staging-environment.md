@@ -1,7 +1,7 @@
 # Staging Environment
 
-The continuous integration system of the Galoy stack is an organic part of the deployment process. All changes are first passed through and being tested in the staging environment running on signet.\
-\
+The continuous integration system of the Galoy stack is an organic part of the deployment process. All changes are first passed through and being tested in the staging environment running on signet.
+
 More info about testing on signet: [github.com/GaloyMoney/charts/blob/main/dev/signet.md](https://github.com/GaloyMoney/charts/blob/main/dev/signet.md)
 
 The endpoints are public and can be used to test the new functions or integrations before using real sats:

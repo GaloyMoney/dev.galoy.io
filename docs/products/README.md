@@ -12,21 +12,31 @@ description: For people new to Galoy, this page will point you in the right dire
 * visit https://get.blink.sv for the App Store / Google Play / App Gallery links
 * or download the Android apk from https://github.com/GaloyMoney/galoy-mobile/releases
 
-## Connect to Staging (optional for testing on signet)
+## Connect to the Staging Environment
+* this is optional for testing using the [default signet](https://en.bitcoin.it/wiki/Signet)
+* more info on the [staging environment](/docs/deployment/a-staging-environment)
+* more info on [testing on signet](/docs/signet)
+### On a fresh start
 * open Blink
-* select `Start with a trial account`
+* tap the Blink logo 3 times before creating an account
+* select `Staging` under `Update Environment`, `Save changes` and go back to the start screen
+* the wallet is now connected to the staging environment
+* carry on with: `Create new account`, `Start with trial account` or `Log back in with Phone or Email`
+
+### Already using Blink (will log out)
 * select the menu on the top right and scroll down
-* select the build number on the bottom 3 times
-* select `Staging`, `Save changes` and go back to `Settings`
-* select `Log in or create account`
-* `Start with trial account` (now connected to Staging)
+* tap the build number on the bottom 3 times
+* select `Staging` under `Update Environment`, `Save changes` and go back to `Settings`
+* the wallet is now connected to the staging environment
+* carry on with: `Create new account`, `Start with trial account` or `Log back in with Phone or Email`
 
 ## Get an authentication token for the API
-* after you have created an account select the menu on the top right and scroll down
+* `Create new account`, `Start with trial account` or `Log back in with Phone or Email`
+* tap the menu on the top right and scroll down
 * select the build number on the bottom 3 times
 * select `Copy access token` to save the token to your clipboard
 
-## Set up email login
+## Set up the email login
 
 ### Upgrade the account with a phone number
 * select the menu on the top right and tap `Account`
@@ -34,6 +44,7 @@ description: For people new to Galoy, this page will point you in the right dire
 * complete the Account set up with a phone number
 
 ### Add an email address for login
+* only available if a phone number was added previously
 * select the menu on the top right and tap `Account`
 * select `Email (for login)`
 * enter an email address and complete the verification to enable login with email

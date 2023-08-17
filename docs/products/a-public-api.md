@@ -4,16 +4,13 @@
 
     https://api.staging.galoy.io/graphql
 
-
 ### Galoy API Tutorial
 
-### Lightning Integration <a href="#lightning-integration" id="lightning-integration"></a>
-
-### Overview <a href="#overview" id="overview"></a>
+### Overview
 
 The staging API endpoint is: `https://api.staging.galoy.io/graphql`
 
-### Authentication <a href="#authentication" id="authentication"></a>
+### Authentication
 
 To get a new JWT:
 
@@ -22,11 +19,8 @@ To get a new JWT:
 
 All other methods require a valid JWT set in the header as a bearer token - `Authorization: Bearer`
 
-### Curl requests <a href="#curl-requests" id="curl-requests"></a>
-
-#### userRequestAuthCode <a href="#userrequestauthcode" id="userrequestauthcode"></a>
-
-**query**
+### Curl requests
+#### userRequestAuthCode
 
 ```
 export URI=https://api.staging.galoy.io/graphql

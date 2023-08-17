@@ -5,7 +5,7 @@ Galoy-CLI is a Command Line Interface (CLI) client for interacting with Galoy Ba
 https://github.com/GaloyMoney/galoy-cli#readme
 
 ## Video demo
-Galoy CLI Batch Payments Demo - 2023-Jul-30
-A short demo of the Galoy CLI batch payments feature by Sandipan
+### Galoy-CLI Batch Payments
+A short demo of the Galoy CLI batch payments feature by Sandipan (2023-Jul-30)
 
-[![asciicast](https://asciinema.org/a/14.png)](https://asciinema.org/a/14)
+[![asciicast](https://asciinema.org/a/599756.svg)](https://asciinema.org/a/599756)

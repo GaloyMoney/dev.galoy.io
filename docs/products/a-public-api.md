@@ -152,7 +152,8 @@ Download it here: [Lightning Integration.postman\_collection.json](https://githu
 ### Using the Galoy GraphQL API - 2022-Oct-26
 Arvin demoes the Galoy GraphQL API
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/RRdpKnFe8qQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+https://www.youtube.com/live/RRdpKnFe8qQ
+<!-- unavailable outside youtube <iframe width="560" height="315" src="https://www.youtube.com/embed/RRdpKnFe8qQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>-->
 
 ### Getting started with the Galoy API - 2022-Mar-29
 Arvin walks through how to use the Galoy API to send USD over Lightning.

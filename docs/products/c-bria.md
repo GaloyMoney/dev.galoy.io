@@ -1,3 +1,9 @@
+---
+id: bria
+title: Bria
+slug: /products/bria
+---
+
 # Bria
 Bria is a service for transaction batching and onchain liquidity management.
 

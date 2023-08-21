@@ -1,3 +1,9 @@
+---
+id: admin-panel
+title: Admin Panel
+slug: /deployment/admin-panel
+---
+
 # Admin Panel
 
 Galoy Admin Panel lets the support team access users and internal transaction information.

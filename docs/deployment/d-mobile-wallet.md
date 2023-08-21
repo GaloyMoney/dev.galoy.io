@@ -1,3 +1,9 @@
+---
+id: mobile-wallet
+title: Mobile Wallet
+slug: /deployment/mobile-wallet
+---
+
 # Mobile Wallet
 
 Prerequisite -- [Set up React Native](https://reactnative.dev/docs/environment-setup) by following the instructions in the **React Native CLI Quickstart** tab

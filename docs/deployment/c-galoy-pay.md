@@ -1,3 +1,9 @@
+---
+id: galoy-pay
+title: Galoy Pay
+slug: /deployment/galoy-pay
+---
+
 # Galoy Pay
 
 Galoy Pay is a web application that can be used to send tips or payments to users of the Galoy API.

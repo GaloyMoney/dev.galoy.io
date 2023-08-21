@@ -1,3 +1,10 @@
+---
+id: web-wallet
+title: Web Wallet
+slug: /deployment/web-wallet
+---
+
+
 # Web Wallet
 
 Galoy Web Wallet is a web application that uses the Galoy backend API to offer a web experience for sending and receiving bitcoin over onchain, lightning and intraledger.

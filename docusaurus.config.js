@@ -86,10 +86,10 @@ const config = {
             docId: 'reference/README',
           },
           {
-          type: 'docSidebar',
-          sidebarId: 'deploymentSidebar',
-          position: 'left',
-          label: 'Deployment',
+            type: 'docSidebar',
+            sidebarId: 'deploymentSidebar',
+            position: 'left',
+            label: 'Deployment',
           },
           {
             type: 'docSidebar',
@@ -171,6 +171,11 @@ const config = {
         darkTheme: darkCodeTheme,
       },
     }),
+
+  markdown: {
+    mermaid: true,
+  },
+  themes: ['@docusaurus/theme-mermaid'],
 };
 
 module.exports = config;

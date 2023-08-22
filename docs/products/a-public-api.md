@@ -18,12 +18,12 @@ The staging API endpoint is: `https://api.staging.galoy.io/graphql`
 
 ### Authentication
 
-To get a new JWT:
+To get a new auth token:
 
 1. Use `userRequestAuthCode` to receive an auth code via SMS
 2. Call `userLogin` using the same phone number and auth code
 
-All other methods require a valid JWT set in the header as a bearer token - `Authorization: Bearer`
+All other methods require a valid auth token set in the header as a bearer token - `Authorization: Bearer`
 
 ### Curl requests
 #### userRequestAuthCode

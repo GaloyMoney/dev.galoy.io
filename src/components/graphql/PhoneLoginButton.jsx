@@ -1,10 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { phoneLogin } from './authUtilities';
 import { useAuth } from './AuthContext';
-import { handleAuthenticatedRequest } from './authRequests';
 import { generateCurlCommandPhoneLogin } from './curlCommandGenerators';
-
-
 
 function PhoneLoginButton() {
   const { authToken, setAuthToken } = useAuth();
@@ -14,8 +11,6 @@ function PhoneLoginButton() {
   const [showToken, setShowToken] = useState(false);
   const [successMessageLogin, setSuccessMessageLogin] = useState(null);
   const [errorMessageLogin, setErrorMessageLogin] = useState(null);
-  const [userData, setUserData] = useState(null);
-  const [errorMessageFetchData, setErrorMessageFetchData] = useState(null);
   const [curlCommand, setCurlCommand] = useState('');
 
   useEffect(() => {
@@ -42,24 +37,16 @@ function PhoneLoginButton() {
 
     try {
       const tokenFromLogin = await phoneLogin(apiEndpoint, phone, code);
-      setAuthToken(tokenFromLogin.result.authToken); // Update to use the global context for storing the token
+      setAuthToken(tokenFromLogin.result.authToken);
       setSuccessMessageLogin("Got the auth token!");
-      setCurlCommand(generateLoginCurlCommand(apiEndpoint, phone, code));
+      setCurlCommand(generateCurlCommandPhoneLogin(apiEndpoint, phone, code));
     } catch (error) {
       setErrorMessageLogin(error.message);
     }
   }
 
-  const fetchData = async () => {
-    try {
-      const data = await handleAuthenticatedRequest(authToken, apiEndpoint); // Use the token from the context
-      setUserData(data);
-    } catch (error) {
-      setErrorMessageFetchData(error.message);
-    }
-  }
-
   const toggleShowToken = () => {
+    setShowToken(prevState => !prevState);
   }
 
   return (
@@ -88,30 +75,15 @@ function PhoneLoginButton() {
         </pre>
       </div>
 
-
-
       {successMessageLogin && <div style={{ color: 'green' }}>{successMessageLogin}</div>}
       {errorMessageLogin && <div style={{ color: 'red' }}>Error: {errorMessageLogin}</div>}
 
-      {authToken && ( // Use the token from the context for conditional rendering
+      {authToken && showToken && (
         <div>
           <button onClick={toggleShowToken}>Toggle Token Visibility</button>
           <div><strong>Token:</strong> {authToken}</div>
         </div>
       )}
-
-      <div style={{ margin: '20px 0' }}></div>
-
-      {(
-        <div>
-          <h2>Execute an authenticated request</h2>
-          <button onClick={fetchData}>Fetch User Data</button>
-        </div>
-      )}
-
-      {errorMessageFetchData && <div style={{ color: 'red' }}>Error: {errorMessageFetchData}</div>}
-
-      {userData && <div><strong>User Phone:</strong> {userData.phone}</div>}
     </div>
   );
 }

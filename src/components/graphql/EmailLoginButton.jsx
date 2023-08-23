@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { requestEmailCode, emailLogin } from './authUtilities';
 import { useAuth } from './AuthContext';
-import { generateCurlCommandRequestEmailCode } from './curlCommandGenerators';
+import { generateCurlCommandRequestEmailCode, generateCurlCommandEmailLogin } from './curlCommandGenerators';
 
 function EmailLoginButton() {
   const { authToken, setAuthToken } = useAuth();
@@ -17,12 +17,19 @@ function EmailLoginButton() {
   const [successMessageEmailLogin, setSuccessMessageEmailLogin] = useState(null);
   const [errorMessageEmailLogin, setErrorMessageEmailLogin] = useState(null);
   const [curlCommandRequestEmailCode, setCurlCommandRequestEmailCode] = useState('');
+  const [curlCommandEmailLogin, setCurlCommandEmailLogin] = useState('');
 
   useEffect(() => {
     // Generate and set the cURL command whenever authEndpoint or emailAddress changes
     const newCurlCommand = generateCurlCommandRequestEmailCode(authEndpoint, emailAddress);
     setCurlCommandRequestEmailCode(newCurlCommand);
   }, [authEndpoint, emailAddress]);
+
+  useEffect(() => {
+    // Generate and set the cURL command for email login whenever authEndpoint, emailLoginIdInput or emailCode changes
+    const newCurlCommand = generateCurlCommandEmailLogin(authEndpoint, emailLoginIdInput, emailCode);
+    setCurlCommandEmailLogin(newCurlCommand);
+  }, [authEndpoint, emailLoginIdInput, emailCode]);
 
   const handleRequestEmailCode = async () => {
     try {
@@ -95,7 +102,19 @@ function EmailLoginButton() {
           <button onClick={handleEmailLogin}>Log in</button>
         </div>
       )}
-
+      <div style={{ marginTop: '20px' }}>
+        <h3>cURL command for email login:</h3>
+        <pre style={{
+          backgroundColor: 'auto',
+          padding: '10px',
+          border: '1px solid #ccc',
+          borderRadius: '5px',
+          overflowX: 'auto',
+          whiteSpace: 'pre-wrap'
+        }}>
+          {curlCommandEmailLogin}
+        </pre>
+      </div>
       {errorMessageEmailLogin && <div style={{ color: 'red' }}>Error: {errorMessageEmailLogin}</div>}
       {successMessageEmailLogin && <div style={{ color: 'green' }}>{successMessageEmailLogin}</div>}
 

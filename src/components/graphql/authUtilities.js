@@ -35,8 +35,18 @@ const phoneLogin = async (apiEndpoint, phone, code) => {
       throw new Error(jsonData.errors[0].message);
     }
 
-    return jsonData.data.userLogin.authToken;
+    // Check if authToken is null
+    const authToken = jsonData?.data?.userLogin?.authToken;
+    if (!authToken) {
+      throw new Error('Authentication token is null or not provided.');
+    }
 
+    // If nothing from the above, check if the response returned a 200 status code
+    if (!response.ok) {
+      throw new Error(`HTTP Error: ${response.status}`);
+    }
+
+    return authToken;
   } catch (error) {
     console.error("There was an error making the request:", error);
     throw error;
@@ -95,10 +105,6 @@ const emailLogin = async (authEndpoint, emailLoginId, emailCode) => {
       throw new Error("Expected authToken not found in the response.");
     }
 
-    // if nothing from the above check if the response returned a 200 status code
-    if (!response.ok) {
-      throw new Error(`HTTP Error: ${response.status}`);
-    }
 
     return authToken;
 

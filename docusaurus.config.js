@@ -166,6 +166,11 @@ const config = {
         ],
         copyright: `Copyright © ${new Date().getFullYear()} Galoy Inc. Built with Docusaurus.`,
       },
+      colorMode: {
+        defaultMode: 'dark',
+        disableSwitch: false,  // manual switch
+        respectPrefersColorScheme: false, // system dark mode switch
+      },
       prism: {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,

@@ -1,5 +1,6 @@
 spectaql:
   logoFile: ./static/images/logo.png
+  faviconFile: ./static/images/favicon.ico
 
 introspection:
   schemaFile: ./src/graphql/admin/schema.graphql

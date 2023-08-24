@@ -1,6 +1,10 @@
-const handleAuthenticatedRequest = async (token, apiEndpoint) => {
+const handleAuthenticatedRequest = async (token, apiEndpoint, graphqlQuery) => {
   if (!token) {
     throw new Error("Not authenticated");
+  }
+
+  if (!graphqlQuery) {
+    throw new Error("No GraphQL query provided");
   }
 
   try {
@@ -12,7 +16,7 @@ const handleAuthenticatedRequest = async (token, apiEndpoint) => {
         'Authorization': `bearer ${token}`
       },
       body: JSON.stringify({
-        query: `{ me { phone } }`
+        query: graphqlQuery
       })
     });
 

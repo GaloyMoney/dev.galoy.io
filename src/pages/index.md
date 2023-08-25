@@ -12,9 +12,10 @@ The Galoy core banking platform includes the parts necessary to launch a communi
 
 #### Backend
 
-* **[Backend API](https://github.com/GaloyMoney/galoy)** – interacts with the bitcoin and accounting layers to enable sending, receiving and holding balances
-* **[Stablesats](https://github.com/GaloyMoney/stablesats-rs)** – service for implementing fiat hedging strategies via supported exchanges; enables the provision of synthetic USD to provide dollar-like stability without stablecoins
-* **[Bria](https://github.com/GaloyMoney/bria)** - a service for transaction batching and onchain liquidity management
+* **[Public API](/products/public-api)** – interacts with the bitcoin and accounting layers to enable sending, receiving and holding balances
+* **[Stablesats](/products/stablesats)** – service for implementing fiat hedging strategies via supported exchanges; enables the provision of synthetic USD to provide dollar-like stability without stablecoins
+* **[Bria](/products/bria)** - a service for transaction batching and onchain liquidity management
+* **[Galoy CLI](/products/galoy-cli)** - a Command Line Interface (CLI) client for interacting with Galoy Backend
 
 #### End-user and merchant experiences
 
@@ -28,8 +29,8 @@ The Galoy core banking platform includes the parts necessary to launch a communi
 * **Admin panel** – web application which lets a support team manage users and transactions on their galoy instance.
 
 ## Getting Started
-* [Staging Environment](/docs/deployment/a-staging-environment)
-* [Deployment](/docs/deployment/)
+* [Staging Environment](/deployment/staging-environment)
+* [Deployment](/deployment/)
 
 ## API Reference
 Dive a little deeper and start exploring our API reference to get an idea of everything that's possible with the API:

@@ -18,6 +18,7 @@ function EmailLoginButton() {
   const [errorMessageEmailLogin, setErrorMessageEmailLogin] = useState(null);
   const [curlCommandRequestEmailCode, setCurlCommandRequestEmailCode] = useState('');
   const [curlCommandEmailLogin, setCurlCommandEmailLogin] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     // Generate and set the cURL command whenever authEndpoint or emailAddress changes
@@ -48,12 +49,16 @@ function EmailLoginButton() {
       return;
     }
 
+    setIsLoading(true);  // Start loading state
+
     try {
-      const tokenResponse = await emailLogin(authEndpoint, emailLoginIdInput, emailCode);
-      setAuthToken(tokenResponse.result.authToken);
+      const obtainedAuthToken = await emailLogin(authEndpoint, emailLoginIdInput, emailCode);
+      setAuthToken(obtainedAuthToken);  // Directly set the obtained authToken
       setSuccessMessageEmailLogin("Logged in successfully!");
     } catch (error) {
       setErrorMessageEmailLogin(error.message);
+    } finally {
+      setIsLoading(false);  // End loading state, whether the request was successful or not
     }
   };
 
@@ -99,7 +104,9 @@ function EmailLoginButton() {
             </div>
           )}
           <input type="text" placeholder="Email Code" value={emailCode} onChange={e => setEmailCode(e.target.value)} />
-          <button onClick={handleEmailLogin}>Log in</button>
+          <button onClick={handleEmailLogin} disabled={isLoading}>
+            {isLoading ? "Logging in..." : "Log in"}
+          </button>
         </div>
       )}
       <div style={{ marginTop: '20px' }}>
@@ -118,12 +125,10 @@ function EmailLoginButton() {
       {errorMessageEmailLogin && <div style={{ color: 'red' }}>Error: {errorMessageEmailLogin}</div>}
       {successMessageEmailLogin && <div style={{ color: 'green' }}>{successMessageEmailLogin}</div>}
 
-      {authToken && showToken && <div><strong>Token:</strong> {authToken}</div>}
-
-      {token && (
+      {authToken && (
         <div>
           <button onClick={toggleShowToken}>Toggle Token Visibility</button>
-          {showToken && <div><strong>Token:</strong> {token}</div>}
+          {showToken && <div><strong>Token:</strong> {authToken}</div>}
         </div>
       )}
     </div>

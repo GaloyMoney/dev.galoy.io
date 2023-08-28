@@ -37,7 +37,7 @@ function PhoneLoginButton() {
 
     try {
       const tokenFromLogin = await phoneLogin(apiEndpoint, phone, code);
-      setAuthToken(tokenFromLogin.result.authToken);
+      setAuthToken(tokenFromLogin);
       setSuccessMessageLogin("Got the auth token!");
       setCurlCommand(generateCurlCommandPhoneLogin(apiEndpoint, phone, code));
     } catch (error) {
@@ -78,10 +78,10 @@ function PhoneLoginButton() {
       {successMessageLogin && <div style={{ color: 'green' }}>{successMessageLogin}</div>}
       {errorMessageLogin && <div style={{ color: 'red' }}>Error: {errorMessageLogin}</div>}
 
-      {authToken && showToken && (
+      {authToken && (
         <div>
           <button onClick={toggleShowToken}>Toggle Token Visibility</button>
-          <div><strong>Token:</strong> {authToken}</div>
+          {showToken && <div><strong>Token:</strong> {authToken}</div>}
         </div>
       )}
     </div>

@@ -23,12 +23,17 @@ const phoneLogin = async (apiEndpoint, phone, code) => {
       })
     });
 
+    // Displaying the raw response in console
+    const rawTextResponse = await response.text();
+    console.log('Raw Response:', rawTextResponse);
+
+    // Convert raw response text to JSON for further processing
+    const jsonData = JSON.parse(rawTextResponse);
+
     // Check if the response returned a 200 status code
     if (!response.ok) {
       throw new Error(`HTTP Error: ${response.status}`);
     }
-
-    const jsonData = await response.json();
 
     // Check for GraphQL errors
     if (jsonData.errors && jsonData.errors.length > 0) {
@@ -36,17 +41,12 @@ const phoneLogin = async (apiEndpoint, phone, code) => {
     }
 
     // Check if authToken is null
-    const authToken = jsonData?.data?.userLogin?.authToken;
-    if (!authToken) {
-      throw new Error('Authentication token is null or not provided.');
+    if (!jsonData.data?.userLogin?.authToken) {
+      throw new Error('Expected authToken not found in the response.');
     }
 
-    // If nothing from the above, check if the response returned a 200 status code
-    if (!response.ok) {
-      throw new Error(`HTTP Error: ${response.status}`);
-    }
+    return jsonData.data.userLogin.authToken;
 
-    return authToken;
   } catch (error) {
     console.error("There was an error making the request:", error);
     throw error;
@@ -95,18 +95,19 @@ const emailLogin = async (authEndpoint, emailLoginId, emailCode) => {
     });
 
     const jsonData = await response.json();
-    const authToken = jsonData?.result?.authToken;
 
-    if (jsonData.error && jsonData.error === "too many requests") {
-      throw new Error("You've made too many requests. Please wait and try again later.");
+    if (jsonData.error) {
+      if (jsonData.error === "too many requests") {
+        throw new Error("You've made too many requests. Please wait and try again later.");
+      }
+      throw new Error(jsonData.error); // This line can be expanded to handle other error types
     }
 
-    if (!jsonData || !jsonData.result || !jsonData.result.authToken) {
+    if (!jsonData.result?.authToken) {
       throw new Error("Expected authToken not found in the response.");
     }
 
-
-    return authToken;
+    return jsonData.result.authToken;
 
   } catch (error) {
     console.error("There was an error making the request:", error);

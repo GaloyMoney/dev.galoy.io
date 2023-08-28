@@ -11,25 +11,21 @@ import AuthRequestButton from '/src/components/graphql/AuthRequestButton';
 Be cautious using an environment with real funds as the authentication token will be exposed in the browser.
 :::
 
-## Email Login
-
 <AuthProvider>
+  ## Email Login
+
   <EmailLoginButton />
-</AuthProvider>
 
-<div style={{ margin: '40px 0' }}></div>
+  <div style={{ margin: '40px 0' }}></div>
 
-## Phone Login
+  ## Phone Login
 
-<AuthProvider>
   <PhoneLoginButton />
-</AuthProvider>
 
-<div style={{ margin: '40px 0' }}></div>
+  <div style={{ margin: '40px 0' }}></div>
 
-## Make authenticated requests
+  ## Make authenticated requests
 
-<AuthProvider>
   <AuthRequestButton />
 </AuthProvider>
 

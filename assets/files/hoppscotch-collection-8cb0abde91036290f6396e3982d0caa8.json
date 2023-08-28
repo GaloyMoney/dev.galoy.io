@@ -1,0 +1,1330 @@
+[
+  {
+    "v": 1,
+    "name": "Galoy GraphQL API",
+    "folders": [
+      {
+        "v": 1,
+        "name": "notoken",
+        "folders": [
+          {
+            "v": 1,
+            "name": "queries",
+            "folders": [],
+            "requests": [
+              {
+                "name": "prices",
+                "endpoint": "<<protocol>>://<<domain>>:<<port>>/graphql",
+                "method": "POST",
+                "headers": [],
+                "params": [],
+                "auth": {
+                  "authType": "none",
+                  "authActive": true
+                },
+                "body": {
+                  "contentType": null,
+                  "body": null
+                },
+                "preRequestScript": "",
+                "testScript": "",
+                "v": "1"
+              },
+              {
+                "name": "lnInvoicePaymentStatus",
+                "endpoint": "<<protocol>>://<<domain>>:<<port>>/graphql",
+                "method": "POST",
+                "headers": [],
+                "params": [],
+                "auth": {
+                  "authType": "none",
+                  "authActive": true
+                },
+                "body": {
+                  "contentType": null,
+                  "body": null
+                },
+                "preRequestScript": "",
+                "testScript": "",
+                "v": "1"
+              },
+              {
+                "name": "mapMarkers",
+                "endpoint": "<<protocol>>://<<domain>>:<<port>>/graphql",
+                "method": "POST",
+                "headers": [],
+                "params": [],
+                "auth": {
+                  "authType": "none",
+                  "authActive": true
+                },
+                "body": {
+                  "contentType": null,
+                  "body": null
+                },
+                "preRequestScript": "",
+                "testScript": "",
+                "v": "1"
+              },
+              {
+                "name": "mobileVersions",
+                "endpoint": "<<protocol>>://<<domain>>:<<port>>/graphql",
+                "method": "POST",
+                "headers": [],
+                "params": [],
+                "auth": {
+                  "authType": "none",
+                  "authActive": true
+                },
+                "body": {
+                  "contentType": null,
+                  "body": null
+                },
+                "preRequestScript": "",
+                "testScript": "",
+                "v": "1"
+              },
+              {
+                "name": "nodesIds",
+                "endpoint": "<<protocol>>://<<domain>>:<<port>>/graphql",
+                "method": "POST",
+                "headers": [],
+                "params": [],
+                "auth": {
+                  "authType": "none",
+                  "authActive": true
+                },
+                "body": {
+                  "contentType": null,
+                  "body": null
+                },
+                "preRequestScript": "",
+                "testScript": "",
+                "v": "1"
+              },
+              {
+                "name": "earnList",
+                "endpoint": "<<protocol>>://<<domain>>:<<port>>/graphql",
+                "method": "POST",
+                "headers": [],
+                "params": [],
+                "auth": {
+                  "authType": "none",
+                  "authActive": true
+                },
+                "body": {
+                  "contentType": null,
+                  "body": null
+                },
+                "preRequestScript": "",
+                "testScript": "",
+                "v": "1"
+              },
+              {
+                "name": "usernameExists",
+                "endpoint": "<<protocol>>://<<domain>>:<<port>>/graphql",
+                "method": "POST",
+                "headers": [],
+                "params": [],
+                "auth": {
+                  "authType": "none",
+                  "authActive": true
+                },
+                "body": {
+                  "contentType": null,
+                  "body": null
+                },
+                "preRequestScript": "",
+                "testScript": "",
+                "v": "1"
+              }
+            ]
+          },
+          {
+            "v": 1,
+            "name": "mutations",
+            "folders": [],
+            "requests": [
+              {
+                "name": "requestPhoneCode",
+                "endpoint": "<<protocol>>://<<domain>>:<<port>>/graphql",
+                "method": "POST",
+                "headers": [],
+                "params": [],
+                "auth": {
+                  "authType": "none",
+                  "authActive": true
+                },
+                "body": {
+                  "contentType": null,
+                  "body": null
+                },
+                "preRequestScript": "",
+                "testScript": "",
+                "v": "1"
+              },
+              {
+                "name": "captchaCreateChallenge",
+                "endpoint": "<<protocol>>://<<domain>>:<<port>>/graphql",
+                "method": "POST",
+                "headers": [],
+                "params": [],
+                "auth": {
+                  "authType": "none",
+                  "authActive": true
+                },
+                "body": {
+                  "contentType": null,
+                  "body": null
+                },
+                "preRequestScript": "",
+                "testScript": "",
+                "v": "1"
+              },
+              {
+                "name": "captchaRequestPhoneCode",
+                "endpoint": "<<protocol>>://<<domain>>:<<port>>/graphql",
+                "method": "POST",
+                "headers": [],
+                "params": [],
+                "auth": {
+                  "authType": "none",
+                  "authActive": true
+                },
+                "body": {
+                  "contentType": null,
+                  "body": null
+                },
+                "preRequestScript": "",
+                "testScript": "",
+                "v": "1"
+              },
+              {
+                "name": "userLogin",
+                "endpoint": "<<protocol>>://<<domain>>:<<port>>/graphql",
+                "method": "POST",
+                "headers": [],
+                "params": [],
+                "auth": {
+                  "authType": "none",
+                  "authActive": true
+                },
+                "body": {
+                  "contentType": null,
+                  "body": null
+                },
+                "preRequestScript": "",
+                "testScript": "",
+                "v": "1"
+              },
+              {
+                "name": "addPublicInvoice",
+                "endpoint": "<<protocol>>://<<domain>>:<<port>>/graphql",
+                "method": "POST",
+                "headers": [],
+                "params": [],
+                "auth": {
+                  "authType": "none",
+                  "authActive": true
+                },
+                "body": {
+                  "contentType": null,
+                  "body": null
+                },
+                "preRequestScript": "",
+                "testScript": "",
+                "v": "1"
+              }
+            ]
+          }
+        ],
+        "requests": []
+      },
+      {
+        "v": 1,
+        "name": "token",
+        "folders": [
+          {
+            "v": 1,
+            "name": "queries",
+            "folders": [],
+            "requests": [
+              {
+                "name": "me",
+                "endpoint": "<<protocol>>://<<domain>>:<<port>>/graphql",
+                "method": "POST",
+                "headers": [],
+                "params": [],
+                "auth": {
+                  "authType": "none",
+                  "authActive": true
+                },
+                "body": {
+                  "contentType": null,
+                  "body": null
+                },
+                "preRequestScript": "",
+                "testScript": "",
+                "v": "1"
+              },
+              {
+                "name": "balance",
+                "endpoint": "<<protocol>>://<<domain>>:<<port>>/graphql",
+                "method": "POST",
+                "headers": [],
+                "params": [],
+                "auth": {
+                  "authType": "none",
+                  "authActive": true
+                },
+                "body": {
+                  "contentType": null,
+                  "body": null
+                },
+                "preRequestScript": "",
+                "testScript": "",
+                "v": "1"
+              },
+              {
+                "name": "account-limits",
+                "endpoint": "<<protocol>>://<<domain>>:<<port>>/graphql",
+                "method": "POST",
+                "headers": [],
+                "params": [],
+                "auth": {
+                  "authType": "none",
+                  "authActive": true
+                },
+                "body": {
+                  "contentType": null,
+                  "body": null
+                },
+                "preRequestScript": "",
+                "testScript": "",
+                "v": "1"
+              },
+              {
+                "name": "contacts",
+                "endpoint": "<<protocol>>://<<domain>>:<<port>>/graphql",
+                "method": "POST",
+                "headers": [],
+                "params": [],
+                "auth": {
+                  "authType": "none",
+                  "authActive": true
+                },
+                "body": {
+                  "contentType": null,
+                  "body": null
+                },
+                "preRequestScript": "",
+                "testScript": "",
+                "v": "1"
+              },
+              {
+                "name": "quiz questions",
+                "endpoint": "<<protocol>>://<<domain>>:<<port>>/graphql",
+                "method": "POST",
+                "headers": [],
+                "params": [],
+                "auth": {
+                  "authType": "none",
+                  "authActive": true
+                },
+                "body": {
+                  "contentType": null,
+                  "body": null
+                },
+                "preRequestScript": "",
+                "testScript": "",
+                "v": "1"
+              },
+              {
+                "name": "transactionsForWallet",
+                "endpoint": "<<protocol>>://<<domain>>:<<port>>/graphql",
+                "method": "POST",
+                "headers": [],
+                "params": [],
+                "auth": {
+                  "authType": "none",
+                  "authActive": true
+                },
+                "body": {
+                  "contentType": null,
+                  "body": null
+                },
+                "preRequestScript": "",
+                "testScript": "",
+                "v": "1"
+              },
+              {
+                "name": "transactionsByAddressForWallet",
+                "endpoint": "<<protocol>>://<<domain>>:<<port>>/graphql",
+                "method": "POST",
+                "headers": [],
+                "params": [],
+                "auth": {
+                  "authType": "none",
+                  "authActive": true
+                },
+                "body": {
+                  "contentType": null,
+                  "body": null
+                },
+                "preRequestScript": "",
+                "testScript": "",
+                "v": "1"
+              },
+              {
+                "name": "transactionsForAccount",
+                "endpoint": "<<protocol>>://<<domain>>:<<port>>/graphql",
+                "method": "POST",
+                "headers": [],
+                "params": [],
+                "auth": {
+                  "authType": "none",
+                  "authActive": true
+                },
+                "body": {
+                  "contentType": null,
+                  "body": null
+                },
+                "preRequestScript": "",
+                "testScript": "",
+                "v": "1"
+              },
+              {
+                "name": "contactTransactions",
+                "endpoint": "<<protocol>>://<<domain>>:<<port>>/graphql",
+                "method": "POST",
+                "headers": [],
+                "params": [],
+                "auth": {
+                  "authType": "none",
+                  "authActive": true
+                },
+                "body": {
+                  "contentType": null,
+                  "body": null
+                },
+                "preRequestScript": "",
+                "testScript": "",
+                "v": "1"
+              },
+              {
+                "name": "main query",
+                "endpoint": "<<protocol>>://<<domain>>:<<port>>/graphql",
+                "method": "POST",
+                "headers": [],
+                "params": [],
+                "auth": {
+                  "authType": "none",
+                  "authActive": true
+                },
+                "body": {
+                  "contentType": null,
+                  "body": null
+                },
+                "preRequestScript": "",
+                "testScript": "",
+                "v": "1"
+              },
+              {
+                "name": "balanceHeader",
+                "endpoint": "<<protocol>>://<<domain>>:<<port>>/graphql",
+                "method": "POST",
+                "headers": [],
+                "params": [],
+                "auth": {
+                  "authType": "none",
+                  "authActive": true
+                },
+                "body": {
+                  "contentType": null,
+                  "body": null
+                },
+                "preRequestScript": "",
+                "testScript": "",
+                "v": "1"
+              },
+              {
+                "name": "userDefaultWalletId",
+                "endpoint": "<<protocol>>://<<domain>>:<<port>>/graphql",
+                "method": "POST",
+                "headers": [],
+                "params": [],
+                "auth": {
+                  "authType": "bearer",
+                  "authActive": true,
+                  "token": "<<token>>"
+                },
+                "body": {
+                  "contentType": null,
+                  "body": null
+                },
+                "preRequestScript": "",
+                "testScript": "",
+                "v": "1"
+              },
+              {
+                "name": "accountDefaultWallet",
+                "endpoint": "<<protocol>>://<<domain>>:<<port>>/graphql",
+                "method": "POST",
+                "headers": [],
+                "params": [],
+                "auth": {
+                  "authType": "bearer",
+                  "authActive": true,
+                  "token": "<<token>>"
+                },
+                "body": {
+                  "contentType": null,
+                  "body": null
+                },
+                "preRequestScript": "",
+                "testScript": "",
+                "v": "1"
+              },
+              {
+                "name": "usernameAvailable",
+                "endpoint": "<<protocol>>://<<domain>>:<<port>>/graphql",
+                "method": "POST",
+                "headers": [],
+                "params": [],
+                "auth": {
+                  "authType": "bearer",
+                  "authActive": true,
+                  "token": "<<token>>"
+                },
+                "body": {
+                  "contentType": null,
+                  "body": null
+                },
+                "preRequestScript": "",
+                "testScript": "",
+                "v": "1"
+              },
+              {
+                "name": "btcPrice",
+                "endpoint": "<<protocol>>://<<domain>>:<<port>>/graphql",
+                "method": "POST",
+                "headers": [],
+                "params": [],
+                "auth": {
+                  "authType": "bearer",
+                  "authActive": true,
+                  "token": "<<token>>"
+                },
+                "body": {
+                  "contentType": null,
+                  "body": null
+                },
+                "preRequestScript": "",
+                "testScript": "",
+                "v": "1"
+              },
+              {
+                "name": "globals",
+                "endpoint": "<<protocol>>://<<domain>>:<<port>>/graphql",
+                "method": "POST",
+                "headers": [],
+                "params": [],
+                "auth": {
+                  "authType": "bearer",
+                  "authActive": true,
+                  "token": "<<token>>"
+                },
+                "body": {
+                  "contentType": null,
+                  "body": null
+                },
+                "preRequestScript": "",
+                "testScript": "",
+                "v": "1"
+              },
+              {
+                "name": "mobileVersions",
+                "endpoint": "<<protocol>>://<<domain>>:<<port>>/graphql",
+                "method": "POST",
+                "headers": [],
+                "params": [],
+                "auth": {
+                  "authType": "bearer",
+                  "authActive": true,
+                  "token": "<<token>>"
+                },
+                "body": {
+                  "contentType": null,
+                  "body": null
+                },
+                "preRequestScript": "",
+                "testScript": "",
+                "v": "1"
+              }
+            ]
+          },
+          {
+            "v": 1,
+            "name": "mutations",
+            "folders": [],
+            "requests": [
+              {
+                "name": "onChainAddressCreate",
+                "endpoint": "<<protocol>>://<<domain>>:<<port>>/graphql",
+                "method": "POST",
+                "headers": [],
+                "params": [],
+                "auth": {
+                  "authType": "bearer",
+                  "authActive": true,
+                  "token": "<<token>>"
+                },
+                "body": {
+                  "contentType": null,
+                  "body": null
+                },
+                "preRequestScript": "",
+                "testScript": "",
+                "v": "1"
+              },
+              {
+                "name": "onChainAddressCurrent",
+                "endpoint": "<<protocol>>://<<domain>>:<<port>>/graphql",
+                "method": "POST",
+                "headers": [],
+                "params": [],
+                "auth": {
+                  "authType": "bearer",
+                  "authActive": true,
+                  "token": "<<token>>"
+                },
+                "body": {
+                  "contentType": null,
+                  "body": null
+                },
+                "preRequestScript": "",
+                "testScript": "",
+                "v": "1"
+              },
+              {
+                "name": "onChainPaymentSend",
+                "endpoint": "<<protocol>>://<<domain>>:<<port>>/graphql",
+                "method": "POST",
+                "headers": [],
+                "params": [],
+                "auth": {
+                  "authType": "bearer",
+                  "authActive": true,
+                  "token": "<<token>>"
+                },
+                "body": {
+                  "contentType": null,
+                  "body": null
+                },
+                "preRequestScript": "",
+                "testScript": "",
+                "v": "1"
+              },
+              {
+                "name": "onChainUsdPaymentSendAsBtcDenominated",
+                "endpoint": "<<protocol>>://<<domain>>:<<port>>/graphql",
+                "method": "POST",
+                "headers": [],
+                "params": [],
+                "auth": {
+                  "authType": "bearer",
+                  "authActive": true,
+                  "token": "<<token>>"
+                },
+                "body": {
+                  "contentType": null,
+                  "body": null
+                },
+                "preRequestScript": "",
+                "testScript": "",
+                "v": "1"
+              },
+              {
+                "name": "onChainUsdPaymentSend",
+                "endpoint": "<<protocol>>://<<domain>>:<<port>>/graphql",
+                "method": "POST",
+                "headers": [],
+                "params": [],
+                "auth": {
+                  "authType": "bearer",
+                  "authActive": true,
+                  "token": "<<token>>"
+                },
+                "body": {
+                  "contentType": null,
+                  "body": null
+                },
+                "preRequestScript": "",
+                "testScript": "",
+                "v": "1"
+              },
+              {
+                "name": "onChainUsdPaymentSendAsBtcDenominated",
+                "endpoint": "<<protocol>>://<<domain>>:<<port>>/graphql",
+                "method": "POST",
+                "headers": [],
+                "params": [],
+                "auth": {
+                  "authType": "bearer",
+                  "authActive": true,
+                  "token": "<<token>>"
+                },
+                "body": {
+                  "contentType": null,
+                  "body": null
+                },
+                "preRequestScript": "",
+                "testScript": "",
+                "v": "1"
+              },
+              {
+                "name": "onChainPaymentSendAll",
+                "endpoint": "<<protocol>>://<<domain>>:<<port>>/graphql",
+                "method": "POST",
+                "headers": [],
+                "params": [],
+                "auth": {
+                  "authType": "bearer",
+                  "authActive": true,
+                  "token": "<<token>>"
+                },
+                "body": {
+                  "contentType": null,
+                  "body": null
+                },
+                "preRequestScript": "",
+                "testScript": "",
+                "v": "1"
+              },
+              {
+                "name": "onChainTxFee",
+                "endpoint": "<<protocol>>://<<domain>>:<<port>>/graphql",
+                "method": "POST",
+                "headers": [],
+                "params": [],
+                "auth": {
+                  "authType": "bearer",
+                  "authActive": true,
+                  "token": "<<token>>"
+                },
+                "body": {
+                  "contentType": null,
+                  "body": null
+                },
+                "preRequestScript": "",
+                "testScript": "",
+                "v": "1"
+              },
+              {
+                "name": "onChainUsdTxFee",
+                "endpoint": "<<protocol>>://<<domain>>:<<port>>/graphql",
+                "method": "POST",
+                "headers": [],
+                "params": [],
+                "auth": {
+                  "authType": "bearer",
+                  "authActive": true,
+                  "token": "<<token>>"
+                },
+                "body": {
+                  "contentType": null,
+                  "body": null
+                },
+                "preRequestScript": "",
+                "testScript": "",
+                "v": "1"
+              },
+              {
+                "name": "OnChainUsdTxFeeAsBtcDenominated",
+                "endpoint": "<<protocol>>://<<domain>>:<<port>>/graphql",
+                "method": "POST",
+                "headers": [],
+                "params": [],
+                "auth": {
+                  "authType": "bearer",
+                  "authActive": true,
+                  "token": "<<token>>"
+                },
+                "body": {
+                  "contentType": null,
+                  "body": null
+                },
+                "preRequestScript": "",
+                "testScript": "",
+                "v": "1"
+              },
+              {
+                "name": "lnInvoiceCreate",
+                "endpoint": "<<protocol>>://<<domain>>:<<port>>/graphql",
+                "method": "POST",
+                "headers": [],
+                "params": [],
+                "auth": {
+                  "authType": "none",
+                  "authActive": true
+                },
+                "body": {
+                  "contentType": null,
+                  "body": null
+                },
+                "preRequestScript": "",
+                "testScript": "",
+                "v": "1"
+              },
+              {
+                "name": "lnInvoiceCreateOnBehalfOfRecipient",
+                "endpoint": "<<protocol>>://<<domain>>:<<port>>/graphql",
+                "method": "POST",
+                "headers": [],
+                "params": [],
+                "auth": {
+                  "authType": "none",
+                  "authActive": true
+                },
+                "body": {
+                  "contentType": null,
+                  "body": null
+                },
+                "preRequestScript": "",
+                "testScript": "",
+                "v": "1"
+              },
+              {
+                "name": "lnNoAmountInvoiceCreateOnBehalfOfRecipient",
+                "endpoint": "<<protocol>>://<<domain>>:<<port>>/graphql",
+                "method": "POST",
+                "headers": [],
+                "params": [],
+                "auth": {
+                  "authType": "none",
+                  "authActive": true
+                },
+                "body": {
+                  "contentType": null,
+                  "body": null
+                },
+                "preRequestScript": "",
+                "testScript": "",
+                "v": "1"
+              },
+              {
+                "name": "lnUsdInvoiceCreate",
+                "endpoint": "<<protocol>>://<<domain>>:<<port>>/graphql",
+                "method": "POST",
+                "headers": [],
+                "params": [],
+                "auth": {
+                  "authType": "none",
+                  "authActive": true
+                },
+                "body": {
+                  "contentType": null,
+                  "body": null
+                },
+                "preRequestScript": "",
+                "testScript": "",
+                "v": "1"
+              },
+              {
+                "name": "lnInvoiceFeeProbe",
+                "endpoint": "<<protocol>>://<<domain>>:<<port>>/graphql",
+                "method": "POST",
+                "headers": [],
+                "params": [],
+                "auth": {
+                  "authType": "none",
+                  "authActive": true
+                },
+                "body": {
+                  "contentType": null,
+                  "body": null
+                },
+                "preRequestScript": "",
+                "testScript": "",
+                "v": "1"
+              },
+              {
+                "name": "lnUsdInvoiceFeeProbe",
+                "endpoint": "<<protocol>>://<<domain>>:<<port>>/graphql",
+                "method": "POST",
+                "headers": [],
+                "params": [],
+                "auth": {
+                  "authType": "none",
+                  "authActive": true
+                },
+                "body": {
+                  "contentType": null,
+                  "body": null
+                },
+                "preRequestScript": "",
+                "testScript": "",
+                "v": "1"
+              },
+              {
+                "name": "lnInvoicePaymentSend",
+                "endpoint": "<<protocol>>://<<domain>>:<<port>>/graphql",
+                "method": "POST",
+                "headers": [],
+                "params": [],
+                "auth": {
+                  "authType": "none",
+                  "authActive": true
+                },
+                "body": {
+                  "contentType": null,
+                  "body": null
+                },
+                "preRequestScript": "",
+                "testScript": "",
+                "v": "1"
+              },
+              {
+                "name": "intraledgerPaymentSend",
+                "endpoint": "<<protocol>>://<<domain>>:<<port>>/graphql",
+                "method": "POST",
+                "headers": [],
+                "params": [],
+                "auth": {
+                  "authType": "none",
+                  "authActive": true
+                },
+                "body": {
+                  "contentType": null,
+                  "body": null
+                },
+                "preRequestScript": "",
+                "testScript": "",
+                "v": "1"
+              },
+              {
+                "name": "intraledgerPaymentSend (multiple)",
+                "endpoint": "<<protocol>>://<<domain>>:<<port>>/graphql",
+                "method": "POST",
+                "headers": [],
+                "params": [],
+                "auth": {
+                  "authType": "none",
+                  "authActive": true
+                },
+                "body": {
+                  "contentType": null,
+                  "body": null
+                },
+                "preRequestScript": "",
+                "testScript": "",
+                "v": "1"
+              },
+              {
+                "name": "intraledgerUsdPaymentSend",
+                "endpoint": "<<protocol>>://<<domain>>:<<port>>/graphql",
+                "method": "POST",
+                "headers": [],
+                "params": [],
+                "auth": {
+                  "authType": "none",
+                  "authActive": true
+                },
+                "body": {
+                  "contentType": null,
+                  "body": null
+                },
+                "preRequestScript": "",
+                "testScript": "",
+                "v": "1"
+              },
+              {
+                "name": "lnNoAmountInvoiceCreate",
+                "endpoint": "<<protocol>>://<<domain>>:<<port>>/graphql",
+                "method": "POST",
+                "headers": [],
+                "params": [],
+                "auth": {
+                  "authType": "none",
+                  "authActive": true
+                },
+                "body": {
+                  "contentType": null,
+                  "body": null
+                },
+                "preRequestScript": "",
+                "testScript": "",
+                "v": "1"
+              },
+              {
+                "name": "lnNoAmountInvoiceFeeProbe",
+                "endpoint": "<<protocol>>://<<domain>>:<<port>>/graphql",
+                "method": "POST",
+                "headers": [],
+                "params": [],
+                "auth": {
+                  "authType": "none",
+                  "authActive": true
+                },
+                "body": {
+                  "contentType": null,
+                  "body": null
+                },
+                "preRequestScript": "",
+                "testScript": "",
+                "v": "1"
+              },
+              {
+                "name": "lnNoAmountUsdInvoiceFeeProbe",
+                "endpoint": "<<protocol>>://<<domain>>:<<port>>/graphql",
+                "method": "POST",
+                "headers": [],
+                "params": [],
+                "auth": {
+                  "authType": "none",
+                  "authActive": true
+                },
+                "body": {
+                  "contentType": null,
+                  "body": null
+                },
+                "preRequestScript": "",
+                "testScript": "",
+                "v": "1"
+              },
+              {
+                "name": "lnNoAmountInvoicePaymentSend",
+                "endpoint": "<<protocol>>://<<domain>>:<<port>>/graphql",
+                "method": "POST",
+                "headers": [],
+                "params": [],
+                "auth": {
+                  "authType": "none",
+                  "authActive": true
+                },
+                "body": {
+                  "contentType": null,
+                  "body": null
+                },
+                "preRequestScript": "",
+                "testScript": "",
+                "v": "1"
+              },
+              {
+                "name": "lnNoAmountUsdInvoicePaymentSend",
+                "endpoint": "<<protocol>>://<<domain>>:<<port>>/graphql",
+                "method": "POST",
+                "headers": [],
+                "params": [],
+                "auth": {
+                  "authType": "none",
+                  "authActive": true
+                },
+                "body": {
+                  "contentType": null,
+                  "body": null
+                },
+                "preRequestScript": "",
+                "testScript": "",
+                "v": "1"
+              },
+              {
+                "name": "userQuizQuestionCompleted",
+                "endpoint": "<<protocol>>://<<domain>>:<<port>>/graphql",
+                "method": "POST",
+                "headers": [],
+                "params": [],
+                "auth": {
+                  "authType": "bearer",
+                  "authActive": true,
+                  "token": "<<token>>"
+                },
+                "body": {
+                  "contentType": null,
+                  "body": null
+                },
+                "preRequestScript": "",
+                "testScript": "",
+                "v": "1"
+              },
+              {
+                "name": "setUsername",
+                "endpoint": "<<protocol>>://<<domain>>:<<port>>/graphql",
+                "method": "POST",
+                "headers": [],
+                "params": [],
+                "auth": {
+                  "authType": "bearer",
+                  "authActive": true,
+                  "token": "<<token>>"
+                },
+                "body": {
+                  "contentType": null,
+                  "body": null
+                },
+                "preRequestScript": "",
+                "testScript": "",
+                "v": "1"
+              },
+              {
+                "name": "updateDefaultWalletId",
+                "endpoint": "<<protocol>>://<<domain>>:<<port>>/graphql",
+                "method": "POST",
+                "headers": [],
+                "params": [],
+                "auth": {
+                  "authType": "bearer",
+                  "authActive": true,
+                  "token": "<<token>>"
+                },
+                "body": {
+                  "contentType": null,
+                  "body": null
+                },
+                "preRequestScript": "",
+                "testScript": "",
+                "v": "1"
+              },
+              {
+                "name": "accountUpdateDisplayCurrency",
+                "endpoint": "<<protocol>>://<<domain>>:<<port>>/graphql",
+                "method": "POST",
+                "headers": [],
+                "params": [],
+                "auth": {
+                  "authType": "bearer",
+                  "authActive": true,
+                  "token": "<<token>>"
+                },
+                "body": {
+                  "contentType": null,
+                  "body": null
+                },
+                "preRequestScript": "",
+                "testScript": "",
+                "v": "1"
+              },
+              {
+                "name": "twoFAGenerate",
+                "endpoint": "<<protocol>>://<<domain>>:<<port>>/graphql",
+                "method": "POST",
+                "headers": [],
+                "params": [],
+                "auth": {
+                  "authType": "bearer",
+                  "authActive": true,
+                  "token": "<<token>>"
+                },
+                "body": {
+                  "contentType": null,
+                  "body": null
+                },
+                "preRequestScript": "",
+                "testScript": "",
+                "v": "1"
+              },
+              {
+                "name": "twoFASave",
+                "endpoint": "<<protocol>>://<<domain>>:<<port>>/graphql",
+                "method": "POST",
+                "headers": [],
+                "params": [],
+                "auth": {
+                  "authType": "bearer",
+                  "authActive": true,
+                  "token": "<<token>>"
+                },
+                "body": {
+                  "contentType": null,
+                  "body": null
+                },
+                "preRequestScript": "",
+                "testScript": "",
+                "v": "1"
+              }
+            ]
+          },
+          {
+            "v": 1,
+            "name": "USD mutations",
+            "folders": [],
+            "requests": [
+              {
+                "name": "lnInvoiceFeeProbe",
+                "endpoint": "<<protocol>>://<<domain>>:<<port>>/graphql",
+                "method": "POST",
+                "headers": [],
+                "params": [],
+                "auth": {
+                  "authType": "none",
+                  "authActive": true
+                },
+                "body": {
+                  "contentType": null,
+                  "body": null
+                },
+                "preRequestScript": "",
+                "testScript": "",
+                "v": "1"
+              },
+              {
+                "name": "lnUsdInvoiceCreate",
+                "endpoint": "<<protocol>>://<<domain>>:<<port>>/graphql",
+                "method": "POST",
+                "headers": [],
+                "params": [],
+                "auth": {
+                  "authType": "none",
+                  "authActive": true
+                },
+                "body": {
+                  "contentType": null,
+                  "body": null
+                },
+                "preRequestScript": "",
+                "testScript": "",
+                "v": "1"
+              },
+              {
+                "name": "lnNoAmountInvoiceCreate",
+                "endpoint": "<<protocol>>://<<domain>>:<<port>>/graphql",
+                "method": "POST",
+                "headers": [],
+                "params": [],
+                "auth": {
+                  "authType": "none",
+                  "authActive": true
+                },
+                "body": {
+                  "contentType": null,
+                  "body": null
+                },
+                "preRequestScript": "",
+                "testScript": "",
+                "v": "1"
+              },
+              {
+                "name": "lnInvoicePaymentSend",
+                "endpoint": "<<protocol>>://<<domain>>:<<port>>/graphql",
+                "method": "POST",
+                "headers": [],
+                "params": [],
+                "auth": {
+                  "authType": "none",
+                  "authActive": true
+                },
+                "body": {
+                  "contentType": null,
+                  "body": null
+                },
+                "preRequestScript": "",
+                "testScript": "",
+                "v": "1"
+              },
+              {
+                "name": "lnNoAmountUsdInvoicePaymentSend",
+                "endpoint": "<<protocol>>://<<domain>>:<<port>>/graphql",
+                "method": "POST",
+                "headers": [],
+                "params": [],
+                "auth": {
+                  "authType": "none",
+                  "authActive": true
+                },
+                "body": {
+                  "contentType": null,
+                  "body": null
+                },
+                "preRequestScript": "",
+                "testScript": "",
+                "v": "1"
+              },
+              {
+                "name": "lnNoAmountUsdInvoiceFeeProbe",
+                "endpoint": "<<protocol>>://<<domain>>:<<port>>/graphql",
+                "method": "POST",
+                "headers": [],
+                "params": [],
+                "auth": {
+                  "authType": "none",
+                  "authActive": true
+                },
+                "body": {
+                  "contentType": null,
+                  "body": null
+                },
+                "preRequestScript": "",
+                "testScript": "",
+                "v": "1"
+              },
+              {
+                "name": "lnUsdInvoiceCreateOnBehalfOfRecipient",
+                "endpoint": "<<protocol>>://<<domain>>:<<port>>/graphql",
+                "method": "POST",
+                "headers": [],
+                "params": [],
+                "auth": {
+                  "authType": "none",
+                  "authActive": true
+                },
+                "body": {
+                  "contentType": null,
+                  "body": null
+                },
+                "preRequestScript": "",
+                "testScript": "",
+                "v": "1"
+              }
+            ]
+          }
+        ],
+        "requests": []
+      },
+      {
+        "v": 1,
+        "name": "login flow",
+        "folders": [],
+        "requests": [
+          {
+            "name": "userLogin",
+            "endpoint": "<<protocol>>://<<domain>>:<<port>>/graphql",
+            "method": "POST",
+            "headers": [],
+            "params": [],
+            "auth": {
+              "authType": "none",
+              "authActive": true
+            },
+            "body": {
+              "contentType": null,
+              "body": null
+            },
+            "preRequestScript": "",
+            "testScript": "",
+            "v": "1"
+          },
+          {
+            "name": "me",
+            "endpoint": "<<protocol>>://<<domain>>:<<port>>/graphql",
+            "method": "POST",
+            "headers": [],
+            "params": [],
+            "auth": {
+              "authType": "bearer",
+              "authActive": true,
+              "token": "<<token>>"
+            },
+            "body": {
+              "contentType": null,
+              "body": null
+            },
+            "preRequestScript": "",
+            "testScript": "",
+            "v": "1"
+          }
+        ]
+      }
+    ],
+    "requests": []
+  }
+]

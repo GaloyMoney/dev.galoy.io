@@ -98,12 +98,7 @@ const config = {
             label: 'Projects',
           },
           {
-            href: 'https://www.blink.sv/en/blog',
-            label: 'Blog',
-            position: 'right',
-          },
-          {
-            href: 'https://github.com/GaloyMoney/dev.galoy.io',
+            href: 'https://github.com/GaloyMoney',
             label: 'GitHub',
             position: 'right',
           },
@@ -153,10 +148,6 @@ const config = {
           {
             title: 'More',
             items: [
-              {
-                label: 'Blog',
-                href: 'https://www.blink.sv/en/blog',
-              },
               {
                 label: 'GitHub',
                 href: 'https://github.com/GaloyMoney',

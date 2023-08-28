@@ -2,11 +2,11 @@
 
 ## Setting up the Galoy stack locally
 
-* [Backend Servers](/deployment/b-backend-servers)
-* [Mobile Wallet](/deployment/d-mobile-wallet.md)
-* [Web Wallet](/deployment/e-web-wallet.md)
-* [Galoy Pay](/deployment/c-galoy-pay.md)
-* [Admin Panel](/deployment/f-admin-panel.md)
+* [Backend Servers](/deployment/backend-servers)
+* [Mobile Wallet](/deployment/mobile-wallet)
+* [Web Wallet](/deployment/web-wallet)
+* [Galoy Pay](/deployment/galoy-pay)
+* [Admin Panel](/deployment/admin-panel)
 
 ## Videos
 ###  How to build a Bitcoin Bank

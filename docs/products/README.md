@@ -14,7 +14,7 @@ description: For people new to Galoy, this page will point you in the right dire
 
 ## Connect to the Staging Environment
 * this is optional for testing using the [default signet](https://en.bitcoin.it/wiki/Signet)
-* more info on the [staging environment](/deployment/a-staging-environment)
+* more info on the [staging environment](/deployment/staging-environment)
 * more info on [testing on signet](/signet)
 ### On a fresh start
 * open Blink

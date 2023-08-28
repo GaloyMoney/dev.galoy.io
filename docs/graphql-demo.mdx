@@ -1,0 +1,34 @@
+---
+title: Demo requests
+---
+
+import { AuthProvider } from '/src/components/graphql/AuthContext';
+import PhoneLoginButton from '/src/components/graphql/PhoneLoginButton';
+import EmailLoginButton from '/src/components/graphql/EmailLoginButton';
+import AuthRequestButton from '/src/components/graphql/AuthRequestButton';
+
+:::caution
+Be cautious using an environment with real funds as the authentication token will be exposed in the browser.
+:::
+
+<AuthProvider>
+  ## Email Login
+
+  <EmailLoginButton />
+
+  <div style={{ margin: '40px 0' }}></div>
+
+  ## Phone Login
+
+  <PhoneLoginButton />
+
+  <div style={{ margin: '40px 0' }}></div>
+
+  ## Make authenticated requests
+
+  <AuthRequestButton />
+</AuthProvider>
+
+---
+
+For more info and other requests, visit the [GraphQL playground](https://api.staging.galoy.io/graphql).

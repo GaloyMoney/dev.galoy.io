@@ -20,7 +20,7 @@ The staging API endpoint is: `https://api.staging.galoy.io/graphql`
 
 To get a new auth token:
 
-1. Use `userRequestAuthCode` to receive an auth code via SMS
+1. Use `userRequestAuthCode` with email to receive an auth code via email
 2. Call `userLogin` using the same phone number and auth code
 
 All other methods require a valid auth token set in the header as a bearer token - `Authorization: Bearer`
@@ -30,8 +30,8 @@ All other methods require a valid auth token set in the header as a bearer token
 
 ```
 export URI=https://api.staging.galoy.io/graphql
-export PHONE='+12025550148'
-curl --location --request POST $URI --header 'Content-Type: application/json' --data-raw '{"query":"mutation userRequestAuthCode ($input: UserRequestAuthCodeInput!) {\n    userRequestAuthCode (input: $input) {\n        errors {\n            message\n            path\n        }\n        success\n    }\n}","variables":{"input":{"phone":"'"$PHONE"'"}}}'
+export EMAIL='vd5a05rp@duck.com'
+curl --location --request POST $URI --header 'Content-Type: application/json' --data-raw '{"query":"mutation userRequestAuthCode ($input: UserRequestAuthCodeInput!) {\n    userRequestAuthCode (input: $input) {\n        errors {\n            message\n            path\n        }\n        success\n    }\n}","variables":{"input":{"email":"'"$EMAIL"'"}}}'
 ```
 
 **response**

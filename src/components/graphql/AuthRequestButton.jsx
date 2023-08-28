@@ -44,7 +44,10 @@ function AuthRequestButton() {
 
   const generateCurlCommand = () => {
     if (authToken) {
-      const command = `curl -X POST "${apiEndpoint}" -H "Content-Type: application/json" -H "Authorization: Bearer ${authToken}" -d "${graphqlQuery}"`;
+      const command = `curl -X POST "${apiEndpoint}" \\
+  -H "Content-Type: application/json" \\
+  -H "Authorization: Bearer ${authToken}" \\
+  -d "${graphqlQuery}"`;
       setCurlCommand(command);
     } else {
       setCurlCommand('No auth token available for cURL command generation.');

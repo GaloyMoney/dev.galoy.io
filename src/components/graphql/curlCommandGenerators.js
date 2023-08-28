@@ -3,10 +3,10 @@ export const generateCurlCommandRequestEmailCode = (authEndpoint, emailAddress) 
     email: emailAddress
   };
 
-  return `curl -X POST '${authEndpoint}/auth/email/code' \
--H 'Content-Type: application/json' \
--H 'Accept: application/json' \
---data '${JSON.stringify(requestBody)}'`;
+  return `curl -X POST '${authEndpoint}/auth/email/code' \\
+  -H 'Content-Type: application/json' \\
+  -H 'Accept: application/json' \\
+  -d '${JSON.stringify(requestBody)}'`;
 };
 
 
@@ -21,7 +21,10 @@ export const generateCurlCommandPhoneLogin = (apiEndpoint, phone, code) => {
     }
   };
 
-  return `curl '${apiEndpoint}' -H 'Content-Type: application/json' -H 'Accept: application/json' --data-binary '${JSON.stringify(requestBody)}'`;
+  return `curl '${apiEndpoint}' \\
+  -H 'Content-Type: application/json' \\
+  -H 'Accept: application/json' \\
+  --data-binary '${JSON.stringify(requestBody)}'`;
 }
 
 export const generateCurlCommandEmailLogin = (authEndpoint, emailLoginId, emailCode) => {

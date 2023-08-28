@@ -4,13 +4,18 @@ title: Public API
 slug: /products/public-api
 ---
 
+import { AuthProvider } from '/src/components/graphql/AuthContext';
+import PhoneLoginButton from '/src/components/graphql/PhoneLoginButton';
+import EmailLoginButton from '/src/components/graphql/EmailLoginButton';
+import AuthRequestButton from '/src/components/graphql/AuthRequestButton';
+
 # Public API
 
-* Find the staging API endpoint and graphQL playground at:
+* Find the staging API endpoint and GraphQL playground at:
 
     https://api.staging.galoy.io/graphql
 
-### Galoy API Tutorial
+## Galoy API Tutorial
 
 ### Overview
 
@@ -20,54 +25,23 @@ The staging API endpoint is: `https://api.staging.galoy.io/graphql`
 
 To get a new auth token:
 
-1. Use `userRequestAuthCode` with email to receive an auth code via email
-2. Call `userLogin` using the same phone number and auth code
+## Email Login
 
-All other methods require a valid auth token set in the header as a bearer token - `Authorization: Bearer`
+<AuthProvider>
+  <EmailLoginButton />
 
-### Curl requests
-#### userRequestAuthCode
+  <div style={{ margin: '40px 0' }}></div>
 
-```
-export URI=https://api.staging.galoy.io/graphql
-export EMAIL='vd5a05rp@duck.com'
-curl --location --request POST $URI --header 'Content-Type: application/json' --data-raw '{"query":"mutation userRequestAuthCode ($input: UserRequestAuthCodeInput!) {\n    userRequestAuthCode (input: $input) {\n        errors {\n            message\n            path\n        }\n        success\n    }\n}","variables":{"input":{"email":"'"$EMAIL"'"}}}'
-```
+  ## Make authenticated requests
+  The following methods require a valid auth token set in the header as a bearer token - `Authorization: Bearer`
 
-**response**
 
-```
-{
-    "data": {
-        "userRequestAuthCode": {
-            "errors": [],
-            "success": true
-        }
-    }
-}
-```
+  <AuthRequestButton />
+</AuthProvider>
 
-#### userLogin <a href="#userlogin" id="userlogin"></a>
 
-**query**
 
-```
-export CODE='012345'
-curl --location --request POST $URI --header 'Content-Type: application/json' --data-raw '{"query":"mutation userLogin ($input: UserLoginInput!) {\n    userLogin (input: $input) {\n        errors {\n            message\n            path\n        }\n        authToken\n    }\n}","variables":{"input":{"phone":"'"$PHONE"'","code":"'"$CODE"'"}}}'
-```
 
-**response**
-
-```
-{
-    "data": {
-        "userLogin": {
-            "errors": [],
-            "authToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI1ZjkwMTY3ODM2MmZmNjIzMjVkZmFmYjciLCJuZXR3b3JrIjoicmVndGVzdCIsImN1cnJlbmN5IjoiQlRDIiwiaWF0IjoxNjAzMjc4NDU2fQ.-im7fJS_andM32zNXDVqSDPPoQtCtCE22X-hUclT3u0"
-        }
-    }
-}
-```
 
 #### lnInvoiceCreate <a href="#lninvoicecreate" id="lninvoicecreate"></a>
 
@@ -147,6 +121,9 @@ If you use Postman, we have a collection you can import to test the API.
 
 Download it here: [Lightning Integration.postman\_collection.json](https://github.com/GaloyMoney/galoy/blob/main/docs/postman-collection/galoy_graphql_main_api.postman_collection.json)
 
+## [Hoppscotch.io collection](https://hoppscotch.io/graphql)
+* connect to the staging environment: https://api.staging.galoy.io/graphql
+* import the collection from a [gist](https://raw.githubusercontent.com/GaloyMoney/galoy/main/docs/postman-collection/galoy_graphql_main_api.postman_collection.json) or [file](/hoppscotch-collection.json).
 
 ## Videos
 ### Using the Galoy GraphQL API - 2022-Oct-26

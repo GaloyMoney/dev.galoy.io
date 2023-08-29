@@ -66,13 +66,12 @@ function EmailLoginButton() {
   return (
     <div>
       <div>
-        <h2>Log in with Email</h2>
         <input type="text" value={authEndpoint} onChange={e => setAuthEndpoint(e.target.value)} style={{ width: '100%', marginBottom: '10px' }} />
         <input type="email" placeholder="Email" value={emailAddress} onChange={e => setEmailAddress(e.target.value)} />
-        <button onClick={handleRequestEmailCode}>Request Email Code</button>
+        <button onClick={handleRequestEmailCode}>Request code</button>
       </div>
       <div style={{ marginTop: '20px' }}>
-        <h3>cURL command for email code:</h3>
+        <h3>cURL command to request an email code:</h3>
         <pre style={{
           backgroundColor: 'auto',
           padding: '10px',
@@ -89,7 +88,7 @@ function EmailLoginButton() {
       <div style={{ margin: '20px 0' }}></div>
       {(
         <div>
-          <h3>Enter Email Code</h3>
+          <h3>Enter the email code to log in</h3>
           {(
             <div>
               <input

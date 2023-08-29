@@ -2,8 +2,7 @@
 description: For people new to Galoy, this page will point you in the right direction.
 ---
 
-# Quickstart
-
+# Get started
 :::tip
 [Join the Galoy Workspace](https://chat.galoy.io) and say hello in the Town Square – there is a community of devs happy to help you get up and running.
 :::
@@ -37,7 +36,6 @@ description: For people new to Galoy, this page will point you in the right dire
 * select `Copy access token` to save the token to your clipboard
 
 ## Set up the email login
-
 ### Upgrade the account with a phone number
 * select the menu on the top right and tap `Account`
 * `Backup/upgrade account`

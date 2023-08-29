@@ -19,9 +19,7 @@ The calls are directed to the staging environment by default where the funds are
 
     https://api.staging.galoy.io/graphql
 
-### Authentication
-
-To get started :
+## Get started
 * [Download Blink](/products#download-the-blink-app)
 * [Connect to the staging environment](/products#connect-to-the-staging-environment)
 * [Set up the email login](http://localhost:3000/products#set-up-the-email-login)
@@ -33,7 +31,7 @@ To get started :
 
   <div style={{ margin: '40px 0' }}></div>
 
-  ## Make authenticated requests
+  ## Authenticated requests
   The following methods require a valid auth token set in the header as a bearer token - `Authorization: Bearer`
 
   <AuthRequestButton />

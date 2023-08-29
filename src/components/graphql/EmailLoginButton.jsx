@@ -7,12 +7,10 @@ function EmailLoginButton() {
   const { authToken, setAuthToken } = useAuth();
   const [authEndpoint, setAuthEndpoint] = useState('https://api.staging.galoy.io');
   const [emailAddress, setEmailAddress] = useState('');
-  const [emailLoginId, setEmailLoginId] = useState(null);
   const [emailCode, setEmailCode] = useState('');
   const [successMessageEmailCode, setSuccessMessageEmailCode] = useState(null);
   const [errorMessageEmailCode, setErrorMessageEmailCode] = useState(null);
   const [emailLoginIdInput, setEmailLoginIdInput] = useState('');
-  const [token, setToken] = useState(null);
   const [showToken, setShowToken] = useState(false);
   const [successMessageEmailLogin, setSuccessMessageEmailLogin] = useState(null);
   const [errorMessageEmailLogin, setErrorMessageEmailLogin] = useState(null);
@@ -35,7 +33,6 @@ function EmailLoginButton() {
   const handleRequestEmailCode = async () => {
     try {
       const obtainedEmailLoginId = await requestEmailCode(authEndpoint, emailAddress);
-      setEmailLoginId(obtainedEmailLoginId);
       setEmailLoginIdInput(obtainedEmailLoginId); // Autofill the input
       setSuccessMessageEmailCode(`The emailLoginId: ${obtainedEmailLoginId} was obtained successfully!`);
     } catch (error) {

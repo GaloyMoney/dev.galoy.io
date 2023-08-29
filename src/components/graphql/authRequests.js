@@ -1,4 +1,4 @@
-const handleAuthenticatedRequest = async (token, apiEndpoint, graphqlQuery) => {
+const handleAuthenticatedRequest = async (token, apiEndpoint, graphqlQuery, variables = {}) => {
   if (!token) {
     throw new Error("Not authenticated");
   }
@@ -16,7 +16,8 @@ const handleAuthenticatedRequest = async (token, apiEndpoint, graphqlQuery) => {
         'Authorization': `bearer ${token}`
       },
       body: JSON.stringify({
-        query: graphqlQuery
+        query: graphqlQuery,
+        variables // Include variables in the body
       })
     });
 
@@ -30,7 +31,7 @@ const handleAuthenticatedRequest = async (token, apiEndpoint, graphqlQuery) => {
     const contentType = response.headers.get("content-type");
     if (contentType && contentType.includes("application/json")) {
       const jsonData = await response.json();
-      return jsonData.data.me;
+      return jsonData; // Return the full JSON data
     } else {
       throw new Error(`Unexpected content type: ${contentType}`);
     }

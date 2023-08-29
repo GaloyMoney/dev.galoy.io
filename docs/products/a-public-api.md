@@ -35,42 +35,9 @@ To get a new auth token:
   ## Make authenticated requests
   The following methods require a valid auth token set in the header as a bearer token - `Authorization: Bearer`
 
-
   <AuthRequestButton />
 </AuthProvider>
 
-
-
-
-
-#### lnInvoiceCreate <a href="#lninvoicecreate" id="lninvoicecreate"></a>
-
-**query**
-
-```
-export AUTH_TOKEN='Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI1ZjkwMTY3ODM2MmZmNjIzMjVkZmFmYjciLCJuZXR3b3JrIjoicmVndGVzdCIsImN1cnJlbmN5IjoiQlRDIiwiaWF0IjoxNjAzMjc4NDU2fQ.-im7fJS_andM32zNXDVqSDPPoQtCtCE22X-hUclT3u0'
-export AMOUNT=12345
-export MEMO='tipping'
-curl --location --request POST $URI --header "$AUTH_TOKEN" --header 'Content-Type: application/json' --data-raw '{"query":"mutation lnInvoiceCreate ($input: LnInvoiceCreateInput!) {\n    lnInvoiceCreate (input: $input) {\n        errors {\n            message\n            path\n        }\n        invoice {\n            paymentRequest\n            paymentHash\n            paymentSecret\n            satoshis\n        }\n    }\n}","variables":{"input":{"amount":"'"$AMOUNT"'","memo":"'"$MEMO"'"}}}'
-```
-
-**response**
-
-```
-{
-    "data": {
-        "lnInvoiceCreate": {
-            "errors": [],
-            "invoice": {
-                "paymentRequest": "lntb123450n1pscxulepp59x872uskmr0a4r3wnr3vkmr297zm53smw8j4efevpknuwm8vs5yqdq5w35hqurfdenjq6nsdamscqzpuxqyz5vqsp5yzmznk5z7xszkgfk5xstuh8j5gg4srerelv58pph5wjan2kd8rqs9qyyssqe5l376x893374kqsr5lc8tesudg4jryaqlzmx44mfr87nds83margfa09ggd92sy0rudl6r79sat4rxqml5yfdhmm7yk9jc0ugzw7hgpdfxfzk",
-                "paymentHash": "298be57216d8dfda8e2e88e2cb6c6a2f85ba461b71e55ca72c0da7c76cec8508",
-                "paymentSecret": "20b629da82f1a02b2136a1a0be5cf2a211580f23cfd8438437a3a5d9aacd38c1",
-                "satoshis": 12345
-            }
-        }
-    }
-}
-```
 
 #### lnInvoiceFeeProbe <a href="#lninvoicefeeprobe" id="lninvoicefeeprobe"></a>
 
@@ -123,15 +90,15 @@ Download it here: [Lightning Integration.postman\_collection.json](https://githu
 
 ## [Hoppscotch.io collection](https://hoppscotch.io/graphql)
 * connect to the staging environment: https://api.staging.galoy.io/graphql
-* import the collection from a [gist](https://raw.githubusercontent.com/GaloyMoney/galoy/main/docs/postman-collection/galoy_graphql_main_api.postman_collection.json) or [file](/hoppscotch-collection.json).
+* import the collection from a [file](/hoppscotch-collection.json) or [gist](https://gist.githubusercontent.com/openoms/e365104e5b459bd6cead7df0e5c24ff3/raw/fa671f639649accd72304381d0679be610a1b377/hoppscotch-collections.json)
 
 ## Videos
-### Using the Galoy GraphQL API - 2022-Oct-26
-Arvin demoes the Galoy GraphQL API
+### Using the Galoy GraphQL API
+Arvin demoes the Galoy GraphQL API on 2022-Oct-26.
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/RRdpKnFe8qQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
-### Getting started with the Galoy API - 2022-Mar-29
-Arvin walks through how to use the Galoy API to send USD over Lightning.
+### Getting started with the Galoy API
+Arvin walks through how to use the Galoy API to send USD over Lightning on 2022-Mar-29.
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/bp5Dc6Wvnbw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>

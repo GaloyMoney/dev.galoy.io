@@ -1,6 +1,9 @@
-# LN Address payroll tool
+---
+slug: /projects/ln-address-payroll-tool
+---
 
-### LN Address payroll tool w/USD & sats over Lightning – TeamTREV
+# LN Address payroll tool
+with USD and sats over Lightning – TeamTREV
 
 TeamTREV built this awesome demo for the [Shock the Web ](https://bolt.fun/hackathons/shock-the-web/)hackathon hosted by [BOLT.fun](https://bolt.fun).
 

@@ -38,12 +38,10 @@ The calls are directed to the staging environment by default where the funds are
 </AuthProvider>
 
 ## [Postman collection](https://github.com/GaloyMoney/galoy/tree/main/docs/postman-collection)
-* If you use Postman, we have a collection you can import to test the API.
-* Download it here: [Lightning Integration.postman\_collection.json](https://github.com/GaloyMoney/galoy/blob/main/docs/postman-collection/galoy_graphql_main_api.postman_collection.json)
 
-## [Hoppscotch.io collection](https://hoppscotch.io/graphql)
-* Connect to the staging environment: https://api.staging.galoy.io/graphql
-* Import the collection from a [file](/hoppscotch-collection.json) or [gist](https://gist.githubusercontent.com/openoms/e365104e5b459bd6cead7df0e5c24ff3/raw/fa671f639649accd72304381d0679be610a1b377/hoppscotch-collections.json)
+* Download Postman: [www.postman.com](https://www.postman.com/) or use the web version: [web.postman.co](https://web.postman.co/)
+* Download or import the collection: [galoy_graphql_main_api.postman_collection.json](https://github.com/GaloyMoney/galoy/blob/main/docs/postman-collection/galoy_graphql_main_api.postman_collection.json)
+* Get the Staging Environment variables: [galoy-staging.postman_environment.json](https://raw.githubusercontent.com/GaloyMoney/galoy/main/docs/postman-collection/galoy-staging.postman_environment.json)
 
 ## Videos
 ### Using the Galoy GraphQL API

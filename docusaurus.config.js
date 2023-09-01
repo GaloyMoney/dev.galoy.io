@@ -140,6 +140,10 @@ const config = {
                 href: 'https://twitter.com/GaloyMoney',
               },
               {
+                label: 'Telegram',
+                href: 'https://t.me/BitcoinForCommunities',
+              },
+              {
                 label: 'Nostr',
                 href: 'https://primal.net/p/npub1gal0y3vuj3c5sme6444ncsr8xcfm9axehfcsuqfamz5v926m6f2s4yz3t2',
               },

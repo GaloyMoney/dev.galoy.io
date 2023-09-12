@@ -6,61 +6,67 @@ import { useAuth } from './AuthContext';
 function AuthRequestButton() {
   const { authToken, setAuthToken } = useAuth();
   const [apiEndpoint, setApiEndpoint] = useState('https://api.staging.galoy.io/graphql');
-  const [errorMessageFetchWallet, setErrorMessageFetchWallet] = useState(null);
-  const [errorMessageFetchInvoice, setErrorMessageFetchInvoice] = useState(null);
   const [manualAuthToken, setManualAuthToken] = useState('');
   const [amount, setAmount] = useState(0);
   const [memo, setMemo] = useState('');
-  const [defaultWalletId, setDefaultWalletId] = useState('');
+  const [accountWalletId, setAccountWalletId] = useState('');
+  const [paymentRequest, setPaymentRequest] = useState('');
+
   const [curlCommandWallet, setCurlCommandWallet] = useState('');
   const [curlCommandInvoice, setCurlCommandInvoice] = useState('');
-
-  const [walletData, setWalletData] = useState(null);   // <-- for the wallet query
-  const [invoiceData, setInvoiceData] = useState(null); // <-- for the invoice query
-
-  const [paymentRequest, setPaymentRequest] = useState('');
-  const [errorMessageFetchFeeProbe, setErrorMessageFetchFeeProbe] = useState(null);
   const [curlCommandFeeProbe, setCurlCommandFeeProbe] = useState('');
-  const [feeProbeData, setFeeProbeData] = useState(null);
-
-  const [lnInvoicePaymentData, setLnInvoicePaymentData] = useState(null);
-  const [errorMessageLnInvoicePayment, setErrorMessageLnInvoicePayment] = useState(null);
   const [curlCommandLnInvoicePayment, setCurlCommandLnInvoicePayment] = useState('');
 
+  const [walletData, setWalletData] = useState(null);
+  const [invoiceData, setInvoiceData] = useState(null);
+  const [feeProbeData, setFeeProbeData] = useState(null);
+  const [lnInvoicePaymentData, setLnInvoicePaymentData] = useState(null);
+
+  const [errorMessageFetchWallet, setErrorMessageFetchWallet] = useState(null);
+  const [errorMessageFetchInvoice, setErrorMessageFetchInvoice] = useState(null);
+  const [errorMessageFetchFeeProbe, setErrorMessageFetchFeeProbe] = useState(null);
+  const [errorMessageLnInvoicePayment, setErrorMessageLnInvoicePayment] = useState(null);
+
   const getWalletQuery = `
-query Me { me { defaultAccount { ... on ConsumerAccount { defaultWalletId }}}}`;
+  query Me {
+    me {
+      defaultAccount {
+        wallets {
+          id
+          walletCurrency
+          balance
+        }}}}`;
 
   const getInvoiceQuery = (amount, memo, walletId) => `
-mutation LnInvoiceCreate($input: LnInvoiceCreateInput!) {\
-  lnInvoiceCreate(input: $input) {\
-  errors {\
-  message\
-  path\
-  }\
-  invoice {\
-  paymentRequest\
-  paymentHash\
-  paymentSecret\
-  satoshis\
-  }}}`;
+mutation lnUsdInvoiceCreate($input: LnUsdInvoiceCreateInput!) {
+  lnUsdInvoiceCreate(input: $input) {
+    invoice {
+      paymentRequest
+      paymentHash
+      paymentSecret
+      satoshis
+    }
+    errors {
+      message
+    }}}`;
 
   const getFeeProbeQuery = (paymentRequest, walletId) => `
-  mutation lnInvoiceFeeProbe($input: LnInvoiceFeeProbeInput!) {\
-    lnInvoiceFeeProbe(input: $input) {\
-    errors {\
-    message\
-    }\
-    amount\
+  mutation lnUsdInvoiceFeeProbe($input: LnUsdInvoiceFeeProbeInput!) {
+    lnUsdInvoiceFeeProbe(input: $input) {
+      errors {
+        message
+      }
+      amount
     }}`;
 
   const getInvoiceSendQuery = (paymentRequest, walletId) => `
-  mutation LnInvoicePaymentSend($input: LnInvoicePaymentInput!) {\
-    lnInvoicePaymentSend(input: $input) {\
-    status\
-    errors {\
-    message\
-    path\
-    code\
+  mutation LnInvoicePaymentSend($input: LnInvoicePaymentInput!) {
+    lnInvoicePaymentSend(input: $input) {
+    status
+    errors {
+      message
+      path
+      code
     }}}`;
 
   const generateCurlCommand = (query, type, paymentRequest = '', walletId = '') => {
@@ -77,12 +83,12 @@ mutation LnInvoiceCreate($input: LnInvoiceCreateInput!) {\
       requestBody.variables.input = {
         amount: amount.toString(),
         memo: memo,
-        walletId: defaultWalletId,
+        walletId: accountWalletId,
       };
     } else if (type === 'feeProbe') {
       requestBody.variables.input = {
         paymentRequest: paymentRequest,
-        walletId: defaultWalletId,   // You should use walletId argument passed to the function
+        walletId: accountWalletId,
       };
     } else if (type === 'lnInvoicePaymentSend') {
       requestBody.variables.input = {
@@ -93,13 +99,19 @@ mutation LnInvoiceCreate($input: LnInvoiceCreateInput!) {\
 
     let queryData = JSON.stringify(requestBody).replace(/\n/g, '');
 
+    const walletCommand = `curl -sS --request POST --header 'content-type: application/json' \\
+    ${authHeader} \\
+    --url '${apiEndpoint}' \\
+    --data '{"query":"query me { me { defaultAccount { wallets { id walletCurrency }}}}", "variables":{}}' \\
+ | jq '.data.me.defaultAccount.wallets[] | select(.walletCurrency == "USD") .id'`;
+
     const command = `curl --request POST --header 'content-type: application/json' \\
     ${authHeader} \\
     --url '${apiEndpoint}' \\
     --data '${queryData}'`;
 
     if (type === 'wallet') {
-      setCurlCommandWallet(command);
+      setCurlCommandWallet(walletCommand);
     } else if (type === 'invoice') {
       setCurlCommandInvoice(command);
     } else if (type === 'feeProbe') {
@@ -112,9 +124,11 @@ mutation LnInvoiceCreate($input: LnInvoiceCreateInput!) {\
   const fetchWalletData = async () => {
     try {
       const data = await handleAuthenticatedRequest(authToken, apiEndpoint, getWalletQuery);
-      setWalletData(data);  // <-- Set the walletData with the response
-      if (data && data.me && data.me.defaultAccount && data.me.defaultAccount.defaultWalletId) {
-        setDefaultWalletId(data.me.defaultAccount.defaultWalletId);
+      setWalletData(data);
+
+      const btcWallet = data?.me?.defaultAccount?.wallets?.find(wallet => wallet.walletCurrency === "BTC");
+      if (btcWallet?.id) {
+        setAccountWalletId(btcWallet.id);
       }
       generateCurlCommand(getWalletQuery, 'wallet');
     } catch (error) {
@@ -123,18 +137,18 @@ mutation LnInvoiceCreate($input: LnInvoiceCreateInput!) {\
   };
 
   const fetchInvoiceData = async () => {
-    const query = getInvoiceQuery(amount, memo, defaultWalletId);
+    const query = getInvoiceQuery(amount, memo, accountWalletId);
     const variables = {
       input: {
         amount: amount.toString(),
         memo: memo,
-        walletId: defaultWalletId,
+        walletId: accountWalletId,
       }
     };
 
     try {
       const data = await handleAuthenticatedRequest(authToken, apiEndpoint, query, variables);
-      setInvoiceData(data);  // <-- Set the invoiceData with the response
+      setInvoiceData(data);
       generateCurlCommand(query, 'invoice');
     } catch (error) {
       setErrorMessageFetchInvoice(error.message);
@@ -142,36 +156,36 @@ mutation LnInvoiceCreate($input: LnInvoiceCreateInput!) {\
   };
 
   const fetchLnInvoicePaymentData = async () => {
-    const query = getInvoiceSendQuery(paymentRequest, defaultWalletId);
+    const query = getInvoiceSendQuery(paymentRequest, accountWalletId);
     const variables = {
       input: {
         paymentRequest: paymentRequest,
-        walletId: defaultWalletId
+        walletId: accountWalletId
       }
     };
 
     try {
       const data = await handleAuthenticatedRequest(authToken, apiEndpoint, query, variables);
       setLnInvoicePaymentData(data);
-      generateCurlCommand(query, 'lnInvoicePaymentSend', paymentRequest, defaultWalletId);
+      generateCurlCommand(query, 'lnInvoicePaymentSend', paymentRequest, accountWalletId);
     } catch (error) {
       setErrorMessageLnInvoicePayment(error.message);
     }
   };
 
   const fetchFeeProbeData = async () => {
-    const query = getFeeProbeQuery(paymentRequest, defaultWalletId);
+    const query = getFeeProbeQuery(paymentRequest, accountWalletId);
     const variables = {
       input: {
         paymentRequest: paymentRequest,
-        walletId: defaultWalletId,
+        walletId: accountWalletId,
       }
     };
 
     try {
       const data = await handleAuthenticatedRequest(authToken, apiEndpoint, query, variables);
-      setFeeProbeData(data);  // <-- Set the feeProbeData with the response
-      generateCurlCommand(query, 'feeProbe', paymentRequest, defaultWalletId);
+      setFeeProbeData(data);
+      generateCurlCommand(query, 'feeProbe', paymentRequest, accountWalletId);
     } catch (error) {
       setErrorMessageFetchFeeProbe(error.message);
     }
@@ -183,21 +197,21 @@ mutation LnInvoiceCreate($input: LnInvoiceCreateInput!) {\
   }, [authToken, apiEndpoint]); // Listening to authToken and apiEndpoint changes
 
   useEffect(() => {
-    // This will be triggered whenever authToken, apiEndpoint, amount, memo, or defaultWalletId changes
-    const query = getInvoiceQuery(amount, memo, defaultWalletId);
+    // This will be triggered whenever authToken, apiEndpoint, amount, memo, or accountWalletId changes
+    const query = getInvoiceQuery(amount, memo, accountWalletId);
     generateCurlCommand(query, 'invoice');
-  }, [authToken, apiEndpoint, amount, memo, defaultWalletId]); // Listening to these states changes
+  }, [authToken, apiEndpoint, amount, memo, accountWalletId]); // Listening to these states changes
 
   useEffect(() => {
-    // This will be triggered whenever authToken, apiEndpoint, paymentRequest, or defaultWalletId changes
-    const query = getFeeProbeQuery(paymentRequest, defaultWalletId);
-    generateCurlCommand(query, 'feeProbe', paymentRequest, defaultWalletId);
-  }, [authToken, apiEndpoint, paymentRequest, defaultWalletId]);
+    // This will be triggered whenever authToken, apiEndpoint, paymentRequest, or accountWalletId changes
+    const query = getFeeProbeQuery(paymentRequest, accountWalletId);
+    generateCurlCommand(query, 'feeProbe', paymentRequest, accountWalletId);
+  }, [authToken, apiEndpoint, paymentRequest, accountWalletId]);
 
   useEffect(() => {
-    const query = getInvoiceSendQuery(paymentRequest, defaultWalletId);
-    generateCurlCommand(query, 'lnInvoicePaymentSend', paymentRequest, defaultWalletId);
-  }, [authToken, apiEndpoint, paymentRequest, defaultWalletId]);
+    const query = getInvoiceSendQuery(paymentRequest, accountWalletId);
+    generateCurlCommand(query, 'lnInvoicePaymentSend', paymentRequest, accountWalletId);
+  }, [authToken, apiEndpoint, paymentRequest, accountWalletId]);
 
   const handleAuthTokenChange = (e) => {
     setManualAuthToken(e.target.value);
@@ -219,8 +233,8 @@ mutation LnInvoiceCreate($input: LnInvoiceCreateInput!) {\
     setMemo(e.target.value);
   };
 
-  const handleDefaultWalletIdChange = (e) => {
-    setDefaultWalletId(e.target.value);
+  const handleBtcWalletIdChange = (e) => {
+    setAccountWalletId(e.target.value);
   };
 
   function AuthTokenInput({ value, onChange, onSet }) {
@@ -232,7 +246,7 @@ mutation LnInvoiceCreate($input: LnInvoiceCreateInput!) {\
           value={value}
           onChange={onChange}
         />
-        <button onClick={onSet}>Set Token</button>
+        <button onClick={onSet}>Set token</button>
       </div>
     );
   }
@@ -257,13 +271,13 @@ mutation LnInvoiceCreate($input: LnInvoiceCreateInput!) {\
 
       {/* Display for WalletData */}
       <div style={{ marginTop: '20px' }}></div>
-      <h2>Get the default wallet ID</h2>
-      <button onClick={fetchWalletData}>Get Wallet ID</button>
+      <h3>Get the wallet IDs and balances</h3>
+      <button onClick={fetchWalletData}>Get the wallet IDs</button>
       {errorMessageFetchWallet && <div style={{ color: 'red' }}>Error: {errorMessageFetchWallet}</div>}
       {walletData && <div><strong>Wallet Data:</strong> <pre>{JSON.stringify(walletData, null, 2)}</pre></div>}
 
       <div style={{ marginTop: '20px' }}>
-        <h3>cURL command to get the walletId:</h3>
+        <h4>cURL command to get the USD wallet ID:</h4>
         <pre style={{
           backgroundColor: 'auto',
           padding: '10px',
@@ -277,10 +291,10 @@ mutation LnInvoiceCreate($input: LnInvoiceCreateInput!) {\
       </div>
 
       {/* Display for InvoiceData */}
-      <h2>Generate an invoice</h2>
+      <h3>Generate a Stablesats invoice</h3>
       <div>
         <label>
-          Amount (sats):
+          Amount (USD cents):
           <input
             type="number"
             value={amount}
@@ -298,21 +312,21 @@ mutation LnInvoiceCreate($input: LnInvoiceCreateInput!) {\
           />
         </label>
         <label>
-          Wallet ID:
+          USD wallet ID:
           <input
             type="text"
-            value={defaultWalletId}
-            onChange={handleDefaultWalletIdChange}
+            value={accountWalletId}
+            onChange={handleBtcWalletIdChange}
             style={{ marginLeft: '10px' }}
           />
         </label>
       </div>
-      <button onClick={fetchInvoiceData}>Create Invoice</button>
+      <button onClick={fetchInvoiceData}>Create a Stablesats invoice</button>
       {errorMessageFetchInvoice && <div style={{ color: 'red' }}>Error: {errorMessageFetchInvoice}</div>}
       {invoiceData && <div><strong>Invoice Data:</strong> <pre>{JSON.stringify(invoiceData, null, 2)}</pre></div>}
 
       <div style={{ marginTop: '20px' }}>
-        <h3>cURL command to generate an invoice:</h3>
+        <h4>cURL command to generate a Stablesats invoice:</h4>
         <pre style={{
           backgroundColor: 'auto',
           padding: '10px',
@@ -326,7 +340,7 @@ mutation LnInvoiceCreate($input: LnInvoiceCreateInput!) {\
       </div>
 
       {/* Display for FeeProbe */}
-      <h2>Probe invoice fee</h2>
+      <h3>Probe invoice fee</h3>
       <div>
         <label>
           Payment Request:
@@ -338,21 +352,21 @@ mutation LnInvoiceCreate($input: LnInvoiceCreateInput!) {\
           />
         </label>
         <label>
-          Wallet ID:
+          USD wallet ID:
           <input
             type="text"
-            value={defaultWalletId}
-            onChange={handleDefaultWalletIdChange}
+            value={accountWalletId}
+            onChange={handleBtcWalletIdChange}
             style={{ marginLeft: '10px' }}
           />
         </label>
       </div>
-      <button onClick={fetchFeeProbeData}>Probe Fee</button>
+      <button onClick={fetchFeeProbeData}>Probe fee</button>
       {errorMessageFetchFeeProbe && <div style={{ color: 'red' }}>Error: {errorMessageFetchFeeProbe}</div>}
       {feeProbeData && <div><strong>Fee Probe Data:</strong> <pre>{JSON.stringify(feeProbeData, null, 2)}</pre></div>}
 
       <div style={{ marginTop: '20px' }}>
-        <h3>cURL command to probe invoice fee:</h3>
+        <h4>cURL command to probe invoice fee:</h4>
         <pre style={{
           backgroundColor: 'auto',
           padding: '10px',
@@ -366,7 +380,7 @@ mutation LnInvoiceCreate($input: LnInvoiceCreateInput!) {\
       </div>
 
       {/* Display for invoiceSend */}
-      <h2>Pay an invoice</h2>
+      <h3>Pay an invoice</h3>
       <div>
         <label>
           Payment Request:
@@ -378,21 +392,21 @@ mutation LnInvoiceCreate($input: LnInvoiceCreateInput!) {\
           />
         </label>
         <label>
-          Wallet ID:
+          USD wallet ID:
           <input
             type="text"
-            value={defaultWalletId}
-            onChange={handleDefaultWalletIdChange}
+            value={accountWalletId}
+            onChange={handleBtcWalletIdChange}
             style={{ marginLeft: '10px' }}
           />
         </label>
       </div>
-      <button onClick={fetchLnInvoicePaymentData}>Send Payment</button>
+      <button onClick={fetchLnInvoicePaymentData}>Send payment</button>
       {errorMessageLnInvoicePayment && <div style={{ color: 'red' }}>Error: {errorMessageLnInvoicePayment}</div>}
       {lnInvoicePaymentData && <div><strong>Payment Data:</strong> <pre>{JSON.stringify(lnInvoicePaymentData, null, 2)}</pre></div>}
 
       <div style={{ marginTop: '20px' }}>
-        <h3>cURL command to pay an invoice:</h3>
+        <h4>cURL command to pay an invoice:</h4>
         <pre style={{
           backgroundColor: 'auto',
           padding: '10px',

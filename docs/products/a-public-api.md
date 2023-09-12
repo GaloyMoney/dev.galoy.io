@@ -7,7 +7,8 @@ slug: /products/public-api
 import { AuthProvider } from '/src/components/graphql/AuthContext';
 import PhoneLoginButton from '/src/components/graphql/PhoneLoginButton';
 import EmailLoginButton from '/src/components/graphql/EmailLoginButton';
-import AuthRequestButton from '/src/components/graphql/AuthRequestButton';
+import AuthRequestBtcButton from '/src/components/graphql/AuthRequestBtcButton';
+import AuthRequestUsdButton from '/src/components/graphql/AuthRequestUsdButton';
 
 # Public API
 
@@ -27,6 +28,7 @@ The calls are directed to the staging environment by default where the funds are
 ## Email Login
 
 <AuthProvider>
+
   <EmailLoginButton />
 
   <div style={{ margin: '40px 0' }}></div>
@@ -34,7 +36,12 @@ The calls are directed to the staging environment by default where the funds are
   ## Authenticated requests
   The following methods require a valid auth token set in the header as a bearer token - `Authorization: Bearer`
 
-  <AuthRequestButton />
+  ### Send USD over lightning
+  <AuthRequestUsdButton />
+
+  ### Send satoshis over lightning
+  <AuthRequestBtcButton />
+
 </AuthProvider>
 
 ## [Postman collection](https://github.com/GaloyMoney/galoy/tree/main/docs/postman-collection)

@@ -5,7 +5,8 @@ title: Demo requests
 import { AuthProvider } from '/src/components/graphql/AuthContext';
 import PhoneLoginButton from '/src/components/graphql/PhoneLoginButton';
 import EmailLoginButton from '/src/components/graphql/EmailLoginButton';
-import AuthRequestButton from '/src/components/graphql/AuthRequestButton';
+import AuthRequestBtcButton from '/src/components/graphql/AuthRequestBtcButton';
+import AuthRequestUsdButton from '/src/components/graphql/AuthRequestUsdButton';
 
 :::caution
 Be cautious using an environment with real funds as the authentication token will be exposed in the browser.
@@ -25,7 +26,10 @@ Be cautious using an environment with real funds as the authentication token wil
 
   ## Make authenticated requests
 
-  <AuthRequestButton />
+  <AuthRequestUsdButton />
+
+  <AuthRequestBtcButton />
+
 </AuthProvider>
 
 ---

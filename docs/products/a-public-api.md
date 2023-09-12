@@ -45,10 +45,13 @@ The calls are directed to the staging environment by default where the funds are
 </AuthProvider>
 
 ## [Postman collection](https://github.com/GaloyMoney/galoy/tree/main/docs/postman-collection)
-
 * Download Postman: [www.postman.com](https://www.postman.com/) or use the web version: [web.postman.co](https://web.postman.co/)
-* Download or import the collection: [galoy_graphql_main_api.postman_collection.json](https://github.com/GaloyMoney/galoy/blob/main/docs/postman-collection/galoy_graphql_main_api.postman_collection.json)
-* Get the Staging Environment variables: [galoy-staging.postman_environment.json](https://raw.githubusercontent.com/GaloyMoney/galoy/main/docs/postman-collection/galoy-staging.postman_environment.json)
+* Download or import the collection: [galoy_graphql_main_api.postman_collection.json](https://dev.galoy.io/galoy_graphql_main_api.postman_collection.json)
+* Get the Staging Environment variables: [galoy-staging.postman_environment.json](https://dev.galoy.io/galoy-staging.postman_environment.json)
+
+## [Public API Reference](https://dev.galoy.io/public-api-reference.html)
+
+## [Admin API Reference](https://dev.galoy.io/admin-api-reference.html)
 
 ## Videos
 ### Using the Galoy GraphQL API

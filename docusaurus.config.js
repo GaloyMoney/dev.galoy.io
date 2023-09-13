@@ -75,10 +75,9 @@ const config = {
         items: [
           {
             type: 'docSidebar',
+            sidebarId: 'apiSidebar',
             position: 'left',
             label: 'API',
-            sidebarId: 'apiSidebar',
-            docId: 'api/public-api',
           },
           {
             type: 'docSidebar',

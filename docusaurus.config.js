@@ -74,10 +74,11 @@ const config = {
         },
         items: [
           {
-            type: 'doc',
+            type: 'docSidebar',
             position: 'left',
             label: 'API',
-            docId: 'api/README',
+            sidebarId: 'apiSidebar',
+            docId: 'api/public-api',
           },
           {
             type: 'docSidebar',

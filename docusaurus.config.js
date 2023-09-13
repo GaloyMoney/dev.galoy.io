@@ -69,21 +69,21 @@ const config = {
       navbar: {
         title: 'Developer Documentation',
         logo: {
-          alt: 'My Site Logo',
+          alt: 'Galoy logo',
           src: 'images/galoy-logo-blue.svg',
         },
         items: [
           {
             type: 'docSidebar',
+            sidebarId: 'apiSidebar',
+            position: 'left',
+            label: 'API',
+          },
+          {
+            type: 'docSidebar',
             sidebarId: 'productsSidebar',
             position: 'left',
             label: 'Products',
-          },
-          {
-            type: 'doc',
-            position: 'left',
-            label: 'API Reference',
-            docId: 'reference/README',
           },
           {
             type: 'docSidebar',
@@ -99,7 +99,7 @@ const config = {
           },
           {
             href: 'https://github.com/GaloyMoney',
-            label: 'GitHub',
+            label: 'Follow us on GitHub',
             position: 'right',
           },
         ],
@@ -111,12 +111,12 @@ const config = {
             title: 'Docs',
             items: [
               {
-                label: 'Products',
-                to: '/products',
+                label: 'API',
+                to: '/api',
               },
               {
-                label: 'API Reference',
-                to: '/reference',
+                label: 'Products',
+                to: '/products',
               },
               {
                 label: 'Deployment',

@@ -55,7 +55,7 @@ const phoneLogin = async (apiEndpoint, phone, code) => {
 
 const requestEmailCode = async (authEndpoint, emailAddress) => {
   try {
-    const response = await fetch(`${authEndpoint}/auth/email/code`, {
+    const response = await fetch(`${authEndpoint}/email/code`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -82,7 +82,7 @@ const requestEmailCode = async (authEndpoint, emailAddress) => {
 
 const emailLogin = async (authEndpoint, emailLoginId, emailCode) => {
   try {
-    const response = await fetch(`${authEndpoint}/auth/email/login`, {
+    const response = await fetch(`${authEndpoint}/email/login`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

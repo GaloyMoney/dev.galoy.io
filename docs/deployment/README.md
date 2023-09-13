@@ -1,4 +1,4 @@
-# Getting started
+# Deployment
 
 ## Setting up the Galoy stack locally
 

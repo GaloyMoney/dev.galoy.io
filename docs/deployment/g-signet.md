@@ -1,3 +1,9 @@
+---
+id: signet
+title: Signet
+slug: /deployment/signet
+---
+
 # Testing on signet
 
 Documentation of testing options with the wider network since the dev setup makes is possible to start a signet instance.

@@ -100,7 +100,7 @@ const config = {
           },
           {
             href: 'https://github.com/GaloyMoney',
-            label: 'GitHub',
+            label: 'Follow us on GitHub',
             position: 'right',
           },
         ],
@@ -112,12 +112,12 @@ const config = {
             title: 'Docs',
             items: [
               {
-                label: 'Products',
-                to: '/products',
-              },
-              {
                 label: 'API',
                 to: '/api',
+              },
+              {
+                label: 'Products',
+                to: '/products',
               },
               {
                 label: 'Deployment',

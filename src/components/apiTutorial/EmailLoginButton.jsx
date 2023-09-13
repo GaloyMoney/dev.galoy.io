@@ -51,7 +51,7 @@ function EmailLoginButton() {
     try {
       const obtainedAuthToken = await emailLogin(authEndpoint, emailLoginIdInput, emailCode);
       setAuthToken(obtainedAuthToken);  // Directly set the obtained authToken
-      setSuccessMessageEmailLogin("Logged in successfully!");
+      setSuccessMessageEmailLogin("Logged in successfully! Copy and save the token to make authenticated requests on the next page.");
     } catch (error) {
       setErrorMessageEmailLogin(error.message);
     } finally {
@@ -65,13 +65,17 @@ function EmailLoginButton() {
 
   return (
     <div>
+      <h3>1) Request a 2FA code to your email</h3>
+      <div style={{ marginTop: '10px' }}></div>
       <div>
-        <input type="text" value={authEndpoint} onChange={e => setAuthEndpoint(e.target.value)} style={{ width: '100%', marginBottom: '10px' }} />
-        <input type="email" placeholder="Email" value={emailAddress} onChange={e => setEmailAddress(e.target.value)} />
-        <button onClick={handleRequestEmailCode}>Request code</button>
+        The REST authentication endpoint to connect to:
+        <input type="text" value={authEndpoint} onChange={e => setAuthEndpoint(e.target.value)} style={{ width: '50%', marginBottom: '10px' }} />
+        <div></div>
+        <input type="email" placeholder="Fill in the email address" value={emailAddress} onChange={e => setEmailAddress(e.target.value)} style={{ width: '50%', marginBottom: '10px' }} />
       </div>
+      <button onClick={handleRequestEmailCode}>Request code</button>
       <div style={{ marginTop: '20px' }}>
-        <h3>cURL command to request an email code:</h3>
+        <h4>cURL command to request an email code:</h4>
         <pre style={{
           backgroundColor: 'auto',
           padding: '10px',
@@ -87,26 +91,28 @@ function EmailLoginButton() {
       {successMessageEmailCode && <div style={{ color: 'green' }}>{successMessageEmailCode}</div>}
       <div style={{ margin: '20px 0' }}></div>
       {(
-        <div>
-          <h3>Enter the email code to log in</h3>
-          {(
-            <div>
-              <input
-                type="text"
-                placeholder="Email Login ID"
-                value={emailLoginIdInput}
-                onChange={e => setEmailLoginIdInput(e.target.value)}
-              />
-            </div>
-          )}
-          <input type="text" placeholder="Email Code" value={emailCode} onChange={e => setEmailCode(e.target.value)} />
+        <div style={{ marginTop: '40px' }}>
+          <h3>2) Enter the 2FA code received by email</h3>
+          The email login ID from the previous request:
+          <div>
+            <input
+              type="text"
+              placeholder="Email login ID"
+              value={emailLoginIdInput}
+              onChange={e => setEmailLoginIdInput(e.target.value)}
+              style={{ width: '50%', marginBottom: '10px' }}
+            />
+            <div></div>
+            <input type="text" placeholder="Fill in the 2FA code from the email" value={emailCode} onChange={e => setEmailCode(e.target.value)} style={{ width: '50%', marginBottom: '10px' }} />
+          </div>
           <button onClick={handleEmailLogin} disabled={isLoading}>
             {isLoading ? "Logging in..." : "Log in"}
           </button>
         </div>
-      )}
+      )
+      }
       <div style={{ marginTop: '20px' }}>
-        <h3>cURL command for email login:</h3>
+        <h4>cURL command for email login:</h4>
         <pre style={{
           backgroundColor: 'auto',
           padding: '10px',
@@ -121,13 +127,15 @@ function EmailLoginButton() {
       {errorMessageEmailLogin && <div style={{ color: 'red' }}>Error: {errorMessageEmailLogin}</div>}
       {successMessageEmailLogin && <div style={{ color: 'green' }}>{successMessageEmailLogin}</div>}
 
-      {authToken && (
-        <div>
-          <button onClick={toggleShowToken}>Toggle Token Visibility</button>
-          {showToken && <div><strong>Token:</strong> {authToken}</div>}
-        </div>
-      )}
-    </div>
+      {
+        authToken && (
+          <div>
+            <button onClick={toggleShowToken}>Toggle Token Visibility</button>
+            {showToken && <div><strong>Token:</strong> {authToken}</div>}
+          </div>
+        )
+      }
+    </div >
   );
 }
 

@@ -8,7 +8,6 @@ function AuthRequestButton() {
   const [apiEndpoint, setApiEndpoint] = useState('https://api.staging.galoy.io/graphql');
   const [manualAuthToken, setManualAuthToken] = useState('');
   const [amount, setAmount] = useState(0);
-  const [memo, setMemo] = useState('');
   const [accountWalletId, setAccountWalletId] = useState('');
   const [paymentRequest, setPaymentRequest] = useState('');
 
@@ -37,7 +36,7 @@ function AuthRequestButton() {
           balance
         }}}}`;
 
-  const getInvoiceQuery = (amount, memo, walletId) => `
+  const getInvoiceQuery = (amount, walletId) => `
 mutation lnUsdInvoiceCreate($input: LnUsdInvoiceCreateInput!) {
   lnUsdInvoiceCreate(input: $input) {
     invoice {
@@ -82,7 +81,6 @@ mutation lnUsdInvoiceCreate($input: LnUsdInvoiceCreateInput!) {
     if (type === 'invoice') {
       requestBody.variables.input = {
         amount: amount.toString(),
-        memo: memo,
         walletId: accountWalletId,
       };
     } else if (type === 'feeProbe') {
@@ -137,11 +135,10 @@ mutation lnUsdInvoiceCreate($input: LnUsdInvoiceCreateInput!) {
   };
 
   const fetchInvoiceData = async () => {
-    const query = getInvoiceQuery(amount, memo, accountWalletId);
+    const query = getInvoiceQuery(amount, accountWalletId);
     const variables = {
       input: {
         amount: amount.toString(),
-        memo: memo,
         walletId: accountWalletId,
       }
     };
@@ -197,10 +194,10 @@ mutation lnUsdInvoiceCreate($input: LnUsdInvoiceCreateInput!) {
   }, [authToken, apiEndpoint]); // Listening to authToken and apiEndpoint changes
 
   useEffect(() => {
-    // This will be triggered whenever authToken, apiEndpoint, amount, memo, or accountWalletId changes
-    const query = getInvoiceQuery(amount, memo, accountWalletId);
+    // This will be triggered whenever authToken, apiEndpoint, amount or accountWalletId changes
+    const query = getInvoiceQuery(amount, accountWalletId);
     generateCurlCommand(query, 'invoice');
-  }, [authToken, apiEndpoint, amount, memo, accountWalletId]); // Listening to these states changes
+  }, [authToken, apiEndpoint, amount, accountWalletId]); // Listening to these states changes
 
   useEffect(() => {
     // This will be triggered whenever authToken, apiEndpoint, paymentRequest, or accountWalletId changes
@@ -242,11 +239,12 @@ mutation lnUsdInvoiceCreate($input: LnUsdInvoiceCreateInput!) {
       <div>
         <input
           type="text"
-          placeholder="Enter authToken"
+          placeholder="Paste and set the authentication token"
           value={value}
           onChange={onChange}
+          style={{ width: '50%', marginBottom: '10px' }}
         />
-        <button onClick={onSet}>Set token</button>
+        <div><button onClick={onSet}>Set token</button></div>
       </div>
     );
   }
@@ -261,22 +259,24 @@ mutation lnUsdInvoiceCreate($input: LnUsdInvoiceCreateInput!) {
 
   return (
     <div>
-      {authTokenSection}
+      <div>The GraphQL endpoint to connect to:</div>
       <input
         type="text"
         value={apiEndpoint}
         onChange={handleApiEndpointChange}
-        style={{ width: '100%', marginBottom: '10px' }}
+        style={{ width: '50%', marginBottom: '10px' }}
       />
+      <div>The following methods require a valid auth token set in the header as a bearer token:</div>
+      {authTokenSection}
 
       {/* Display for WalletData */}
-      <div style={{ marginTop: '20px' }}></div>
+      <div style={{ marginTop: '40px' }}></div>
       <h3>Get the wallet IDs and balances</h3>
       <button onClick={fetchWalletData}>Get the wallet IDs</button>
       {errorMessageFetchWallet && <div style={{ color: 'red' }}>Error: {errorMessageFetchWallet}</div>}
       {walletData && <div><strong>Wallet Data:</strong> <pre>{JSON.stringify(walletData, null, 2)}</pre></div>}
 
-      <div style={{ marginTop: '20px' }}>
+      <div style={{ marginTop: '20px', marginBottom: '40px' }}>
         <h4>cURL command to get the USD wallet ID:</h4>
         <pre style={{
           backgroundColor: 'auto',
@@ -293,24 +293,18 @@ mutation lnUsdInvoiceCreate($input: LnUsdInvoiceCreateInput!) {
       {/* Display for InvoiceData */}
       <h3>Generate a Stablesats invoice</h3>
       <div>
-        <label>
-          Amount (USD cents):
-          <input
-            type="number"
-            value={amount}
-            onChange={handleAmountChange}
-            style={{ marginLeft: '10px', marginRight: '20px' }}
-          />
-        </label>
-        <label>
-          Memo:
-          <input
-            type="text"
-            value={memo}
-            onChange={handleMemoChange}
-            style={{ marginLeft: '10px', marginRight: '20px' }}
-          />
-        </label>
+        <div>
+          <div> Set the variables:</div>
+          <label>
+            Amount (USD cents):
+            <input
+              type="number"
+              value={amount}
+              onChange={handleAmountChange}
+              style={{ marginLeft: '10px', marginRight: '20px' }}
+            />
+          </label>
+        </div>
         <label>
           USD wallet ID:
           <input
@@ -325,7 +319,7 @@ mutation lnUsdInvoiceCreate($input: LnUsdInvoiceCreateInput!) {
       {errorMessageFetchInvoice && <div style={{ color: 'red' }}>Error: {errorMessageFetchInvoice}</div>}
       {invoiceData && <div><strong>Invoice Data:</strong> <pre>{JSON.stringify(invoiceData, null, 2)}</pre></div>}
 
-      <div style={{ marginTop: '20px' }}>
+      <div style={{ marginTop: '20px', marginBottom: '40px' }}>
         <h4>cURL command to generate a Stablesats invoice:</h4>
         <pre style={{
           backgroundColor: 'auto',
@@ -342,15 +336,18 @@ mutation lnUsdInvoiceCreate($input: LnUsdInvoiceCreateInput!) {
       {/* Display for FeeProbe */}
       <h3>Probe invoice fee</h3>
       <div>
-        <label>
-          Payment Request:
-          <input
-            type="text"
-            value={paymentRequest}
-            onChange={e => setPaymentRequest(e.target.value)}
-            style={{ marginLeft: '10px', marginRight: '20px' }}
-          />
-        </label>
+        <div> Set the variables:</div>
+        <div>
+          <label>
+            Payment Request:
+            <input
+              type="text"
+              value={paymentRequest}
+              onChange={e => setPaymentRequest(e.target.value)}
+              style={{ marginLeft: '10px', marginRight: '20px' }}
+            />
+          </label>
+        </div>
         <label>
           USD wallet ID:
           <input
@@ -365,7 +362,7 @@ mutation lnUsdInvoiceCreate($input: LnUsdInvoiceCreateInput!) {
       {errorMessageFetchFeeProbe && <div style={{ color: 'red' }}>Error: {errorMessageFetchFeeProbe}</div>}
       {feeProbeData && <div><strong>Fee Probe Data:</strong> <pre>{JSON.stringify(feeProbeData, null, 2)}</pre></div>}
 
-      <div style={{ marginTop: '20px' }}>
+      <div style={{ marginTop: '20px', marginBottom: '40px' }}>
         <h4>cURL command to probe invoice fee:</h4>
         <pre style={{
           backgroundColor: 'auto',
@@ -382,6 +379,8 @@ mutation lnUsdInvoiceCreate($input: LnUsdInvoiceCreateInput!) {
       {/* Display for invoiceSend */}
       <h3>Pay an invoice</h3>
       <div>
+      <div> Set the variables:</div>
+        <div>
         <label>
           Payment Request:
           <input
@@ -391,6 +390,7 @@ mutation lnUsdInvoiceCreate($input: LnUsdInvoiceCreateInput!) {
             style={{ marginLeft: '10px', marginRight: '20px' }}
           />
         </label>
+        </div>
         <label>
           USD wallet ID:
           <input
@@ -405,7 +405,7 @@ mutation lnUsdInvoiceCreate($input: LnUsdInvoiceCreateInput!) {
       {errorMessageLnInvoicePayment && <div style={{ color: 'red' }}>Error: {errorMessageLnInvoicePayment}</div>}
       {lnInvoicePaymentData && <div><strong>Payment Data:</strong> <pre>{JSON.stringify(lnInvoicePaymentData, null, 2)}</pre></div>}
 
-      <div style={{ marginTop: '20px' }}>
+      <div style={{ marginTop: '20px', marginBottom: '40px' }}>
         <h4>cURL command to pay an invoice:</h4>
         <pre style={{
           backgroundColor: 'auto',

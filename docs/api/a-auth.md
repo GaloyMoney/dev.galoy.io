@@ -1,5 +1,5 @@
 ---
-id: auth
+id: api-auth
 title: Get an authentication token
 slug: /api/auth
 ---
@@ -10,19 +10,20 @@ import EmailLoginButton from '/src/components/apiTutorial/EmailLoginButton';
 import AuthRequestBtcButton from '/src/components/apiTutorial/AuthRequestBtcButton';
 import AuthRequestUsdButton from '/src/components/apiTutorial/AuthRequestUsdButton';
 
-## Get an authentication token for the API from the app
+There are multiple ways to obtain an auth token to be used with the API.
 
-* `Create new account`, `Start with trial account` or `Log back in with Phone or Email`
-* tap the menu on the top right and scroll down
-* select the build number on the bottom 3 times
-* select `Copy access token` to save the token to your clipboard
-
-## Email Login
+## Log in with email
 
 <AuthProvider>
 
   <EmailLoginButton />
 
-  <div style={{ margin: '40px 0' }}></div>
-
 </AuthProvider>
+
+## Copy the token from the Blink app
+
+* `Create new account`, `Start with trial account` or `Log back in with Phone or Email`
+* tap the menu on the top right and scroll down
+* select the build number on the bottom 3 times
+* select `Copy access token` to save the token to your phone clipboard
+* 

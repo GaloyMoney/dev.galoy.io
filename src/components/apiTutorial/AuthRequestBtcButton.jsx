@@ -8,7 +8,6 @@ function AuthRequestButton() {
   const [apiEndpoint, setApiEndpoint] = useState('https://api.staging.galoy.io/graphql');
   const [manualAuthToken, setManualAuthToken] = useState('');
   const [amount, setAmount] = useState(0);
-  const [memo, setMemo] = useState('');
   const [accountWalletId, setAccountWalletId] = useState('');
   const [paymentRequest, setPaymentRequest] = useState('');
 
@@ -37,7 +36,7 @@ function AuthRequestButton() {
           balance
         }}}}`;
 
-  const getInvoiceQuery = (amount, memo, walletId) => `
+  const getInvoiceQuery = (amount, walletId) => `
 mutation LnInvoiceCreate($input: LnInvoiceCreateInput!) {
   lnInvoiceCreate(input: $input) {
     invoice {
@@ -82,7 +81,6 @@ mutation LnInvoiceCreate($input: LnInvoiceCreateInput!) {
     if (type === 'invoice') {
       requestBody.variables.input = {
         amount: amount.toString(),
-        memo: memo,
         walletId: accountWalletId,
       };
     } else if (type === 'feeProbe') {
@@ -137,11 +135,10 @@ mutation LnInvoiceCreate($input: LnInvoiceCreateInput!) {
   };
 
   const fetchInvoiceData = async () => {
-    const query = getInvoiceQuery(amount, memo, accountWalletId);
+    const query = getInvoiceQuery(amount, accountWalletId);
     const variables = {
       input: {
         amount: amount.toString(),
-        memo: memo,
         walletId: accountWalletId,
       }
     };
@@ -197,10 +194,10 @@ mutation LnInvoiceCreate($input: LnInvoiceCreateInput!) {
   }, [authToken, apiEndpoint]); // Listening to authToken and apiEndpoint changes
 
   useEffect(() => {
-    // This will be triggered whenever authToken, apiEndpoint, amount, memo, or accountWalletId changes
-    const query = getInvoiceQuery(amount, memo, accountWalletId);
+    // This will be triggered whenever authToken, apiEndpoint, amount or accountWalletId changes
+    const query = getInvoiceQuery(amount, accountWalletId);
     generateCurlCommand(query, 'invoice');
-  }, [authToken, apiEndpoint, amount, memo, accountWalletId]); // Listening to these states changes
+  }, [authToken, apiEndpoint, amount, accountWalletId]); // Listening to these states changes
 
   useEffect(() => {
     // This will be triggered whenever authToken, apiEndpoint, paymentRequest, or accountWalletId changes
@@ -242,11 +239,12 @@ mutation LnInvoiceCreate($input: LnInvoiceCreateInput!) {
       <div>
         <input
           type="text"
-          placeholder="Enter authToken"
+          placeholder="Paste and set the authentication token"
           value={value}
           onChange={onChange}
+          style={{ width: '50%', marginBottom: '10px' }}
         />
-        <button onClick={onSet}>Set token</button>
+        <div><button onClick={onSet}>Set token</button></div>
       </div>
     );
   }
@@ -261,13 +259,15 @@ mutation LnInvoiceCreate($input: LnInvoiceCreateInput!) {
 
   return (
     <div>
-      {authTokenSection}
+      The GraphQL endpoint to connect to:
       <input
         type="text"
         value={apiEndpoint}
         onChange={handleApiEndpointChange}
         style={{ width: '100%', marginBottom: '10px' }}
       />
+      <div>The following methods require a valid auth token set in the header as a bearer token:</div>
+      {authTokenSection}
 
       {/* Display for WalletData */}
       <div style={{ marginTop: '20px' }}></div>
@@ -276,7 +276,7 @@ mutation LnInvoiceCreate($input: LnInvoiceCreateInput!) {
       {errorMessageFetchWallet && <div style={{ color: 'red' }}>Error: {errorMessageFetchWallet}</div>}
       {walletData && <div><strong>Wallet Data:</strong> <pre>{JSON.stringify(walletData, null, 2)}</pre></div>}
 
-      <div style={{ marginTop: '20px' }}>
+      <div style={{ marginTop: '20px', marginBottom: '40px' }}>
         <h4>cURL command to get the BTC wallet ID:</h4>
         <pre style={{
           backgroundColor: 'auto',
@@ -293,24 +293,18 @@ mutation LnInvoiceCreate($input: LnInvoiceCreateInput!) {
       {/* Display for InvoiceData */}
       <h3>Generate an invoice</h3>
       <div>
-        <label>
-          Amount (sats):
-          <input
-            type="number"
-            value={amount}
-            onChange={handleAmountChange}
-            style={{ marginLeft: '10px', marginRight: '20px' }}
-          />
-        </label>
-        <label>
-          Memo:
-          <input
-            type="text"
-            value={memo}
-            onChange={handleMemoChange}
-            style={{ marginLeft: '10px', marginRight: '20px' }}
-          />
-        </label>
+        <div> Set the variables:</div>
+        <div>
+          <label>
+            Amount (sats):
+            <input
+              type="number"
+              value={amount}
+              onChange={handleAmountChange}
+              style={{ marginLeft: '10px', marginRight: '20px' }}
+            />
+          </label>
+        </div>
         <label>
           BTC wallet ID:
           <input
@@ -325,7 +319,7 @@ mutation LnInvoiceCreate($input: LnInvoiceCreateInput!) {
       {errorMessageFetchInvoice && <div style={{ color: 'red' }}>Error: {errorMessageFetchInvoice}</div>}
       {invoiceData && <div><strong>Invoice Data:</strong> <pre>{JSON.stringify(invoiceData, null, 2)}</pre></div>}
 
-      <div style={{ marginTop: '20px' }}>
+      <div style={{ marginTop: '20px', marginBottom: '40px' }}>
         <h4>cURL command to generate an invoice:</h4>
         <pre style={{
           backgroundColor: 'auto',
@@ -342,15 +336,18 @@ mutation LnInvoiceCreate($input: LnInvoiceCreateInput!) {
       {/* Display for FeeProbe */}
       <h3>Probe invoice fee</h3>
       <div>
-        <label>
-          Payment Request:
-          <input
-            type="text"
-            value={paymentRequest}
-            onChange={e => setPaymentRequest(e.target.value)}
-            style={{ marginLeft: '10px', marginRight: '20px' }}
-          />
-        </label>
+        <div> Set the variables:</div>
+        <div>
+          <label>
+            Payment Request:
+            <input
+              type="text"
+              value={paymentRequest}
+              onChange={e => setPaymentRequest(e.target.value)}
+              style={{ marginLeft: '10px', marginRight: '20px' }}
+            />
+          </label>
+        </div>
         <label>
           BTC wallet ID:
           <input
@@ -365,7 +362,7 @@ mutation LnInvoiceCreate($input: LnInvoiceCreateInput!) {
       {errorMessageFetchFeeProbe && <div style={{ color: 'red' }}>Error: {errorMessageFetchFeeProbe}</div>}
       {feeProbeData && <div><strong>Fee Probe Data:</strong> <pre>{JSON.stringify(feeProbeData, null, 2)}</pre></div>}
 
-      <div style={{ marginTop: '20px' }}>
+      <div style={{ marginTop: '20px', marginBottom: '40px' }}>
         <h4>cURL command to probe invoice fee:</h4>
         <pre style={{
           backgroundColor: 'auto',
@@ -382,15 +379,18 @@ mutation LnInvoiceCreate($input: LnInvoiceCreateInput!) {
       {/* Display for invoiceSend */}
       <h3>Pay an invoice</h3>
       <div>
-        <label>
-          Payment Request:
-          <input
-            type="text"
-            value={paymentRequest}
-            onChange={e => setPaymentRequest(e.target.value)}
-            style={{ marginLeft: '10px', marginRight: '20px' }}
-          />
-        </label>
+        <div> Set the variables:</div>
+        <div>
+          <label>
+            Payment Request:
+            <input
+              type="text"
+              value={paymentRequest}
+              onChange={e => setPaymentRequest(e.target.value)}
+              style={{ marginLeft: '10px', marginRight: '20px' }}
+            />
+          </label>
+        </div>
         <label>
           BTC wallet ID:
           <input

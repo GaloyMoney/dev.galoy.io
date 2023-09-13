@@ -12,7 +12,7 @@ The Galoy core banking platform includes the parts necessary to launch a communi
 
 ### Backend
 
-* **[Public API](/products/public-api)** – interacts with the bitcoin and accounting layers to enable sending, receiving and holding balances
+* **[Galoy backend](/products/galoy-backend)** – interacts with the bitcoin and accounting layers to enable sending, receiving and holding balances
 * **[Stablesats](/products/stablesats)** – service for implementing fiat hedging strategies via supported exchanges; enables the provision of synthetic USD to provide dollar-like stability without stablecoins
 * **[Bria](/products/bria)** - a service for transaction batching and onchain liquidity management
 * **[Galoy CLI](/products/galoy-cli)** - a Command Line Interface (CLI) client for interacting with Galoy Backend
@@ -34,5 +34,5 @@ The Galoy core banking platform includes the parts necessary to launch a communi
 
 ## API Reference
 Dive a little deeper and start exploring our API reference to get an idea of everything that's possible with the API:
-* [Public API Reference ](https://dev.galoy.io/public-api-reference.html)
-* [Admin API Reference](https://dev.galoy.io/admin-api-reference.html)
+* [Galoy public API reference ](https://dev.galoy.io/public-api-reference.html)
+* [Galoy admin API reference](https://dev.galoy.io/admin-api-reference.html)

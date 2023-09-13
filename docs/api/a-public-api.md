@@ -49,9 +49,9 @@ The calls are directed to the staging environment by default where the funds are
 * Download or import the collection: [galoy_graphql_main_api.postman_collection.json](https://dev.galoy.io/galoy_graphql_main_api.postman_collection.json)
 * Get the Staging Environment variables: [galoy-staging.postman_environment.json](https://dev.galoy.io/galoy-staging.postman_environment.json)
 
-## [Public API Reference](https://dev.galoy.io/public-api-reference.html)
+## [Galoy public API reference](https://dev.galoy.io/public-api-reference.html)
 
-## [Admin API Reference](https://dev.galoy.io/admin-api-reference.html)
+## [Galoy admin API reference](https://dev.galoy.io/admin-api-reference.html)
 
 ## Videos
 ### Using the Galoy GraphQL API

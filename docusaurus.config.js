@@ -69,21 +69,21 @@ const config = {
       navbar: {
         title: 'Developer Documentation',
         logo: {
-          alt: 'My Site Logo',
+          alt: 'Galoy logo',
           src: 'images/galoy-logo-blue.svg',
         },
         items: [
+          {
+            type: 'doc',
+            position: 'left',
+            label: 'API',
+            docId: 'api/README',
+          },
           {
             type: 'docSidebar',
             sidebarId: 'productsSidebar',
             position: 'left',
             label: 'Products',
-          },
-          {
-            type: 'doc',
-            position: 'left',
-            label: 'API Reference',
-            docId: 'reference/README',
           },
           {
             type: 'docSidebar',
@@ -115,8 +115,8 @@ const config = {
                 to: '/products',
               },
               {
-                label: 'API Reference',
-                to: '/reference',
+                label: 'API',
+                to: '/api',
               },
               {
                 label: 'Deployment',

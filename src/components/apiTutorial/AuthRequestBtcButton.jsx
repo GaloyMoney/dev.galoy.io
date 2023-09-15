@@ -355,6 +355,7 @@ mutation LnInvoicePaymentSend($input: LnInvoicePaymentInput!) {
               value={paymentRequest}
               onChange={e => setPaymentRequest(e.target.value)}
               style={{ marginLeft: '10px', width: '50%' }}
+              placeholder="Paste an invoice"
             />
           </label>
         </div>
@@ -394,12 +395,13 @@ mutation LnInvoicePaymentSend($input: LnInvoicePaymentInput!) {
         <div> Set the variables:</div>
         <div>
           <label>
-            Payment Request:
+            <div>Payment Request:</div>
             <input
               type="text"
               value={paymentRequest}
               onChange={e => setPaymentRequest(e.target.value)}
               style={{ marginLeft: '10px', marginRight: '20px' }}
+              placeholder="Paste an invoice"
             />
           </label>
         </div>

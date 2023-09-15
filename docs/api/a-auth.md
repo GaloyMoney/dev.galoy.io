@@ -12,7 +12,7 @@ import AuthRequestUsdButton from '/src/components/apiTutorial/AuthRequestUsdButt
 
 There are multiple ways to obtain an auth token to be used with the API.
 
-## Log in with email
+## Log in with email through the REST API
 
 <AuthProvider>
 
@@ -26,4 +26,3 @@ There are multiple ways to obtain an auth token to be used with the API.
 * tap the menu on the top right and scroll down
 * select the build number on the bottom 3 times
 * select `Copy access token` to save the token to your phone clipboard
-* 

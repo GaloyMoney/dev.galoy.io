@@ -68,7 +68,7 @@ function EmailLoginButton() {
       <h3>1) Request a 2FA code to your email</h3>
       <div style={{ marginTop: '10px' }}></div>
       <div>
-        The REST authentication endpoint to connect to:
+      <div>The REST authentication endpoint to connect to:</div>
         <input type="text" value={authEndpoint} onChange={e => setAuthEndpoint(e.target.value)} style={{ width: '50%', marginBottom: '10px' }} />
         <div></div>
         <input type="email" placeholder="Fill in the email address" value={emailAddress} onChange={e => setEmailAddress(e.target.value)} style={{ width: '50%', marginBottom: '10px' }} />
@@ -79,8 +79,7 @@ function EmailLoginButton() {
         <pre style={{
           backgroundColor: 'auto',
           padding: '10px',
-          border: '1px solid #ccc',
-          borderRadius: '5px',
+          marginLeft: '10px' ,
           overflowX: 'auto',
           whiteSpace: 'pre-wrap'
         }}>
@@ -116,8 +115,7 @@ function EmailLoginButton() {
         <pre style={{
           backgroundColor: 'auto',
           padding: '10px',
-          border: '1px solid #ccc',
-          borderRadius: '5px',
+          marginLeft: '10px' ,
           overflowX: 'auto',
           whiteSpace: 'pre-wrap'
         }}>

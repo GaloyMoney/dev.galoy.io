@@ -66,8 +66,7 @@ function PhoneLoginButton() {
         <pre style={{
           backgroundColor: 'auto',
           padding: '10px',
-          border: '1px solid #ccc',
-          borderRadius: '5px',
+          marginLeft: '10px' ,
           overflowX: 'auto',
           whiteSpace: 'pre-wrap'
         }}>

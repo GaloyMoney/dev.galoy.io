@@ -7,7 +7,7 @@ function AuthRequestButton() {
   const { authToken, setAuthToken } = useAuth();
   const [apiEndpoint, setApiEndpoint] = useState('https://api.staging.galoy.io/graphql');
   const [manualAuthToken, setManualAuthToken] = useState('');
-  const [amount, setAmount] = useState(0);
+  const [amount, setAmount] = useState(1000);
   const [accountWalletId, setAccountWalletId] = useState('');
   const [paymentRequest, setPaymentRequest] = useState('');
 
@@ -26,7 +26,7 @@ function AuthRequestButton() {
   const [errorMessageFetchFeeProbe, setErrorMessageFetchFeeProbe] = useState(null);
   const [errorMessageLnInvoicePayment, setErrorMessageLnInvoicePayment] = useState(null);
 
-  const getWalletQuery = `
+  const getWalletQuery = `\
   query Me {
     me {
       defaultAccount {
@@ -34,9 +34,12 @@ function AuthRequestButton() {
           id
           walletCurrency
           balance
-        }}}}`;
+        }
+      }
+    }
+  }`;
 
-  const getInvoiceQuery = (amount, walletId) => `
+  const getInvoiceQueryText = `\
 mutation LnInvoiceCreate($input: LnInvoiceCreateInput!) {
   lnInvoiceCreate(input: $input) {
     invoice {
@@ -47,26 +50,34 @@ mutation LnInvoiceCreate($input: LnInvoiceCreateInput!) {
     }
     errors {
       message
-    }}}`;
+    }
+  }
+}`;
+  const getInvoiceQuery = (amount, walletId) => getInvoiceQueryText
 
-  const getFeeProbeQuery = (paymentRequest, walletId) => `
-  mutation lnInvoiceFeeProbe($input: LnInvoiceFeeProbeInput!) {
-    lnInvoiceFeeProbe(input: $input) {
-      errors {
-        message
-      }
-      amount
-    }}`;
+  const getFeeProbeQueryText = `\
+mutation lnInvoiceFeeProbe($input: LnInvoiceFeeProbeInput!) {
+  lnInvoiceFeeProbe(input: $input) {
+    errors {
+      message
+    }
+    amount
+  }
+}`;
+  const getFeeProbeQuery = (paymentRequest, walletId) => getFeeProbeQueryText
 
-  const getInvoiceSendQuery = (paymentRequest, walletId) => `
-  mutation LnInvoicePaymentSend($input: LnInvoicePaymentInput!) {
-    lnInvoicePaymentSend(input: $input) {
+  const getInvoiceSendQueryText = `\
+mutation LnInvoicePaymentSend($input: LnInvoicePaymentInput!) {
+  lnInvoicePaymentSend(input: $input) {
     status
     errors {
       message
       path
       code
-    }}}`;
+    }
+  }
+}`;
+  const getInvoiceSendQuery = (paymentRequest, walletId) => getInvoiceSendQueryText
 
   const generateCurlCommand = (query, type, paymentRequest = '', walletId = '') => {
     let requestBody = {
@@ -226,11 +237,7 @@ mutation LnInvoiceCreate($input: LnInvoiceCreateInput!) {
     setAmount(e.target.value);
   };
 
-  const handleMemoChange = (e) => {
-    setMemo(e.target.value);
-  };
-
-  const handleBtcWalletIdChange = (e) => {
+  const handleWalletIdChange = (e) => {
     setAccountWalletId(e.target.value);
   };
 
@@ -272,17 +279,18 @@ mutation LnInvoiceCreate($input: LnInvoiceCreateInput!) {
       {/* Display for WalletData */}
       <div style={{ marginTop: '20px' }}></div>
       <h3>Get the wallet IDs and balances</h3>
+      <div>The body of the GraphQL query:</div>
+      <pre style={{ marginLeft: '10px' }}>{getWalletQuery}</pre>
       <button onClick={fetchWalletData}>Get the wallet IDs</button>
       {errorMessageFetchWallet && <div style={{ color: 'red' }}>Error: {errorMessageFetchWallet}</div>}
-      {walletData && <div><strong>Wallet Data:</strong> <pre>{JSON.stringify(walletData, null, 2)}</pre></div>}
+      {walletData && <div><strong>Wallet Data:</strong> <pre style={{ marginLeft: '10px' }}>{JSON.stringify(walletData, null, 2)}</pre></div>}
 
       <div style={{ marginTop: '20px', marginBottom: '40px' }}>
         <h4>cURL command to get the BTC wallet ID:</h4>
         <pre style={{
           backgroundColor: 'auto',
           padding: '10px',
-          border: '1px solid #ccc',
-          borderRadius: '5px',
+          marginLeft: '10px' ,
           overflowX: 'auto',
           whiteSpace: 'pre-wrap'
         }}>
@@ -296,36 +304,38 @@ mutation LnInvoiceCreate($input: LnInvoiceCreateInput!) {
         <div> Set the variables:</div>
         <div>
           <label>
-            Amount (sats):
+            <div>Amount (sats):</div>
             <input
               type="number"
               value={amount}
               onChange={handleAmountChange}
-              style={{ marginLeft: '10px', marginRight: '20px' }}
+              style={{ marginLeft: '10px', width: '50%' }}
             />
           </label>
         </div>
         <label>
-          BTC wallet ID:
+          <div>BTC wallet ID:</div>
           <input
             type="text"
             value={accountWalletId}
-            onChange={handleBtcWalletIdChange}
-            style={{ marginLeft: '10px' }}
+            onChange={handleWalletIdChange}
+            style={{ marginLeft: '10px', width: '50%' }}
+            placeholder="Paste the BTC wallet ID from the response above"
           />
         </label>
       </div>
+      <div>The body of the GraphQL query:</div>
+      <pre style={{ marginLeft: '10px' }}>{getInvoiceQueryText}</pre>
       <button onClick={fetchInvoiceData}>Create invoice</button>
       {errorMessageFetchInvoice && <div style={{ color: 'red' }}>Error: {errorMessageFetchInvoice}</div>}
-      {invoiceData && <div><strong>Invoice Data:</strong> <pre>{JSON.stringify(invoiceData, null, 2)}</pre></div>}
+      {invoiceData && <div><strong>Invoice Data:</strong> <pre style={{ marginLeft: '10px' }}>{JSON.stringify(invoiceData, null, 2)}</pre></div>}
 
       <div style={{ marginTop: '20px', marginBottom: '40px' }}>
         <h4>cURL command to generate an invoice:</h4>
         <pre style={{
           backgroundColor: 'auto',
           padding: '10px',
-          border: '1px solid #ccc',
-          borderRadius: '5px',
+          marginLeft: '10px' ,
           overflowX: 'auto',
           whiteSpace: 'pre-wrap'
         }}>
@@ -339,36 +349,38 @@ mutation LnInvoiceCreate($input: LnInvoiceCreateInput!) {
         <div> Set the variables:</div>
         <div>
           <label>
-            Payment Request:
+            <div>Payment Request:</div>
             <input
               type="text"
               value={paymentRequest}
               onChange={e => setPaymentRequest(e.target.value)}
-              style={{ marginLeft: '10px', marginRight: '20px' }}
+              style={{ marginLeft: '10px', width: '50%' }}
             />
           </label>
         </div>
         <label>
-          BTC wallet ID:
+          <div>BTC wallet ID:</div>
           <input
             type="text"
             value={accountWalletId}
-            onChange={handleBtcWalletIdChange}
-            style={{ marginLeft: '10px' }}
+            onChange={handleWalletIdChange}
+            style={{ marginLeft: '10px', width: '50%' }}
+            placeholder="Paste the BTC wallet ID from the response above"
           />
         </label>
       </div>
+      <div>The body of the GraphQL query:</div>
+      <pre style={{ marginLeft: '10px' }}>{getFeeProbeQueryText}</pre>
       <button onClick={fetchFeeProbeData}>Probe fee</button>
       {errorMessageFetchFeeProbe && <div style={{ color: 'red' }}>Error: {errorMessageFetchFeeProbe}</div>}
-      {feeProbeData && <div><strong>Fee Probe Data:</strong> <pre>{JSON.stringify(feeProbeData, null, 2)}</pre></div>}
+      {feeProbeData && <div><strong>Fee Probe Data:</strong> <pre style={{ marginLeft: '10px' }}>{JSON.stringify(feeProbeData, null, 2)}</pre></div>}
 
       <div style={{ marginTop: '20px', marginBottom: '40px' }}>
         <h4>cURL command to probe invoice fee:</h4>
         <pre style={{
           backgroundColor: 'auto',
           padding: '10px',
-          border: '1px solid #ccc',
-          borderRadius: '5px',
+          marginLeft: '10px' ,
           overflowX: 'auto',
           whiteSpace: 'pre-wrap'
         }}>
@@ -392,26 +404,28 @@ mutation LnInvoiceCreate($input: LnInvoiceCreateInput!) {
           </label>
         </div>
         <label>
-          BTC wallet ID:
+          <div>BTC wallet ID:</div>
           <input
             type="text"
             value={accountWalletId}
-            onChange={handleBtcWalletIdChange}
-            style={{ marginLeft: '10px' }}
+            onChange={handleWalletIdChange}
+            style={{ marginLeft: '10px', width: '50%' }}
+            placeholder="Paste the BTC wallet ID from the response above"
           />
         </label>
       </div>
+      <div>The body of the GraphQL query:</div>
+      <pre style={{ marginLeft: '10px' }}>{getInvoiceSendQueryText}</pre>
       <button onClick={fetchLnInvoicePaymentData}>Send payment</button>
       {errorMessageLnInvoicePayment && <div style={{ color: 'red' }}>Error: {errorMessageLnInvoicePayment}</div>}
-      {lnInvoicePaymentData && <div><strong>Payment Data:</strong> <pre>{JSON.stringify(lnInvoicePaymentData, null, 2)}</pre></div>}
+      {lnInvoicePaymentData && <div><strong>Payment Data:</strong> <pre style={{ marginLeft: '10px' }}>{JSON.stringify(lnInvoicePaymentData, null, 2)}</pre></div>}
 
       <div style={{ marginTop: '20px' }}>
         <h4>cURL command to pay an invoice:</h4>
         <pre style={{
           backgroundColor: 'auto',
           padding: '10px',
-          border: '1px solid #ccc',
-          borderRadius: '5px',
+          marginLeft: '10px' ,
           overflowX: 'auto',
           whiteSpace: 'pre-wrap'
         }}>

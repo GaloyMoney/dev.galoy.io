@@ -283,7 +283,7 @@ mutation LnInvoicePaymentSend($input: LnInvoicePaymentInput!) {
       <pre style={{ marginLeft: '10px' }}>{getWalletQuery}</pre>
       <button onClick={fetchWalletData}>Get the wallet IDs</button>
       {errorMessageFetchWallet && <div style={{ color: 'red' }}>Error: {errorMessageFetchWallet}</div>}
-      {walletData && <div><strong>Wallet Data:</strong> <pre style={{ marginLeft: '10px' }}>{JSON.stringify(walletData, null, 2)}</pre></div>}
+      {walletData && <div><strong>Response:</strong> <pre style={{ marginLeft: '10px' }}>{JSON.stringify(walletData, null, 2)}</pre></div>}
 
       <div style={{ marginTop: '20px', marginBottom: '40px' }}>
         <h4>cURL command to get the BTC wallet ID:</h4>
@@ -328,7 +328,7 @@ mutation LnInvoicePaymentSend($input: LnInvoicePaymentInput!) {
       <pre style={{ marginLeft: '10px' }}>{getInvoiceQueryText}</pre>
       <button onClick={fetchInvoiceData}>Create invoice</button>
       {errorMessageFetchInvoice && <div style={{ color: 'red' }}>Error: {errorMessageFetchInvoice}</div>}
-      {invoiceData && <div><strong>Invoice Data:</strong> <pre style={{ marginLeft: '10px' }}>{JSON.stringify(invoiceData, null, 2)}</pre></div>}
+      {invoiceData && <div><strong>Response:</strong> <pre style={{ marginLeft: '10px' }}>{JSON.stringify(invoiceData, null, 2)}</pre></div>}
 
       <div style={{ marginTop: '20px', marginBottom: '40px' }}>
         <h4>cURL command to generate an invoice:</h4>
@@ -373,7 +373,7 @@ mutation LnInvoicePaymentSend($input: LnInvoicePaymentInput!) {
       <pre style={{ marginLeft: '10px' }}>{getFeeProbeQueryText}</pre>
       <button onClick={fetchFeeProbeData}>Probe fee</button>
       {errorMessageFetchFeeProbe && <div style={{ color: 'red' }}>Error: {errorMessageFetchFeeProbe}</div>}
-      {feeProbeData && <div><strong>Fee Probe Data:</strong> <pre style={{ marginLeft: '10px' }}>{JSON.stringify(feeProbeData, null, 2)}</pre></div>}
+      {feeProbeData && <div><strong>Response:</strong> <pre style={{ marginLeft: '10px' }}>{JSON.stringify(feeProbeData, null, 2)}</pre></div>}
 
       <div style={{ marginTop: '20px', marginBottom: '40px' }}>
         <h4>cURL command to probe invoice fee:</h4>
@@ -418,7 +418,7 @@ mutation LnInvoicePaymentSend($input: LnInvoicePaymentInput!) {
       <pre style={{ marginLeft: '10px' }}>{getInvoiceSendQueryText}</pre>
       <button onClick={fetchLnInvoicePaymentData}>Send payment</button>
       {errorMessageLnInvoicePayment && <div style={{ color: 'red' }}>Error: {errorMessageLnInvoicePayment}</div>}
-      {lnInvoicePaymentData && <div><strong>Payment Data:</strong> <pre style={{ marginLeft: '10px' }}>{JSON.stringify(lnInvoicePaymentData, null, 2)}</pre></div>}
+      {lnInvoicePaymentData && <div><strong>Response:</strong> <pre style={{ marginLeft: '10px' }}>{JSON.stringify(lnInvoicePaymentData, null, 2)}</pre></div>}
 
       <div style={{ marginTop: '20px' }}>
         <h4>cURL command to pay an invoice:</h4>

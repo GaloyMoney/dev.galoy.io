@@ -34,7 +34,7 @@ Check the [API section ](/api) for an interactive tutorial for getting started w
 
 ## Getting started
 
-* [Hosted API](/deployment/api)
+* [Hosted API](/api)
 * [Deployment](/deployment/)
 
 ## API Reference

@@ -35,21 +35,18 @@ Documentation of testing options with the wider network since the dev setup make
 
 ## Block explorer
 * https://mempool.space/signet
-* https://explorer.bc-2.jp/
 
 ## Faucets
-- https://signet.bc-2.jp/
-- https://signetfaucet.bublina.eu.org/
-- https://faucet.sirion.io/ (LN only)
+- https://signetfaucet.com (onchain)
+- https://signetfaucet.bublina.eu.org (onchain)
 
 ## LN explorers
 - https://mempool.space/signet/lightning
-- https://signet-lightning.wakiyamap.dev/
+- https://signet-lightning.wakiyamap.dev
 
 ## Test payment destinations
-* LN address on staging: `test@pay.staging.galoy.io`
-* Staging cash register: https://pay.staging.galoy.io/test?amount=0&sats=0&unit=CENT&memo=&display=USD&currency=USD
-* BTCPay PoS (LN - BOLT11) https://sigpay.sirion.io/apps/33Au5UDsPWnUL5GVT8q1Yjovw83K/crowdfund
+* LN address on Staging: `test@pay.staging.galoy.io`
+* Staging cash register: https://pay.staging.galoy.io/test?amount=0&sats=0&unit=CENT&memo=&display=USD&currency=USD (LN)
 * BTCPay PoS (onchain) https://signet.demo.btcpayserver.org/apps/2SCdQhwFm464BcHxXn44kRVg3iCr/pos
 
 ## Other wallets with signet support
@@ -58,7 +55,6 @@ Documentation of testing options with the wider network since the dev setup make
 * To use a hosted channel scan the QRcode with OBW-signet (should also provide some local balance ):
 
 [![Alternate Text](https://user-images.githubusercontent.com/43343391/206720745-838fb788-d09d-4af9-8400-32c2137dd30b.png)](https://user-images.githubusercontent.com/43343391/206720745-838fb788-d09d-4af9-8400-32c2137dd30b.png)
-
 
 ### [Sparrow Wallet](https://sparrowwallet.com/download/)
 Supports onchain only, but works well with Taproot accounts. To use it with signet open:
@@ -81,5 +77,5 @@ Supports onchain only, but works well with Taproot accounts. To use it with sign
 
 ## Resources
 * General documentation on signet: https://en.bitcoin.it/wiki/Signet
-* Plebnet playground using a separate signet: https://www.plebnet.fun/
-* Custom signet by Mutiny: https://blog.mutinywallet.com/mutinynet/?ref=nobsbitcoin.com
+* Plebnet playground using a separate signet: https://www.plebnet.fun
+* Custom signet by Mutiny: https://blog.mutinywallet.com/mutinynet

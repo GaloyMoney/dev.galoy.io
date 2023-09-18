@@ -71,7 +71,7 @@ function EmailLoginButton() {
       <div>The REST authentication endpoint to connect to:</div>
         <input type="text" value={authEndpoint} onChange={e => setAuthEndpoint(e.target.value)} style={{ width: '50%', marginBottom: '10px' }} />
         <div></div>
-        <input type="email" placeholder="Fill in the email address" value={emailAddress} onChange={e => setEmailAddress(e.target.value)} style={{ width: '50%', marginBottom: '10px' }} />
+        <input type="email" placeholder="Fill in the email address used with Blink" value={emailAddress} onChange={e => setEmailAddress(e.target.value)} style={{ width: '50%', marginBottom: '10px' }} />
       </div>
       <button onClick={handleRequestEmailCode}>Request code</button>
       <div style={{ marginTop: '20px' }}>

@@ -278,19 +278,24 @@ mutation LnInvoicePaymentSend($input: LnInvoicePaymentInput!) {
 
       {/* Display for WalletData */}
       <div style={{ marginTop: '40px' }}></div>
-      <h3>Get the wallet IDs and balances</h3>
-      <div>The body of the GraphQL query:</div>
+      <h3>Get the wallet IDs and check the balances</h3>
+      <div>Can run this query at any stage to confirm the change in the balances.</div>
+      <div>The "BTC" wallet balance is denominated in satoshis.</div>
+      <div>The "USD" wallet balance is in cents.</div>
+      <div style={{ marginTop: '20px' }}></div>
+
+      <div style={{ fontWeight: 'bold' }}>The body of the GraphQL request:</div>
       <pre style={{ marginLeft: '10px' }}>{getWalletQuery}</pre>
-      <button onClick={fetchWalletData}>Get the wallet IDs</button>
+      <button onClick={fetchWalletData}>Send the request</button>
       {errorMessageFetchWallet && <div style={{ color: 'red' }}>Error: {errorMessageFetchWallet}</div>}
       {walletData && <div><strong>Response:</strong> <pre style={{ marginLeft: '10px' }}>{JSON.stringify(walletData, null, 2)}</pre></div>}
 
       <div style={{ marginTop: '20px', marginBottom: '40px' }}>
-        <h4>cURL command to get the USD wallet ID:</h4>
+        <div style={{ fontWeight: 'bold' }}>curl command to get the USD wallet ID:</div>
         <pre style={{
           backgroundColor: 'auto',
           padding: '10px',
-          marginLeft: '10px' ,
+          marginLeft: '10px',
           overflowX: 'auto',
           whiteSpace: 'pre-wrap'
         }}>
@@ -300,11 +305,14 @@ mutation LnInvoicePaymentSend($input: LnInvoicePaymentInput!) {
 
       {/* Display for InvoiceData */}
       <h3>Generate a Stablesats invoice</h3>
+      <div>Using Stablesats a merchant can generate invoices denominated in USD cents.</div>
+      <div>The satoshi amount of the invoice will reflect the current USD/BTC exchange rate and the balance will be kept at the dollar value.</div>
+      <div style={{ marginTop: '20px' }}></div>
       <div>
         <div>
-          <div> Set the variables:</div>
+          <div style={{ fontWeight: 'bold' }}>Set the variables</div>
           <label>
-          <div>Amount (USD cents):</div>
+            <div>Amount (USD cents):</div>
             <input
               type="number"
               value={amount}
@@ -324,18 +332,19 @@ mutation LnInvoicePaymentSend($input: LnInvoicePaymentInput!) {
           />
         </label>
       </div>
-      <div>The body of the GraphQL query:</div>
+      <div style={{ marginTop: '20px' }}></div>
+      <div style={{ fontWeight: 'bold' }}>The body of the GraphQL request:</div>
       <pre style={{ marginLeft: '10px' }}>{getInvoiceQueryText}</pre>
       <button onClick={fetchInvoiceData}>Create a Stablesats invoice</button>
       {errorMessageFetchInvoice && <div style={{ color: 'red' }}>Error: {errorMessageFetchInvoice}</div>}
       {invoiceData && <div><strong>Response:</strong> <pre style={{ marginLeft: '10px' }}>{JSON.stringify(invoiceData, null, 2)}</pre></div>}
 
       <div style={{ marginTop: '20px', marginBottom: '40px' }}>
-        <h4>cURL command to generate a Stablesats invoice:</h4>
+        <div style={{ fontWeight: 'bold' }}>curl command to generate a Stablesats invoice:</div>
         <pre style={{
           backgroundColor: 'auto',
           padding: '10px',
-          marginLeft: '10px' ,
+          marginLeft: '10px',
           overflowX: 'auto',
           whiteSpace: 'pre-wrap'
         }}>
@@ -345,17 +354,20 @@ mutation LnInvoicePaymentSend($input: LnInvoicePaymentInput!) {
 
       {/* Display for FeeProbe */}
       <h3>Probe invoice fee</h3>
+      <div>Estimate the cost of paying a lightning invoice.</div>
+      <div>Payments to an other Blink user and to nodes with a direct channel are free.</div>
+      <div style={{ marginTop: '20px' }}></div>
       <div>
-        <div> Set the variables:</div>
+        <div style={{ fontWeight: 'bold' }}>Set the variables</div>
         <div>
           <label>
-          <div>Payment Request:</div>
+            <div>Invoice</div>
             <input
               type="text"
               value={paymentRequest}
               onChange={e => setPaymentRequest(e.target.value)}
               style={{ marginLeft: '10px', width: '50%' }}
-              placeholder="Paste an invoice"
+              placeholder="Paste a lightning invoice"
             />
           </label>
         </div>
@@ -370,7 +382,8 @@ mutation LnInvoicePaymentSend($input: LnInvoicePaymentInput!) {
           />
         </label>
       </div>
-      <div>The body of the GraphQL query:</div>
+      <div style={{ marginTop: '20px' }}></div>
+      <div style={{ fontWeight: 'bold' }}>The body of the GraphQL request:</div>
       <pre style={{ marginLeft: '10px' }}>{getFeeProbeQueryText}</pre>
       <button onClick={fetchFeeProbeData}>Probe fee</button>
       {errorMessageFetchFeeProbe && <div style={{ color: 'red' }}>Error: {errorMessageFetchFeeProbe}</div>}
@@ -381,7 +394,7 @@ mutation LnInvoicePaymentSend($input: LnInvoicePaymentInput!) {
         <pre style={{
           backgroundColor: 'auto',
           padding: '10px',
-          marginLeft: '10px' ,
+          marginLeft: '10px',
           overflowX: 'auto',
           whiteSpace: 'pre-wrap'
         }}>
@@ -391,17 +404,19 @@ mutation LnInvoicePaymentSend($input: LnInvoicePaymentInput!) {
 
       {/* Display for invoiceSend */}
       <h3>Pay an invoice</h3>
+      <div>Pay a BOLT11 invoice from your Stablesats balance</div>
+      <div style={{ marginTop: '20px' }}></div>
       <div>
-        <div> Set the variables:</div>
+        <div style={{ fontWeight: 'bold' }}>Set the variables</div>
         <div>
           <label>
-            <div>Payment Request:</div>
+            <div>Invoice</div>
             <input
               type="text"
               value={paymentRequest}
               onChange={e => setPaymentRequest(e.target.value)}
               style={{ marginLeft: '10px', width: '50%' }}
-              placeholder="Paste an invoice"
+              placeholder="Paste a lightning invoice"
             />
           </label>
         </div>
@@ -416,18 +431,19 @@ mutation LnInvoicePaymentSend($input: LnInvoicePaymentInput!) {
           />
         </label>
       </div>
-      <div>The body of the GraphQL query:</div>
+      <div style={{ marginTop: '20px' }}></div>
+      <div style={{ fontWeight: 'bold' }}>The body of the GraphQL request:</div>
       <pre style={{ marginLeft: '10px' }}>{getInvoiceSendQueryText}</pre>
       <button onClick={fetchLnInvoicePaymentData}>Send payment</button>
       {errorMessageLnInvoicePayment && <div style={{ color: 'red' }}>Error: {errorMessageLnInvoicePayment}</div>}
       {lnInvoicePaymentData && <div><strong>Response:</strong> <pre style={{ marginLeft: '10px' }}>{JSON.stringify(lnInvoicePaymentData, null, 2)}</pre></div>}
 
       <div style={{ marginTop: '20px', marginBottom: '40px' }}>
-        <h4>cURL command to pay an invoice:</h4>
+        <div style={{ fontWeight: 'bold' }}>curl command to pay an invoice:</div>
         <pre style={{
           backgroundColor: 'auto',
           padding: '10px',
-          marginLeft: '10px' ,
+          marginLeft: '10px',
           overflowX: 'auto',
           whiteSpace: 'pre-wrap'
         }}>

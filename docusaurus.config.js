@@ -96,7 +96,7 @@ const config = {
             type: 'docSidebar',
             sidebarId: 'projectsSidebar',
             position: 'left',
-            label: 'Projects',
+            label: 'Contribute',
           },
           {
             href: 'https://github.com/GaloyMoney',
@@ -177,6 +177,20 @@ const config = {
     mermaid: true,
   },
   themes: ['@docusaurus/theme-mermaid'],
+
+  plugins: [
+    [
+      '@docusaurus/plugin-client-redirects',
+      {
+        redirects: [
+          {
+            to: '/contribute',
+            from: ['/projects'],
+          },
+        ],
+      },
+    ],
+  ],
 };
 
 module.exports = config;

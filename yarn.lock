@@ -1390,6 +1390,21 @@
     react-helmet-async "*"
     react-loadable "npm:@docusaurus/react-loadable@5.5.2"
 
+"@docusaurus/plugin-client-redirects@^2.4.1":
+  version "2.4.1"
+  resolved "https://registry.yarnpkg.com/@docusaurus/plugin-client-redirects/-/plugin-client-redirects-2.4.1.tgz#a28afcc4a1cb7657168ce37a57efd3194c20a53a"
+  integrity sha512-tp0j16gaLIJ4p+IR0P6KDOFsTOGGMY54MNPnmM61Vaqqt5omLqsuKUO8UlCGU1oW/4EIQOhXYy99XYY5MjE+7A==
+  dependencies:
+    "@docusaurus/core" "2.4.1"
+    "@docusaurus/logger" "2.4.1"
+    "@docusaurus/utils" "2.4.1"
+    "@docusaurus/utils-common" "2.4.1"
+    "@docusaurus/utils-validation" "2.4.1"
+    eta "^2.0.0"
+    fs-extra "^10.1.0"
+    lodash "^4.17.21"
+    tslib "^2.4.0"
+
 "@docusaurus/plugin-content-blog@2.4.1":
   version "2.4.1"
   resolved "https://registry.yarnpkg.com/@docusaurus/plugin-content-blog/-/plugin-content-blog-2.4.1.tgz#c705a8b1a36a34f181dcf43b7770532e4dcdc4a3"
@@ -4808,6 +4823,11 @@ getobject@~1.0.0:
   resolved "https://registry.yarnpkg.com/getobject/-/getobject-1.0.2.tgz#25ec87a50370f6dcc3c6ba7ef43c4c16215c4c89"
   integrity sha512-2zblDBaFcb3rB4rF77XVnuINOE2h2k/OnqXAiy0IrTxUfV1iFp3la33oAQVY9pCpWU268WFYVt2t71hlMuLsOg==
 
+github-buttons@^2.22.0:
+  version "2.27.0"
+  resolved "https://registry.yarnpkg.com/github-buttons/-/github-buttons-2.27.0.tgz#bbebea3d1c4f8c302b7d8432fd25a679242597e2"
+  integrity sha512-PmfRMI2Rttg/2jDfKBeSl621sEznrsKF019SuoLdoNlO7qRUZaOyEI5Li4uW+79pVqnDtKfIEVuHTIJ5lgy64w==
+
 github-slugger@^1.4.0:
   version "1.5.0"
   resolved "https://registry.yarnpkg.com/github-slugger/-/github-slugger-1.5.0.tgz#17891bbc73232051474d68bd867a34625c955f7d"
@@ -7564,6 +7584,13 @@ react-fast-compare@^3.2.0:
   version "3.2.2"
   resolved "https://registry.yarnpkg.com/react-fast-compare/-/react-fast-compare-3.2.2.tgz#929a97a532304ce9fee4bcae44234f1ce2c21d49"
   integrity sha512-nsO+KSNgo1SbJqJEYRE9ERzo7YtYbou/OqjSQKxV7jcKox7+usiUVZOAC+XnDOABXggQTno0Y1CpVnuWEc1boQ==
+
+react-github-btn@^1.4.0:
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/react-github-btn/-/react-github-btn-1.4.0.tgz#92654107e92658e60dd977c7a92b212f806da78d"
+  integrity sha512-lV4FYClAfjWnBfv0iNlJUGhamDgIq6TayD0kPZED6VzHWdpcHmPfsYOZ/CFwLfPv4Zp+F4m8QKTj0oy2HjiGXg==
+  dependencies:
+    github-buttons "^2.22.0"
 
 react-helmet-async@*, react-helmet-async@^1.3.0:
   version "1.3.0"

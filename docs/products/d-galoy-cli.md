@@ -5,6 +5,10 @@ slug: /products/galoy-cli
 ---
 
 # Galoy CLI
+
+<GitHubButton href="https://github.com/GaloyMoney/galoy-cli" data-color-scheme="no-preference: dark; light: light; dark: dark;" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star GaloyMoney/galoy-cli on GitHub">Star</GitHubButton>
+<div style={{ marginBottom: 20 }}></div>
+
 Galoy-CLI is a Command Line Interface (CLI) client for interacting with Galoy Backend. It provides a variety of subcommands to perform different operations, making it convenient for developers and users to interact with the Galoy Backend.
 
 ## Project readme

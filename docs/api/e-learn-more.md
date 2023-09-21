@@ -4,11 +4,6 @@ title: Learn more
 slug: /api/learn-more
 ---
 
-## [Postman collection](https://github.com/GaloyMoney/galoy/tree/main/docs/postman-collection)
-* Download Postman: [www.postman.com](https://www.postman.com/) or use the web version: [web.postman.co](https://web.postman.co/)
-* Download or import the collection: [galoy_graphql_main_api.postman_collection.json](https://dev.galoy.io/galoy_graphql_main_api.postman_collection.json)
-* Get the Staging Environment variables: [galoy-staging.postman_environment.json](https://dev.galoy.io/galoy-staging.postman_environment.json)
-
 ## GraphQL playground
 * Find the staging API endpoint and GraphQL playground at:
 

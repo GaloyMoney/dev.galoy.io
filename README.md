@@ -1,4 +1,4 @@
-# Galoy Developer Documentation 
+# Galoy Developer Documentation
 * This is the source code for the Galoy Developer Documentation website, available at https://dev.galoy.io
 * Built using [Docusaurus 2](https://docusaurus.io/), a modern static website generator.
 * The deployed version is in the `gh-pages` branch.

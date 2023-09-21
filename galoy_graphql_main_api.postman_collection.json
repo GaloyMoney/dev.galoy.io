@@ -2,98 +2,92 @@
 	"info": {
 		"_postman_id": "67b79565-f9ed-4ff7-800c-10eabfd0fc38",
 		"name": "Galoy API",
-		"description": "# Overview\n\nThe API endpoints are\n\nsignet: `https://api.staging.galoy.io/graphql`\n\nmainnet: `https://api.blink.sv/graphql`\n\n# Authentication\n\nTo get a new Authentication Token:\n\n1. Use requestEmailCode to receive an auth code via email\n2. Call emailLogin using the same phone number and auth code\n    \n\nAll other methods require a valid auth token set in the header as a bearer token - `Authorization: Bearer`\n\n# Extra Resources\n\nIf you use Postman, we have a collection you can import to test the API. Download it here: [galoy_graphql_main_api.postman_collection.json](https://dev.galoy.io/galoy_graphql_main_api.postman_collection.json)",
+		"description": "The API endpoints are\n\nsignet: `https://api.staging.galoy.io/graphql`\n\nmainnet: `https://api.blink.sv/graphql`\n\n# Authentication\n\nIf you are new to Blink or the Galoy API start at:\n\n[dev.galoy.io/api](https://dev.galoy.io/api/auth)\n\nTo get a new Authentication Token visit  \n[dev.galoy.io/api/auth](https://dev.galoy.io/api/auth)\n\nor if you already have an email registered with Blink:\n\n1. Use requestEmailCode to receive an auth code via email\n2. Call emailLogin using the same phone number and auth code\n    \n\nAll other methods require a valid auth token set in the header as a bearer token - `Authorization: Bearer`\n\n# Extra Resources\n\nIf you use Postman, we have a collection you can import to test the API.  \nDownload it here: [galoy_graphql_main_api.postman_collection.json](https://dev.galoy.io/galoy_graphql_main_api.postman_collection.json)\n\nFor more info about the API: [dev.galoy.io/api/learn-more](https://dev.galoy.io/api/learn-more)",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "29391384",
 		"_collection_link": "https://www.postman.com/avionics-astronomer-21512623/workspace/galoy-api/collection/29391384-67b79565-f9ed-4ff7-800c-10eabfd0fc38?action=share&source=collection_link&creator=29391384"
 	},
 	"item": [
 		{
-			"name": "REST",
+			"name": "REST auth",
 			"item": [
 				{
-					"name": "login flow",
-					"item": [
-						{
-							"name": "requestEmailCode",
-							"request": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Content-Type",
-										"value": "application/json",
-										"type": "text"
-									},
-									{
-										"key": "Accept",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"email\": \"{{emailAddress}}\"\n}"
-								},
-								"url": {
-									"raw": "{{protocol}}://{{domain}}:{{port}}/auth/email/code",
-									"protocol": "{{protocol}}",
-									"host": [
-										"{{domain}}"
-									],
-									"port": "{{port}}",
-									"path": [
-										"auth",
-										"email",
-										"code"
-									]
-								}
+					"name": "requestEmailCode",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
 							},
-							"response": []
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"{{emailAddress}}\"\n}"
 						},
-						{
-							"name": "emailLogin",
-							"request": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Content-Type",
-										"value": "application/json",
-										"type": "text"
-									},
-									{
-										"key": "Accept",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n        \"code\": \"{{emailCode}}\",\n        \"emailLoginId\": \"{{emailLoginId}}\"\n}"
-								},
-								"url": {
-									"raw": "{{protocol}}://{{domain}}:{{port}}/auth/email/login",
-									"protocol": "{{protocol}}",
-									"host": [
-										"{{domain}}"
-									],
-									"port": "{{port}}",
-									"path": [
-										"auth",
-										"email",
-										"login"
-									]
-								}
-							},
-							"response": []
+						"url": {
+							"raw": "{{protocol}}://{{domain}}:{{port}}/auth/email/code",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{domain}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"auth",
+								"email",
+								"code"
+							]
 						}
-					],
-					"description": "Request used to log in to acquire an authentication token."
+					},
+					"response": []
+				},
+				{
+					"name": "emailLogin",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"code\": \"{{emailCode}}\",\n        \"emailLoginId\": \"{{emailLoginId}}\"\n}"
+						},
+						"url": {
+							"raw": "{{protocol}}://{{domain}}:{{port}}/auth/email/login",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{domain}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"auth",
+								"email",
+								"login"
+							]
+						}
+					},
+					"response": []
 				}
 			],
-			"description": "Requests using the REST interface."
+			"description": "Requests using the REST auth endpoint to obtain an authentication token."
 		},
 		{
-			"name": "GraphQL",
+			"name": "GraphQL requests",
 			"item": [
 				{
 					"name": "notoken",
@@ -126,7 +120,73 @@
 											]
 										}
 									},
-									"response": []
+									"response": [
+										{
+											"name": "prices",
+											"originalRequest": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "graphql",
+													"graphql": {
+														"query": "# Write your query or mutation here\nquery btcPriceList($range: PriceGraphRange!) {\n    btcPriceList(range: $range) {\n    \ttimestamp\n      price {\n        base\n        offset\n        currencyUnit\n        formattedAmount\n      }\n    }\n}\n",
+														"variables": "{\"range\": \"ONE_DAY\"}"
+													}
+												},
+												"url": {
+													"raw": "https://api.blink.sv/graphql",
+													"protocol": "https",
+													"host": [
+														"api",
+														"blink",
+														"sv"
+													],
+													"path": [
+														"graphql"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Date",
+													"value": "Thu, 21 Sep 2023 06:46:42 GMT"
+												},
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												},
+												{
+													"key": "Transfer-Encoding",
+													"value": "chunked"
+												},
+												{
+													"key": "Connection",
+													"value": "keep-alive"
+												},
+												{
+													"key": "vary",
+													"value": "origin"
+												},
+												{
+													"key": "content-encoding",
+													"value": "gzip"
+												},
+												{
+													"key": "access-control-allow-credentials",
+													"value": "true"
+												},
+												{
+													"key": "Strict-Transport-Security",
+													"value": "max-age=15724800; includeSubDomains"
+												}
+											],
+											"cookie": [],
+											"body": "{\n    \"data\": {\n        \"btcPriceList\": [\n            {\n                \"timestamp\": 1695193200,\n                \"price\": {\n                    \"base\": 27085000000,\n                    \"offset\": 4,\n                    \"currencyUnit\": \"USDCENT\",\n                    \"formattedAmount\": \"2708500\"\n                }\n            },\n            {\n                \"timestamp\": 1695196800,\n                \"price\": {\n                    \"base\": 27125000000,\n                    \"offset\": 4,\n                    \"currencyUnit\": \"USDCENT\",\n                    \"formattedAmount\": \"2712500\"\n                }\n            },\n            {\n                \"timestamp\": 1695200400,\n                \"price\": {\n                    \"base\": 27206000000,\n                    \"offset\": 4,\n                    \"currencyUnit\": \"USDCENT\",\n                    \"formattedAmount\": \"2720600\"\n                }\n            },\n            {\n                \"timestamp\": 1695204000,\n                \"price\": {\n                    \"base\": 27078000000,\n                    \"offset\": 4,\n                    \"currencyUnit\": \"USDCENT\",\n                    \"formattedAmount\": \"2707800\"\n                }\n            },\n            {\n                \"timestamp\": 1695207600,\n                \"price\": {\n                    \"base\": 27106000000,\n                    \"offset\": 4,\n                    \"currencyUnit\": \"USDCENT\",\n                    \"formattedAmount\": \"2710600\"\n                }\n            },\n            {\n                \"timestamp\": 1695211200,\n                \"price\": {\n                    \"base\": 27141000000,\n                    \"offset\": 4,\n                    \"currencyUnit\": \"USDCENT\",\n                    \"formattedAmount\": \"2714100\"\n                }\n            },\n            {\n                \"timestamp\": 1695214800,\n                \"price\": {\n                    \"base\": 27094000000,\n                    \"offset\": 4,\n                    \"currencyUnit\": \"USDCENT\",\n                    \"formattedAmount\": \"2709400\"\n                }\n            },\n            {\n                \"timestamp\": 1695218400,\n                \"price\": {\n                    \"base\": 27175000000,\n                    \"offset\": 4,\n                    \"currencyUnit\": \"USDCENT\",\n                    \"formattedAmount\": \"2717500\"\n                }\n            },\n            {\n                \"timestamp\": 1695222000,\n                \"price\": {\n                    \"base\": 27150000000,\n                    \"offset\": 4,\n                    \"currencyUnit\": \"USDCENT\",\n                    \"formattedAmount\": \"2714999.9999999995\"\n                }\n            },\n            {\n                \"timestamp\": 1695225600,\n                \"price\": {\n                    \"base\": 27191000000,\n                    \"offset\": 4,\n                    \"currencyUnit\": \"USDCENT\",\n                    \"formattedAmount\": \"2719100\"\n                }\n            },\n            {\n                \"timestamp\": 1695229200,\n                \"price\": {\n                    \"base\": 27173000000,\n                    \"offset\": 4,\n                    \"currencyUnit\": \"USDCENT\",\n                    \"formattedAmount\": \"2717299.9999999995\"\n                }\n            },\n            {\n                \"timestamp\": 1695232800,\n                \"price\": {\n                    \"base\": 27121000000,\n                    \"offset\": 4,\n                    \"currencyUnit\": \"USDCENT\",\n                    \"formattedAmount\": \"2712099.9999999995\"\n                }\n            },\n            {\n                \"timestamp\": 1695236400,\n                \"price\": {\n                    \"base\": 27170000000,\n                    \"offset\": 4,\n                    \"currencyUnit\": \"USDCENT\",\n                    \"formattedAmount\": \"2717000\"\n                }\n            },\n            {\n                \"timestamp\": 1695240000,\n                \"price\": {\n                    \"base\": 26937000000,\n                    \"offset\": 4,\n                    \"currencyUnit\": \"USDCENT\",\n                    \"formattedAmount\": \"2693700\"\n                }\n            },\n            {\n                \"timestamp\": 1695243600,\n                \"price\": {\n                    \"base\": 27082000000,\n                    \"offset\": 4,\n                    \"currencyUnit\": \"USDCENT\",\n                    \"formattedAmount\": \"2708200\"\n                }\n            },\n            {\n                \"timestamp\": 1695247200,\n                \"price\": {\n                    \"base\": 27117000000,\n                    \"offset\": 4,\n                    \"currencyUnit\": \"USDCENT\",\n                    \"formattedAmount\": \"2711700\"\n                }\n            },\n            {\n                \"timestamp\": 1695250800,\n                \"price\": {\n                    \"base\": 27107000000,\n                    \"offset\": 4,\n                    \"currencyUnit\": \"USDCENT\",\n                    \"formattedAmount\": \"2710700\"\n                }\n            },\n            {\n                \"timestamp\": 1695254400,\n                \"price\": {\n                    \"base\": 27132000000,\n                    \"offset\": 4,\n                    \"currencyUnit\": \"USDCENT\",\n                    \"formattedAmount\": \"2713200.0000000005\"\n                }\n            },\n            {\n                \"timestamp\": 1695258000,\n                \"price\": {\n                    \"base\": 27067000000,\n                    \"offset\": 4,\n                    \"currencyUnit\": \"USDCENT\",\n                    \"formattedAmount\": \"2706699.9999999995\"\n                }\n            },\n            {\n                \"timestamp\": 1695261600,\n                \"price\": {\n                    \"base\": 27053000000,\n                    \"offset\": 4,\n                    \"currencyUnit\": \"USDCENT\",\n                    \"formattedAmount\": \"2705300\"\n                }\n            },\n            {\n                \"timestamp\": 1695265200,\n                \"price\": {\n                    \"base\": 26998000000,\n                    \"offset\": 4,\n                    \"currencyUnit\": \"USDCENT\",\n                    \"formattedAmount\": \"2699800\"\n                }\n            },\n            {\n                \"timestamp\": 1695268800,\n                \"price\": {\n                    \"base\": 27054000000,\n                    \"offset\": 4,\n                    \"currencyUnit\": \"USDCENT\",\n                    \"formattedAmount\": \"2705400\"\n                }\n            },\n            {\n                \"timestamp\": 1695272400,\n                \"price\": {\n                    \"base\": 27115000000,\n                    \"offset\": 4,\n                    \"currencyUnit\": \"USDCENT\",\n                    \"formattedAmount\": \"2711500\"\n                }\n            },\n            {\n                \"timestamp\": 1695276000,\n                \"price\": {\n                    \"base\": 27084000000,\n                    \"offset\": 4,\n                    \"currencyUnit\": \"USDCENT\",\n                    \"formattedAmount\": \"2708400\"\n                }\n            },\n            {\n                \"timestamp\": 1695278802,\n                \"price\": {\n                    \"base\": 27051500000,\n                    \"offset\": 4,\n                    \"currencyUnit\": \"USDCENT\",\n                    \"formattedAmount\": \"2705150\"\n                }\n            }\n        ]\n    }\n}"
+										}
+									]
 								},
 								{
 									"name": "lnInvoicePaymentStatus",
@@ -152,7 +212,72 @@
 											]
 										}
 									},
-									"response": []
+									"response": [
+										{
+											"name": "lnInvoicePaymentStatus",
+											"originalRequest": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "graphql",
+													"graphql": {
+														"query": "query LnInvoicePaymentStatus($input: LnInvoicePaymentStatusInput!) {\n  lnInvoicePaymentStatus(input: $input) {\n    status\n  }\n}\n",
+														"variables": "{\n    \"input\": {\n        \"paymentRequest\": \"lntbs13370n1pjsh6tqpp5ee5gppef94555v8473gwra882vxekq95ed3vy6gey9serfvwvshqdp82pshjgr5dusyymrfde4jq4mpd3kx2apq24ek2uscqzpuxqyz5vqsp5wglzg59f3p44ekzumku62xrxyef0k5hz7qsy0sgtth6znzycmuzs9qyyssqxa23pcjdwgcflvzn07js8tdry7d3t8z5jy9nxwutfunu99v4cg3sllmcu996f68w2cvma4zhlsaeca6s8n3e60ca5w0ppd3mszhztysq32jxqx\"\n    }\n}"
+													}
+												},
+												"url": {
+													"raw": "{{protocol}}://{{domain}}:{{port}}/graphql",
+													"protocol": "{{protocol}}",
+													"host": [
+														"{{domain}}"
+													],
+													"port": "{{port}}",
+													"path": [
+														"graphql"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Date",
+													"value": "Thu, 21 Sep 2023 06:58:29 GMT"
+												},
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												},
+												{
+													"key": "Transfer-Encoding",
+													"value": "chunked"
+												},
+												{
+													"key": "Connection",
+													"value": "keep-alive"
+												},
+												{
+													"key": "vary",
+													"value": "origin"
+												},
+												{
+													"key": "content-encoding",
+													"value": "gzip"
+												},
+												{
+													"key": "access-control-allow-credentials",
+													"value": "true"
+												},
+												{
+													"key": "Strict-Transport-Security",
+													"value": "max-age=15724800; includeSubDomains"
+												}
+											],
+											"cookie": [],
+											"body": "{\n    \"data\": {\n        \"lnInvoicePaymentStatus\": {\n            \"status\": \"PENDING\"\n        }\n    }\n}"
+										}
+									]
 								},
 								{
 									"name": "mapMarkers",
@@ -178,7 +303,72 @@
 											]
 										}
 									},
-									"response": []
+									"response": [
+										{
+											"name": "mapMarkers",
+											"originalRequest": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "graphql",
+													"graphql": {
+														"query": "query businessMapMarkers {\n  businessMapMarkers {\n    username\n    mapInfo {\n      title\n      coordinates {\n        latitude\n        longitude\n      }\n    }\n  }\n}",
+														"variables": "{\"range\": \"ONE_DAY\"}"
+													}
+												},
+												"url": {
+													"raw": "{{protocol}}://{{domain}}:{{port}}/graphql",
+													"protocol": "{{protocol}}",
+													"host": [
+														"{{domain}}"
+													],
+													"port": "{{port}}",
+													"path": [
+														"graphql"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Date",
+													"value": "Thu, 21 Sep 2023 06:59:05 GMT"
+												},
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												},
+												{
+													"key": "Transfer-Encoding",
+													"value": "chunked"
+												},
+												{
+													"key": "Connection",
+													"value": "keep-alive"
+												},
+												{
+													"key": "vary",
+													"value": "origin"
+												},
+												{
+													"key": "content-encoding",
+													"value": "gzip"
+												},
+												{
+													"key": "access-control-allow-credentials",
+													"value": "true"
+												},
+												{
+													"key": "Strict-Transport-Security",
+													"value": "max-age=15724800; includeSubDomains"
+												}
+											],
+											"cookie": [],
+											"body": "{\n    \"data\": {\n        \"businessMapMarkers\": [\n            {\n                \"username\": \"atlantis\",\n                \"mapInfo\": {\n                    \"title\": \"atlantis\",\n                    \"coordinates\": {\n                        \"latitude\": 32.375322,\n                        \"longitude\": -40.661454\n                    }\n                }\n            }\n        ]\n    }\n}"
+										}
+									]
 								},
 								{
 									"name": "mobileVersions",
@@ -225,7 +415,72 @@
 											]
 										}
 									},
-									"response": []
+									"response": [
+										{
+											"name": "mobileVersions",
+											"originalRequest": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "graphql",
+													"graphql": {
+														"query": "query mobileVersions {\n    mobileVersions {\n        platform\n        currentSupported\n        minSupported\n    }\n}",
+														"variables": "{}"
+													}
+												},
+												"url": {
+													"raw": "{{protocol}}://{{domain}}:{{port}}/graphql",
+													"protocol": "{{protocol}}",
+													"host": [
+														"{{domain}}"
+													],
+													"port": "{{port}}",
+													"path": [
+														"graphql"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Date",
+													"value": "Thu, 21 Sep 2023 06:59:34 GMT"
+												},
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												},
+												{
+													"key": "Transfer-Encoding",
+													"value": "chunked"
+												},
+												{
+													"key": "Connection",
+													"value": "keep-alive"
+												},
+												{
+													"key": "vary",
+													"value": "origin"
+												},
+												{
+													"key": "content-encoding",
+													"value": "gzip"
+												},
+												{
+													"key": "access-control-allow-credentials",
+													"value": "true"
+												},
+												{
+													"key": "Strict-Transport-Security",
+													"value": "max-age=15724800; includeSubDomains"
+												}
+											],
+											"cookie": [],
+											"body": "{\n    \"data\": {\n        \"mobileVersions\": [\n            {\n                \"platform\": \"android\",\n                \"currentSupported\": 578,\n                \"minSupported\": 362\n            },\n            {\n                \"platform\": \"ios\",\n                \"currentSupported\": 570,\n                \"minSupported\": 362\n            }\n        ]\n    }\n}"
+										}
+									]
 								},
 								{
 									"name": "nodesIds",
@@ -270,7 +525,72 @@
 											]
 										}
 									},
-									"response": []
+									"response": [
+										{
+											"name": "nodesIds",
+											"originalRequest": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "graphql",
+													"graphql": {
+														"query": "query globals {\n    globals {\n        nodesIds\n    }\n}",
+														"variables": "{}"
+													}
+												},
+												"url": {
+													"raw": "{{protocol}}://{{domain}}:{{port}}/graphql",
+													"protocol": "{{protocol}}",
+													"host": [
+														"{{domain}}"
+													],
+													"port": "{{port}}",
+													"path": [
+														"graphql"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Date",
+													"value": "Thu, 21 Sep 2023 06:59:50 GMT"
+												},
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												},
+												{
+													"key": "Transfer-Encoding",
+													"value": "chunked"
+												},
+												{
+													"key": "Connection",
+													"value": "keep-alive"
+												},
+												{
+													"key": "vary",
+													"value": "origin"
+												},
+												{
+													"key": "content-encoding",
+													"value": "gzip"
+												},
+												{
+													"key": "access-control-allow-credentials",
+													"value": "true"
+												},
+												{
+													"key": "Strict-Transport-Security",
+													"value": "max-age=15724800; includeSubDomains"
+												}
+											],
+											"cookie": [],
+											"body": "{\n    \"data\": {\n        \"globals\": {\n            \"nodesIds\": [\n                \"03bb03bb6e389355834c9fc7dfeb849dab17d9940d955f6dba0c27e84c88ca4ab8\",\n                \"024e679c1a77143029b806f396f935fa6cd0744970f412667adfc75edbbab54d7a\"\n            ]\n        }\n    }\n}"
+										}
+									]
 								},
 								{
 									"name": "earnList",
@@ -296,7 +616,72 @@
 											]
 										}
 									},
-									"response": []
+									"response": [
+										{
+											"name": "earnList",
+											"originalRequest": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "graphql",
+													"graphql": {
+														"query": "query quizQuestions {\n    quizQuestions {\n        id\n        earnAmount\n    }\n}",
+														"variables": "{}"
+													}
+												},
+												"url": {
+													"raw": "{{protocol}}://{{domain}}:{{port}}/graphql",
+													"protocol": "{{protocol}}",
+													"host": [
+														"{{domain}}"
+													],
+													"port": "{{port}}",
+													"path": [
+														"graphql"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Date",
+													"value": "Thu, 21 Sep 2023 07:00:06 GMT"
+												},
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												},
+												{
+													"key": "Transfer-Encoding",
+													"value": "chunked"
+												},
+												{
+													"key": "Connection",
+													"value": "keep-alive"
+												},
+												{
+													"key": "vary",
+													"value": "origin"
+												},
+												{
+													"key": "content-encoding",
+													"value": "gzip"
+												},
+												{
+													"key": "access-control-allow-credentials",
+													"value": "true"
+												},
+												{
+													"key": "Strict-Transport-Security",
+													"value": "max-age=15724800; includeSubDomains"
+												}
+											],
+											"cookie": [],
+											"body": "{\n    \"data\": {\n        \"quizQuestions\": [\n            {\n                \"id\": \"walletDownloaded\",\n                \"earnAmount\": 1\n            },\n            {\n                \"id\": \"walletActivated\",\n                \"earnAmount\": 1\n            },\n            {\n                \"id\": \"whatIsBitcoin\",\n                \"earnAmount\": 1\n            },\n            {\n                \"id\": \"sat\",\n                \"earnAmount\": 2\n            },\n            {\n                \"id\": \"whereBitcoinExist\",\n                \"earnAmount\": 3\n            },\n            {\n                \"id\": \"whoControlsBitcoin\",\n                \"earnAmount\": 3\n            },\n            {\n                \"id\": \"copyBitcoin\",\n                \"earnAmount\": 3\n            },\n            {\n                \"id\": \"moneyImportantGovernement\",\n                \"earnAmount\": 4\n            },\n            {\n                \"id\": \"moneyIsImportant\",\n                \"earnAmount\": 4\n            },\n            {\n                \"id\": \"whyStonesShellGold\",\n                \"earnAmount\": 4\n            },\n            {\n                \"id\": \"moneyEvolution\",\n                \"earnAmount\": 4\n            },\n            {\n                \"id\": \"coincidenceOfWants\",\n                \"earnAmount\": 4\n            },\n            {\n                \"id\": \"moneySocialAggrement\",\n                \"earnAmount\": 4\n            },\n            {\n                \"id\": \"WhatIsFiat\",\n                \"earnAmount\": 5\n            },\n            {\n                \"id\": \"whyCareAboutFiatMoney\",\n                \"earnAmount\": 5\n            },\n            {\n                \"id\": \"GovernementCanPrintMoney\",\n                \"earnAmount\": 5\n            },\n            {\n                \"id\": \"FiatLosesValueOverTime\",\n                \"earnAmount\": 5\n            },\n            {\n                \"id\": \"OtherIssues\",\n                \"earnAmount\": 5\n            },\n            {\n                \"id\": \"LimitedSupply\",\n                \"earnAmount\": 6\n            },\n            {\n                \"id\": \"Decentralized\",\n                \"earnAmount\": 6\n            },\n            {\n                \"id\": \"NoCounterfeitMoney\",\n                \"earnAmount\": 6\n            },\n            {\n                \"id\": \"HighlyDivisible\",\n                \"earnAmount\": 6\n            },\n            {\n                \"id\": \"securePartOne\",\n                \"earnAmount\": 6\n            },\n            {\n                \"id\": \"securePartTwo\",\n                \"earnAmount\": 6\n            }\n        ]\n    }\n}"
+										}
+									]
 								},
 								{
 									"name": "usernameExists",
@@ -515,53 +900,11 @@
 										}
 									},
 									"response": []
-								},
-								{
-									"name": "addPublicInvoice",
-									"event": [
-										{
-											"listen": "test",
-											"script": {
-												"exec": [
-													"pm.test(\"invoice starts with lnbcrt\", function () {",
-													"    var jsonData = pm.response.json();",
-													"    pm.expect(jsonData.data.publicInvoice.addInvoice.slice(0,6)).to.be('lnbcrt');",
-													"});",
-													"",
-													""
-												],
-												"type": "text/javascript"
-											}
-										}
-									],
-									"request": {
-										"method": "POST",
-										"header": [],
-										"body": {
-											"mode": "graphql",
-											"graphql": {
-												"query": "mutation publicInvoice ($username: String) {\n    publicInvoice (username: $username) {\n        addInvoice\n    }\n}",
-												"variables": "{\n  \"username\": \"xyz\"\n}"
-											}
-										},
-										"url": {
-											"raw": "{{protocol}}://{{domain}}:{{port}}/graphql",
-											"protocol": "{{protocol}}",
-											"host": [
-												"{{domain}}"
-											],
-											"port": "{{port}}",
-											"path": [
-												"graphql"
-											]
-										}
-									},
-									"response": []
 								}
 							]
 						}
 					],
-					"description": "These requests require no authorization."
+					"description": "These requests require no authentication."
 				},
 				{
 					"name": "token",
@@ -2832,7 +3175,7 @@
 							]
 						}
 					],
-					"description": "These requests require a valid auth token set in the header as a bearer token.",
+					"description": "These requests require a valid auth token to be set in the header as a bearer token.",
 					"auth": {
 						"type": "bearer",
 						"bearer": [
@@ -2865,7 +3208,7 @@
 					]
 				}
 			],
-			"description": "GraphQL requests"
+			"description": "GraphQL requests with or without authentication."
 		}
 	],
 	"event": [

@@ -16,19 +16,21 @@ The Galoy core banking platform includes the parts necessary to launch a communi
 
 ### Backend
 
-* **[Galoy backend](/products/galoy-backend)** – interacts with the bitcoin and accounting layers to enable sending, receiving and holding balances.
+* **[Galoy Core](/products/galoy-core)** – interacts with the bitcoin and accounting layers to enable sending, receiving and holding balances.
 Check the [API section ](/api) for an interactive tutorial to get started with our hosted instance.
 * **[Stablesats](/products/stablesats)** – service for implementing fiat hedging strategies via supported exchanges; enables the provision of synthetic USD to provide dollar-like stability without stablecoins.
 * **[Bria](/products/bria)** - a service for transaction batching and onchain liquidity management.
-* **[Galoy CLI](/products/galoy-cli)** - a Command Line Interface (CLI) client for interacting with Galoy Backend.
+* **[Galoy CLI](/products/galoy-cli)** - a Command Line Interface (CLI) client for interacting with Galoy Core.
 
-### End-user and merchant experiences
+### Apps
+
+#### End-user and merchant experiences
 
 * **[Mobile Wallet](https://github.com/GaloyMoney/galoy-mobile)** – simple end user experience enables send/receive onchain and Lightning. Mobile wallet includes educational onboarding quiz & merchant map.
 * **[Galoy Pay](https://github.com/GaloyMoney/galoy-pay)** – web application end users can share online or display in person to receive payments to their account.
 * **[Web Wallet](https://github.com/GaloyMoney/web-wallet)** – web application for sending and receiving bitcoin over onchain, lightning and intraledger. It can be customized and used by any community or organization.
 
-### Administrator experiences
+#### Administrator experiences
 
 * **Dashboard** – enables monitoring usage and performance of the instance
 * **Admin panel** – web application which lets a support team manage users and transactions on their galoy instance.

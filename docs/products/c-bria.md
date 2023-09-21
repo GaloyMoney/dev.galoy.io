@@ -4,7 +4,13 @@ title: Bria
 slug: /products/bria
 ---
 
+import GitHubButton from 'react-github-btn'
+
 # Bria
+
+<GitHubButton href="https://github.com/GaloyMoney/bria" data-color-scheme="no-preference: dark; light: light; dark: dark;" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star GaloyMoney/bria on GitHub">Star</GitHubButton>
+<div style={{ marginBottom: 20 }}></div>
+
 Bria is a service for transaction batching and onchain liquidity management.
 
 ## Project readme

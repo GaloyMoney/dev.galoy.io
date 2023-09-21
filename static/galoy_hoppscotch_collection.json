@@ -1,0 +1,36 @@
+[
+  {
+    "v": 1,
+    "name": "Galoy API",
+    "folders": [
+      {
+        "v": 1,
+        "name": "token",
+        "folders": [
+          {
+            "v": 1,
+            "name": "queries",
+            "folders": [],
+            "requests": [
+              {
+                "v": 2,
+                "name": "LnInvoicePaymentStatus",
+                "url": "https://api.staging.galoy.io/graphql",
+                "query": "query LnInvoicePaymentStatus($input: LnInvoicePaymentStatusInput!) {\n  lnInvoicePaymentStatus(input: $input) {\n    status\n    errors {\n        message\n        path\n        code\n     }\n  }\n}",
+                "headers": [],
+                "variables": "{\n  \"input\": {\n    \"paymentRequest\": \"lntbs100n1pjsngnppp5kevmz5ekr3ztc4z9pksv8pczf38nw5spmr2rpgy29k7lymfcy36qdqqcqzzsxqyz5vqsp53dhc037m3mtweryje2fkfs38xlg4q8xyzlumq0l4rsm7etr8ux8q9qyyssq6ytuga7l5r8dn0ezplwmdcqal57llxpvurprxenm9pfrfuqld6rzwr9fxc5z9l9a97c4z7ughg6rwf8v8dhnadefeqhkzk8u3cztnhgq53g7je\"\n  }\n}",
+                "auth": {
+                  "authActive": true,
+                  "token": "ory_st_eN9GPXMBn4EAvQW9W3gOxnSm4w3S5enE",
+                  "authType": "bearer"
+                }
+              }
+            ]
+          }
+        ],
+        "requests": []
+      }
+    ],
+    "requests": []
+  }
+]

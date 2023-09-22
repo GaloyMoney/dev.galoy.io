@@ -66,7 +66,7 @@ const config = {
     ({
       // Replace with your project's social card
       //image: 'img/docusaurus-social-card.jpg',
-      image: 'images/galoy-logo-blue.svg',
+      image: 'images/g-logo.jpg',
       navbar: {
         title: 'Developer Documentation',
         logo: {
@@ -160,7 +160,7 @@ const config = {
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} Galoy Inc. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} Galoy Inc.`,
       },
       colorMode: {
         defaultMode: 'dark',

@@ -37,7 +37,7 @@ Check the [API section ](/api) for an interactive tutorial to get started with o
 
 ## Getting started
 
-* [Hosted API](/api)
+* [Hosted API](https://dev.blink.sv/api)
 * [Deployment](/deployment/)
 
 ## API Reference

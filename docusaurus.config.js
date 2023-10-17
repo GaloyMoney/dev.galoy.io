@@ -80,12 +80,6 @@ const config = {
         items: [
           {
             type: 'docSidebar',
-            sidebarId: 'apiSidebar',
-            position: 'left',
-            label: 'API',
-          },
-          {
-            type: 'docSidebar',
             sidebarId: 'productsSidebar',
             position: 'left',
             label: 'Products',
@@ -115,10 +109,6 @@ const config = {
           {
             title: 'Docs',
             items: [
-              {
-                label: 'API',
-                to: '/api',
-              },
               {
                 label: 'Products',
                 to: '/products',
@@ -190,6 +180,10 @@ const config = {
           {
             to: '/contribute',
             from: ['/projects'],
+          },
+          {
+            to: '/products/api',
+            from: ['/api'],
           },
         ],
       },

@@ -1,0 +1,4 @@
+[default.extend-words]
+# don't correct these false positives
+ags = "ags"
+aray = "aray"

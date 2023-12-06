@@ -71,5 +71,6 @@ jobs:
         git config --local user.name 'github-actions[bot]'
         git config --local user.email 'github-actions[bot]@users.noreply.github.com'
         git add .
-        git commit -m "docs: admin api reference update to galoy commit ${{ env.CURRENT_COMMIT_HASH }}"
+        short_commit_hash=$(echo ${{ env.CURRENT_COMMIT_HASH }} | cut -c 1-7)
+        git commit -m "docs: admin api reference update to galoy commit $short_commit_hash"
         git push origin main

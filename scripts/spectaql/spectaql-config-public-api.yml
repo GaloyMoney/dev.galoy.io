@@ -3,7 +3,7 @@ spectaql:
   faviconFile: ./static/images/favicon.ico
 
 introspection:
-  schemaFile: ./src/graphql/public/schema.graphql
+  schemaFile: ./core/api/src/graphql/public/schema.graphql
 
 info:
   title: GraphQL API Reference

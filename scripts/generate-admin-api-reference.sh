@@ -15,14 +15,9 @@ if [ ! -d "galoy" ]; then
 fi
 cd galoy || exit 1
 
-# build public api reference
-npx spectaql ./../../scripts/spectaql/spectaql-config-public-api.yml \
-  -t ./../../static -f public-api-reference.html || exit 1
-
 # build admin api reference
 npx spectaql ./../../scripts/spectaql/spectaql-config-admin-api.yml \
   -t ./../../static -f admin-api-reference.html || exit 1
 
 # set dark mode
-sed -i 's/spectaql.min.css/spectaql.dark.css/' ./../../static/public-api-reference.html
 sed -i 's/spectaql.min.css/spectaql.dark.css/' ./../../static/admin-api-reference.html

@@ -1,0 +1,75 @@
+# update-admin-api-reference.yml
+name: Update Admin API Reference
+
+on:
+  schedule:
+    # Run at seven every Monday
+    - cron: '0 7 * * 1'
+  workflow_dispatch: # Manual trigger
+
+jobs:
+  update-admin-api-reference:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout GaloyMoney/galoy repo
+      uses: actions/checkout@v3
+      with:
+        repository: 'GaloyMoney/galoy'
+        path: 'galoy'
+        fetch-depth: 0
+
+    - name: Get current commit hash
+      run: echo "CURRENT_COMMIT_HASH=$(git -C galoy rev-parse HEAD)" >> $GITHUB_ENV
+
+    - name: Hash current schema.graphql
+      run: |
+        echo "CURRENT_HASH=$(sha256sum galoy/core/api/src/graphql/admin/schema.graphql | awk '{ print $1 }')" >> $GITHUB_ENV
+
+    - name: Checkout GaloyMoney/galoy to a week ago
+      run: |
+        week_old_commit=$(git -C galoy rev-list -n 1 --before='1 week ago' main)
+        echo "Check out to the commit: $week_old_commit"
+        git -C galoy checkout $week_old_commit
+
+    - name: Hash the week old schema.graphql
+      run: echo "WEEK_OLD_HASH=$(sha256sum galoy/core/api/src/graphql/admin/schema.graphql | awk '{ print $1 }')" >> $GITHUB_ENV
+
+    - name: Check if hashes are the same
+      if: env.CURRENT_HASH == env.WEEK_OLD_HASH
+      run: |
+        echo "There were no changes to the admin API schema during the last week."
+
+    - name: Checkout dev.galoy.io repo
+      if: env.CURRENT_HASH != env.WEEK_OLD_HASH
+      uses: actions/checkout@v3
+      with:
+        repository: 'GaloyMoney/dev.galoy.io'
+        path: 'dev.galoy.io'
+        ref: 'main'
+        fetch-depth: 0
+
+    - name: Build and update the API reference
+      if: env.CURRENT_HASH != env.WEEK_OLD_HASH
+      run: |
+        # deps
+        yarn add spectaql --non-interactive
+
+        # checkout galoy
+        cd galoy
+        git checkout ${{ env.CURRENT_COMMIT_HASH }}
+
+        # build admin api reference
+        npx spectaql ../dev.galoy.io/scripts/spectaql/spectaql-config-admin-api.yml \
+          -t ../dev.galoy.io/static -f admin-api-reference.html
+
+        # set dark mode
+        sed -i 's/spectaql.min.css/spectaql.dark.css/' ../dev.galoy.io/static/admin-api-reference.html
+
+        # commit and push changes
+        cd ../dev.galoy.io
+        git config --local user.name 'github-actions[bot]'
+        git config --local user.email 'github-actions[bot]@users.noreply.github.com'
+        git add .
+        git commit -m "docs: admin api reference update to galoy commit ${{ env.CURRENT_COMMIT_HASH }}"
+        git push origin main

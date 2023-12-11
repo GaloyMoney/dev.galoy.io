@@ -1,6 +1,10 @@
 name: Deploy to GitHub Pages
 
 on:
+  schedule:
+    # Run at eight every Monday
+    - cron: '0 8 * * 1'
+  workflow_dispatch: # Manual trigger
   push:
     branches:
       - main

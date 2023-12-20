@@ -13,7 +13,6 @@ More info on [testing on signet](/deployment/signet)
 The endpoints are public and can be used to test the new functions or integrations before using real sats:
 
 * API endpoint: [api.staging.galoy.io/graphql](https://api.staging.galoy.io/graphql)
-* Web wallet: [wallet.staging.galoy.io](https://wallet.staging.galoy.io/)
 * Galoy Pay endpoint with the POS app: [pay.staging.galoy.io](https://pay.staging.galoy.io/)
 * POS app of the username `test`: [pay.staging.galoy.io/test](https://pay.staging.galoy.io/merchant/test)
 * Printable paycode of the username `test`: [pay.staging.galoy.io/test/print](https://pay.staging.galoy.io/test/print?memo=from%20dev.galoy.io)

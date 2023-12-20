@@ -4,7 +4,6 @@
 
 * [Backend Servers](/deployment/backend-servers)
 * [Mobile Wallet](/deployment/mobile-wallet)
-* [Web Wallet](/deployment/web-wallet)
 * [Galoy Pay](/deployment/galoy-pay)
 * [Admin Panel](/deployment/admin-panel)
 

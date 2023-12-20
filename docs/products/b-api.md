@@ -15,16 +15,10 @@ There you can find:
 
 ## Local `dev` API access
 For the local `dev` environment
-* clone the [galoy repo](https://github.com/GaloyMoney/galoy) and install the dependencies as in [github.com/GaloyMoney/galoy/blob/main/DEV.md#setup](https://github.com/GaloyMoney/galoy/blob/main/DEV.md#setup)
-* use the following commands to start hosting the API locally:
-  ```
-  $ TEST="01|02" make reset-integration
-  $ make start-main
-  ```
-* You can then use the mutations in the `login flow` folder to login as one of the test accounts defined in the `default.yaml` file (one is already auto-populated).
+* clone the galoy repo: https://github.com/GaloyMoney/galoy
+* follow the steps in the [readme](https://github.com/GaloyMoney/galoy/tree/main?tab=readme-ov-file#local-development-setup) start hosting the API locally
 
 Find more details about hosting the Galoy satck yourself in the [deployment section](/deployment/).
-
 
 ## Admin API
 

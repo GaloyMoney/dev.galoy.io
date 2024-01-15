@@ -33,17 +33,20 @@ Everytime the dependencies are re-started the environment must be reloaded via `
 
 ### Development
 
-To start the GraphQL server and its dependencies:
+Local deployment exposing the API including websocket subscriptions.
 
-```
-$ make start
-```
+1. Run:
+    ```
+    buck2 run //dev:up
+    ```
+1. Wait for api server to finish coming up, visible via the Tild dashboard at http://localhost:10350/
+1. Go to https://studio.apollographql.com/sandbox/explorer?overlay=connection-settings
+1. Input the following strings for Endpoint and Subscriptions
+    * Endpoint: http://localhost:4455/graphql
+    * Subscriptions: ws://localhost:44455/graphql
+  ![Apollo Studio configuration](../images/backend_servers_apollo_config.png)
 
-Alernatively, to start the GraphQL server in watch mode (with automatic restart on changes):
-
-```
-$ make watch
-```
+For a fork, you can still use that same apollo studio link and configure the regular graphql endpoint and subscriptions endpoint separately.
 
 #### Using GraphiQL
 

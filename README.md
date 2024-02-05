@@ -49,3 +49,17 @@ As a repo admin you can also deploy manually:
   GIT_USER=<Your GitHub username> yarn deploy
   ```
   If you are using GitHub pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.
+
+---
+Account, User, Wallets, and Transaction Relationship Flow
+---
+
+
+```mermaid
+flowchart TD
+    B[Account] --> A0{Identity.id == kratosId}
+    B[Account] --> A1[User.id == kratosId]
+    C[Wallet BTC] --> B
+    D[Wallet USD] --> B
+    E[TX] --> C
+```

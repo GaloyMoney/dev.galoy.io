@@ -56,3 +56,14 @@ If you need to run Prettier through the command line, you can use:
 ```
 $ yarn prettier -w .
 ```
+
+You can then login with the following credentials to get an account: `phone: +16505554328`, `code: 000000`
+
+In the dashboard where you can create an API key
+
+### Using GraphQL Playground
+
+You can load the Apollo GraphQL Playground, a web GUI for GraphQL. Start the server and open the following url:
+
+- http://localhost:4455/admin/graphql (admin API, proxied thru oathkeeper)
+- http://localhost:4455/graphql (end user API, proxied thru oathkeeper)

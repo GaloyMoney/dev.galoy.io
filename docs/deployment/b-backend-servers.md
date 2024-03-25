@@ -6,149 +6,30 @@ slug: /deployment/backend-servers
 
 # Backend Servers
 
-We use [direnv](https://direnv.net/) to load environment variables needed for running the integration tests. Don't forget to add the [direnv hook](https://direnv.net/docs/hook.html) to your `shell.rc` file.
+## Run locally
 
-Clone the repo and install dependencies:
+Find how to run the backend servers locally in the [project readme](https://github.com/GaloyMoney/galoy#local-development-setup)
 
-```
-$ git clone git@github.com:GaloyMoney/galoy.git
-$ cd galoy
-$ direnv allow
-direnv reload
-direnv: direnv: loading ~/projects/GaloyMoney/galoy/.envrc
-(...)
-$ yarn install
-```
+## How to expose the API including websocket subscriptions
 
-#### Runtime dependencies
+1. Run:
+    ```
+    buck2 run //dev:up
+    ```
+1. Wait for api server to finish coming up, visible via the Tild dashboard at http://localhost:10350/
+1. Go to https://studio.apollographql.com/sandbox/explorer?overlay=connection-settings
+1. Input the following strings for Endpoint and Subscriptions
+    * Endpoint: http://localhost:4455/graphql
+    * Subscriptions: ws://localhost:44455/graphql
+  ![Apollo Studio configuration](../images/backend_servers_apollo_config.png)
 
-```
-$ make start-deps
+For a fork, you can still use that same apollo studio link and configure the regular graphql endpoint and subscriptions endpoint separately.
 
-# or
-$ make reset-deps
-```
+## How to run integration tests with Galoy as a dependency
 
-Everytime the dependencies are re-started the environment must be reloaded via `direnv reload`. When using the [make command](https://github.com/GaloyMoney/galoy/blob/Makefile) this will happen automatically.
+Take a look at the [Quickstart](https://github.com/GaloyMoney/galoy/tree/main/quickstart) if you want to take it for a spin.
 
-### Development
-
-To start the GraphQL server and its dependencies:
-
-```
-$ make start
-```
-
-Alernatively, to start the GraphQL server in watch mode (with automatic restart on changes):
-
-```
-$ make watch
-```
-
-#### Using GraphiQL
-
-You can load GraphiQL, a web GUI for GraphQL. Start the server and open the following url:
-
-* [http://localhost:4001/graphql](http://localhost:4001/graphql) (admin API)
-* [http://localhost:4002/graphql](http://localhost:4002/graphql) (end user API)
-
-#### Docker compose
-
-The docker compose file is split into `docker-compose.yml` and `docker-compose.override.yml`. By default the override file is merged in and exposes ports on your host machine to various containers. During CI testing we ignore the override file in order to contain tests within a docker network. This is achieved by specifically calling out the docker compose file to use ex: `docker compose -f docker-compose.yml ...`.
-
-### Testing
-
-To run the test suite you can run:
-
-```
-$ make test
-```
-
-To execute the test suite [runtime dependencies](https://github.com/GaloyMoney/galoy/blob/main/DEV.md#runtime-dependencies) must be running.
-
-#### Run unit tests
-
-```
-$ yarn test:unit
-# or
-$ make unit
-```
-
-Runtime dependencies are not required
-
-#### Run integration tests
-
-To execute the integration tests [runtime dependencies](https://github.com/GaloyMoney/galoy/blob/main/DEV.md#runtime-dependencies) must be running.
-
-```
-$ yarn test:integration
-# or
-$ make integration
-```
-
-The integration tests are _not_ fully idempotent (yet) so currently to re-run the tests, run:
-
-```
-$ make reset-integration
-```
-
-#### Run e2e tests
-
-To execute the e2e tests [runtime dependencies](https://github.com/GaloyMoney/galoy/blob/main/DEV.md#runtime-dependencies) must be running.
-
-```
-$ yarn test:e2e
-# or
-$ make e2e
-```
-
-The e2e tests should be able to run multiple times without resetting dependencies, however they are _not_ fully idempotent so if you are having issues you can reset the dependencies and run again with:
-
-```
-$ make reset-e2e
-```
-
-#### Run specific test file
-
-To execute a specific test file:
-
-**Unit**
-
-Example to run `test/unit/config.spec.ts`
-
-```
-$ TEST=utils yarn test:unit
-# or
-$ TEST=utils make unit
-```
-
-where `utils` is the name of the file `utils.spec.ts`
-
-**Integration**
-
-Example to run `test/integration/01-setup/01-connection.spec.ts`
-
-```
-$ TEST=01-connection yarn test:integration
-# or
-$ TEST=01-connection make integration
-```
-
-if within a specific test suite you want to run/debug only a describe or it(test) block please use:
-
-* [describe.only](https://jestjs.io/docs/api#describeonlyname-fn): just for debug purposes
-* [it.only](https://jestjs.io/docs/api#testonlyname-fn-timeout): just for debug purposes
-* [it.skip](https://jestjs.io/docs/api#testskipname-fn): use it when a test is temporarily broken. Please don't commit commented test cases
-
-#### Testing migrations
-
-Migrations are stored in the `src/migrations` folder. When developing migrations the best way to test them on a clean database is:
-
-```
-make test-migrate
-```
-
-#### Known issues
+## Known issues
 
 *   **Test suite timeouts**: increase jest timeout value. Example:
 
@@ -165,18 +46,10 @@ make test-migrate
       debuglevel=critical
       ```
 
-### Running checks
+
+## Running checks
 
 It's recommended that you use plugins in your editor to run ESLint checks and perform Prettier formatting on-save.
-
-To run all the checks required for the code to pass GitHub actions check:
-
-```
-$ make check-code
-(...)
-$ echo $?
-0
-```
 
 If you need to run Prettier through the command line, you can use:
 

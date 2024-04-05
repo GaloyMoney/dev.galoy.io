@@ -165,6 +165,12 @@ const config = {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
       },
+      algolia: {
+        appId: '9XPGCL3JOD',
+        apiKey: '689e7400c3044e24b976ec47ed9379a8',
+        indexName: 'galoy',
+        contextualSearch: false, // only false works
+      }
     }),
 
   markdown: {

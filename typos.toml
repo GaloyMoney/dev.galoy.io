@@ -2,3 +2,7 @@
 # don't correct these false positives
 ags = "ags"
 aray = "aray"
+
+[files]
+# skip these files
+extend-exclude = ["*.json"]

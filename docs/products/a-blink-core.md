@@ -37,7 +37,7 @@ For the local `dev` environment
 * clone the galoy repo: https://github.com/GaloyMoney/blink
 * follow the steps in the [readme](https://github.com/GaloyMoney/blink/tree/main?tab=readme-ov-file#local-development-setup) start hosting the API locally
 
-Find more details about hosting the Galoy satck yourself in the [deployment section](/deployment/).
+Find more details about hosting the Galoy stack yourself in the [deployment section](/deployment/).
 
 ## Admin API
 

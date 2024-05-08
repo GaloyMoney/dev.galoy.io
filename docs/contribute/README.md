@@ -16,7 +16,7 @@ Join our self-hosted Mattermost server at [chat.galoy.io](https://chat.galoy.io)
 
 Earn sats by contributing to the Galoy stack:
 
-[github.com/GaloyMoney/galoy/discussions/categories/bounties](https://github.com/GaloyMoney/galoy/discussions/categories/bounties)
+[github.com/GaloyMoney/blink/discussions/categories/bounties](https://github.com/GaloyMoney/blink/discussions/categories/bounties)
 
 ## Community apps and projects
 

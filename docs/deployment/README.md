@@ -3,8 +3,6 @@
 ## Setting up the Galoy stack locally
 
 * [Backend Servers](/deployment/backend-servers)
-* [Mobile Wallet](/deployment/mobile-wallet)
-* [Galoy Pay](/deployment/galoy-pay)
 * [Admin Panel](/deployment/admin-panel)
 
 ## Videos

@@ -17,7 +17,7 @@ The Galoy core banking platform includes the parts necessary to launch a communi
 ### Backend
 
 * **[Blink Core](products/blink-core)** – interacts with the bitcoin and accounting layers to enable sending, receiving and holding balances.
-Check out the [API section ](/api) for an interactive tutorial to get started with our hosted instance.
+Check out the [dev.blink.sv/api](https://dev.blink.sv) for an interactive tutorial to get started with our hosted instance.
 * **[Stablesats](products/stablesats)** – service for implementing fiat hedging strategies via supported exchanges; enables the provision of synthetic USD to provide dollar-like stability without stablecoins.
 * **[Bria](products/bria)** - a service for transaction batching and onchain liquidity management.
 
@@ -41,5 +41,5 @@ Check out the [API section ](/api) for an interactive tutorial to get started wi
 ## API Reference
 
 Dive a little deeper and start exploring our API reference to get an idea of everything that's possible with the API:
-* [Blink public API reference ](https://dev.galoy.io/public-api-reference.html)
+* [Blink public API reference](https://dev.galoy.io/public-api-reference.html)
 * [Blink admin API reference](https://dev.galoy.io/admin-api-reference.html)

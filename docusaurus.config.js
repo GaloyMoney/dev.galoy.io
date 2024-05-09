@@ -187,10 +187,6 @@ const config = {
             to: '/contribute',
             from: ['/projects'],
           },
-          {
-            to: '/products/api',
-            from: ['/api'],
-          },
         ],
       },
     ],

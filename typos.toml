@@ -2,6 +2,7 @@
 # don't correct these false positives
 ags = "ags"
 aray = "aray"
+JOD = "JOD"
 
 [files]
 # skip these files

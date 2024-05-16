@@ -9,11 +9,11 @@ if ! npx spectaql --version; then yarn add spectaql --non-interactive; fi
 mkdir -p .temp
 cd .temp || exit 1
 
-# checkout galoy
+# checkout blink
 if [ ! -d "galoy" ]; then
-  git clone https://github.com/GaloyMoney/galoy
+  git clone https://github.com/GaloyMoney/blink
 fi
-cd galoy || exit 1
+cd blink || exit 1
 
 # build admin api reference
 npx spectaql ./../../scripts/spectaql/spectaql-config-admin-api.yml \

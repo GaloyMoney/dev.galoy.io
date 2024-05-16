@@ -16,6 +16,6 @@ info:
     url: https://opensource.org/licenses/MIT
 
 servers:
-  - url: https://api.staging.galoy.io/graphql
+  - url: https://api.staging.blink.sv/graphql
     description: Signet
     production: false
